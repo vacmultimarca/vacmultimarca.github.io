@@ -7,75 +7,62 @@
 
 <style>
 body{
+    font-family: Arial, sans-serif;
     margin:0;
-    font-family: Arial, Helvetica, sans-serif;
-    background:#111;
+    background:black;
     color:white;
+    text-align:center;
 }
 
 header{
-    background:black;
+    background:#FFD000;
+    color:black;
     padding:20px;
-    text-align:center;
-    border-bottom:3px solid #FFD000;
 }
 
 h1{
-    color:#FFD000;
     margin:0;
 }
 
-.hero{
-    text-align:center;
-    padding:40px 20px;
-}
-
-.hero h2{
-    font-size:28px;
-}
-
-.boton{
-    display:inline-block;
-    margin-top:20px;
-    padding:15px 25px;
-    background:#25D366;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:8px;
-}
-
 .productos{
-    padding:40px 20px;
-    text-align:center;
-}
-
-.grid{
     display:flex;
     flex-wrap:wrap;
     justify-content:center;
     gap:20px;
-}
-
-.card{
-    background:#1c1c1c;
     padding:20px;
-    border-radius:10px;
-    width:250px;
-    border:1px solid #FFD00033;
 }
 
-.card img{
+.producto{
+    background:#111;
+    border-radius:10px;
+    padding:15px;
+    width:280px;
+}
+
+.producto img{
     width:100%;
     border-radius:8px;
 }
 
-footer{
-    text-align:center;
+button{
+    background:#FFD000;
+    border:none;
+    padding:10px;
+    margin-top:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+select{
+    width:100%;
+    padding:8px;
+    margin-top:10px;
+}
+
+.footer{
+    margin-top:30px;
     padding:20px;
-    background:black;
-    margin-top:40px;
-    color:#aaa;
+    background:#111;
 }
 </style>
 </head>
@@ -83,50 +70,86 @@ footer{
 <body>
 
 <header>
-    <h1>VAC Multimarca</h1>
-    <p>Artículos de sujeción y amarre</p>
+<h1>VAC MULTIMARCA</h1>
+<p>Artículos de sujeción profesional</p>
 </header>
 
-<section class="hero">
-    <h2>Fabricantes de cintas de amarre, eslingas y tensores</h2>
-    <p>Calidad profesional para trabajo y transporte.</p>
+<div class="productos">
 
-    <a class="boton" 
-    href="https://wa.me/549XXXXXXXXXX" 
-    target="_blank">
-    Contactar por WhatsApp
-    </a>
-</section>
+<div class="producto">
+<h2>Eslinga</h2>
+<img src="eslinga.jpg">
+<p>Alta resistencia para carga y transporte.</p>
 
-<section class="productos">
-    <h2>Nuestros Productos</h2>
+<select>
+<option>Elegir envío</option>
+<option>Correo Argentino</option>
+<option>Andreani</option>
+<option>OCA</option>
+<option>Retiro en local</option>
+</select>
 
-    <div class="grid">
+<button onclick="comprar('Eslinga')">Comprar</button>
+</div>
 
-        <div class="card">
-            <img src="https://via.placeholder.com/300x200">
-            <h3>Cintas de Amarre</h3>
-            <p>Alta resistencia para cargas pesadas.</p>
-        </div>
 
-        <div class="card">
-            <img src="https://via.placeholder.com/300x200">
-            <h3>Red Pulpo</h3>
-            <p>Ideal para motos y transporte.</p>
-        </div>
+<div class="producto">
+<h2>Tensor Elástico</h2>
+<img src="tensor.jpg">
+<p>Ideal para sujeción segura.</p>
 
-        <div class="card">
-            <img src="https://via.placeholder.com/300x200">
-            <h3>Eslingas</h3>
-            <p>Seguridad y durabilidad profesional.</p>
-        </div>
+<select>
+<option>Elegir envío</option>
+<option>Correo Argentino</option>
+<option>Andreani</option>
+<option>OCA</option>
+<option>Retiro en local</option>
+</select>
 
-    </div>
-</section>
+<button onclick="comprar('Tensor Elástico')">Comprar</button>
+</div>
 
-<footer>
-    <p>© 2026 VAC Multimarca - Todos los derechos reservados</p>
-</footer>
+
+<div class="producto">
+<h2>Red Pulpo</h2>
+<img src="pulpo.jpg">
+<p>Perfecta para motos y carga liviana.</p>
+
+<select>
+<option>Elegir envío</option>
+<option>Correo Argentino</option>
+<option>Andreani</option>
+<option>OCA</option>
+<option>Retiro en local</option>
+</select>
+
+<button onclick="comprar('Red Pulpo')">Comprar</button>
+</div>
+
+</div>
+
+<div class="footer">
+
+<h3>Compras por WhatsApp</h3>
+
+<button onclick="window.open('https://wa.me/549XXXXXXXXXX')">
+Contactar por WhatsApp
+</button>
+
+<p style="margin-top:20px;">
+Botón de arrepentimiento / devoluciones:<br>
+Si querés cancelar tu compra o solicitar devolución,
+contactanos por WhatsApp dentro de los 10 días.
+</p>
+
+</div>
+
+<script>
+function comprar(producto){
+    alert("Elegiste comprar: " + producto + 
+    ". Te contactaremos por WhatsApp para finalizar la compra.");
+}
+</script>
 
 </body>
 </html>
