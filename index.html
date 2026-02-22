@@ -1,17 +1,132 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAC Multimarca</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, Helvetica, sans-serif;
+    background:#111;
+    color:white;
+}
+
+header{
+    background:black;
+    padding:20px;
+    text-align:center;
+    border-bottom:3px solid #FFD000;
+}
+
+h1{
+    color:#FFD000;
+    margin:0;
+}
+
+.hero{
+    text-align:center;
+    padding:40px 20px;
+}
+
+.hero h2{
+    font-size:28px;
+}
+
+.boton{
+    display:inline-block;
+    margin-top:20px;
+    padding:15px 25px;
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:8px;
+}
+
+.productos{
+    padding:40px 20px;
+    text-align:center;
+}
+
+.grid{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.card{
+    background:#1c1c1c;
+    padding:20px;
+    border-radius:10px;
+    width:250px;
+    border:1px solid #FFD00033;
+}
+
+.card img{
+    width:100%;
+    border-radius:8px;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:black;
+    margin-top:40px;
+    color:#aaa;
+}
+</style>
 </head>
 
-<body style="font-family: Arial; text-align:center;">
-<h1>VAC MULTIMARCA</h1>
+<body>
 
-<p>Artículos de sujeción y amarre</p>
+<header>
+    <h1>VAC Multimarca</h1>
+    <p>Artículos de sujeción y amarre</p>
+</header>
 
-<p>Eslingas • Tensores • Red pulpo • Cintas de amarre</p>
+<section class="hero">
+    <h2>Fabricantes de cintas de amarre, eslingas y tensores</h2>
+    <p>Calidad profesional para trabajo y transporte.</p>
 
-<p>Consultas por WhatsApp</p>
+    <a class="boton" 
+    href="https://wa.me/549XXXXXXXXXX" 
+    target="_blank">
+    Contactar por WhatsApp
+    </a>
+</section>
+
+<section class="productos">
+    <h2>Nuestros Productos</h2>
+
+    <div class="grid">
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x200">
+            <h3>Cintas de Amarre</h3>
+            <p>Alta resistencia para cargas pesadas.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x200">
+            <h3>Red Pulpo</h3>
+            <p>Ideal para motos y transporte.</p>
+        </div>
+
+        <div class="card">
+            <img src="https://via.placeholder.com/300x200">
+            <h3>Eslingas</h3>
+            <p>Seguridad y durabilidad profesional.</p>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 VAC Multimarca - Todos los derechos reservados</p>
+</footer>
 
 </body>
 </html>
