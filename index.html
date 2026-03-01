@@ -6,191 +6,175 @@
 <title>VAC Multimarca</title>
 
 <style>
+
 body{
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     margin:0;
-    background:black;
-    color:white;
+    background:#f4f4f4;
     text-align:center;
 }
 
 header{
-    background:#FFD000;
-    color:black;
+    background:black;
+    color:yellow;
     padding:20px;
+}
+
+h1{
+    margin:0;
 }
 
 .productos{
-    display:flex;
-    flex-wrap:wrap;
-    justify-content:center;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:20px;
-    padding:20px;
+    padding:30px;
 }
 
 .producto{
-    background:#111;
-    border-radius:10px;
+    background:white;
     padding:15px;
-    width:280px;
+    border-radius:10px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
 }
 
 .producto img{
     width:100%;
+    height:220px;
+    object-fit:cover;
     border-radius:8px;
 }
 
-input, select{
-    width:100%;
-    padding:8px;
-    margin-top:8px;
-}
-
 button{
-    background:#FFD000;
-    border:none;
-    padding:10px;
     margin-top:10px;
-    cursor:pointer;
+    padding:10px 20px;
+    border:none;
+    background:black;
+    color:yellow;
     font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
 }
 
-.footer{
-    background:#111;
-    padding:25px;
+button:hover{
+    background:#222;
+}
+
+footer{
+    background:black;
+    color:white;
+    padding:20px;
     margin-top:30px;
 }
 
-.redes a{
-    color:#FFD000;
+footer a{
+    color:yellow;
     text-decoration:none;
-    display:block;
-    margin:5px;
-    font-size:18px;
+    font-weight:bold;
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>VAC MULTIMARCA</h1>
-<p>Artículos de sujeción profesional</p>
+    <h1>VAC MULTIMARCA</h1>
+    <p>Soluciones en sujeción y amarre</p>
 </header>
 
 <div class="productos">
 
-<!-- PRODUCTO 1 -->
 <div class="producto">
-<h2>cinta tensor</h2>
-<img src="cinta tensor.jpg">
-
-<input type="number" id="cant1" placeholder="Cantidad" min="1">
-
-<select id="envio1">
-<option>Elegir envío</option>
-<option>Correo Argentino</option>
-<option>Retiro en local</option>
-</select>
-
-<button onclick="comprar('Eslinga','cant1','envio1')">
-Comprar
-</button>
+<img src="imagenes/eslinga.jpg">
+<h3>ESLINGA</h3>
+<button onclick="consultarProducto('ESLINGA')">CONSULTAR</button>
 </div>
 
-<!-- PRODUCTO 2 -->
 <div class="producto">
-<h2>vac</h2>
-<img src="vac.jpg">
-
-<input type="number" id="cant2" placeholder="Cantidad" min="1">
-
-<select id="envio2">
-<option>Elegir envío</option>
-<option>Correo Argentino</option>
-<option>Retiro en local</option>
-</select>
-
-<button onclick="comprar('Tensor Elástico','cant2','envio2')">
-Comprar
-</button>
+<img src="imagenes/tensor.jpg">
+<h3>TENSOR</h3>
+<button onclick="consultarProducto('TENSOR')">CONSULTAR</button>
 </div>
 
-<!-- PRODUCTO 3 -->
 <div class="producto">
-<h2>zuncho 2 tramos</h2>
-<img src="zuncho 2 tramos.jpg">
+<img src="imagenes/red-pulpo.jpg">
+<h3>RED PULPO</h3>
+<button onclick="consultarProducto('RED PULPO')">CONSULTAR</button>
+</div>
 
-<input type="number" id="cant3" placeholder="Cantidad" min="1">
+<div class="producto">
+<img src="imagenes/cinta-esternon.jpg">
+<h3>CINTA ESTERNON</h3>
+<button onclick="consultarProducto('CINTA ESTERNON')">CONSULTAR</button>
+</div>
 
-<select id="envio3">
-<option>Elegir envío</option>
-<option>Correo Argentino</option>
-<option>Retiro en local</option>
-</select>
+<div class="producto">
+<img src="imagenes/cinta-zuncho.jpg">
+<h3>CINTA ZUNCHO</h3>
+<button onclick="consultarProducto('CINTA ZUNCHO')">CONSULTAR</button>
+</div>
 
-<button onclick="comprar('Red Pulpo','cant3','envio3')">
-Comprar
-</button>
+<div class="producto">
+<img src="imagenes/zuncho-2-tramos.jpg">
+<h3>ZUNCHO 2 TRAMOS</h3>
+<button onclick="consultarProducto('ZUNCHO 2 TRAMOS')">CONSULTAR</button>
+</div>
+
+<div class="producto">
+<img src="imagenes/cinta-amarre.jpg">
+<h3>CINTA DE AMARRE</h3>
+<button onclick="consultarProducto('CINTA DE AMARRE')">CONSULTAR</button>
+</div>
+
+<div class="producto">
+<img src="imagenes/zuncho-tensor.jpg">
+<h3>ZUNCHO TENSOR</h3>
+<button onclick="consultarProducto('ZUNCHO TENSOR')">CONSULTAR</button>
+</div>
+
+<div class="producto">
+<img src="imagenes/prolongador-pase-25.jpg">
+<h3>PROLONGADOR PASE 25</h3>
+<button onclick="consultarProducto('PROLONGADOR PASE 25')">CONSULTAR</button>
 </div>
 
 </div>
 
-<!-- FOOTER -->
-<div class="footer">
+<footer>
+<p>Seguinos en redes</p>
 
-<h3>Seguinos</h3>
-
-<div class="redes">
+<p>
+Instagram:
 <a href="https://instagram.com/vac_multimarca" target="_blank">
-Instagram: @vac_multimarca
+@vac_multimarca
 </a>
-
-<a href="https://tiktok.com/@vacmultimarca" target="_blank">
-TikTok: @vacmultimarca
-</a>
-</div>
-
-<br>
-
-<button onclick="window.open('https://wa.me/5491563824585')">
-Contacto directo por WhatsApp
-</button>
-
-<p style="margin-top:20px;">
-Botón de arrepentimiento / devoluciones:<br>
-Podés solicitar cancelación o devolución dentro de los 10 días
-contactándonos por WhatsApp.
 </p>
 
-</div>
+<p>
+TikTok:
+<a href="https://www.tiktok.com/@vacmultimarca" target="_blank">
+vacmultimarca
+</a>
+</p>
+
+<p>© 2026 VAC Multimarca</p>
+</footer>
 
 <script>
 
-function comprar(producto, cantidadID, envioID){
+function consultarProducto(producto){
 
-let cantidad = document.getElementById(cantidadID).value;
-let envio = document.getElementById(envioID).value;
+    let telefono = "5491163824585"; 
 
-if(cantidad == "" || cantidad <= 0){
-    alert("Ingresá una cantidad válida");
-    return;
-}
+    let mensaje =
+    "Hola, quiero consultar por: " + producto +
+    "%0A%0AEnviado desde la web VAC Multimarca";
 
-if(envio == "Elegir envío"){
-    alert("Seleccioná un método de envío");
-    return;
-}
-
-let mensaje =
-"Hola VAC Multimarca 👋%0A%0A" +
-"Quiero realizar un pedido:%0A" +
-"Producto: " + producto + "%0A" +
-"Cantidad: " + cantidad + "%0A" +
-"Envío: " + envio + "%0A%0A" +
-"Quedo a la espera de confirmación.";
-
-window.open("https://wa.me/5491563824585?text=" + mensaje);
+    window.open(
+        "https://wa.me/" + telefono + "?text=" + mensaje,
+        "_blank"
+    );
 }
 
 </script>
