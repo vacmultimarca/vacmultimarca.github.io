@@ -14,6 +14,7 @@ body {
   color: white;
 }
 
+/* TITULO PRINCIPAL */
 h1 {
   text-align: center;
   margin: 50px 0 10px 0;
@@ -21,17 +22,20 @@ h1 {
   letter-spacing: 2px;
 }
 
+/* SUBTITULO */
 h2, p {
   text-align: center;
 }
 
+/* CONTENEDOR PRODUCTOS */
 .productos {
   display: flex;
   flex-direction: column;
-  gap: 80px;
+  gap: 40px;
   padding: 40px 8%;
 }
 
+/* TARJETAS ZIGZAG */
 .producto {
   display: flex;
   align-items: center;
@@ -44,17 +48,21 @@ h2, p {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* EFECTO SALIR HACIA AFUERA */
 .producto:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
+/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
+/* IMAGEN */
 .producto img {
-  width: 45%;
+  width: 35%;        /* Fotos un poco más chicas */
+  max-width: 200px;  /* No muy grandes en pantallas grandes */
   border-radius: 15px;
   transition: transform 0.4s ease;
 }
@@ -63,11 +71,13 @@ h2, p {
   transform: scale(1.05);
 }
 
+/* INFO */
 .info {
   width: 45%;
   text-align: center;
 }
 
+/* BOTON */
 button {
   background-color: #FFD700;
   border: none;
@@ -82,11 +92,13 @@ button:hover {
   background-color: #e6c200;
 }
 
-footer {
+/* REDES / FOOTER CENTRADO */
+footer, .redes {
   text-align: center;
   margin: 60px 0;
 }
 
+/* VERSION CELULAR */
 @media (max-width: 768px) {
   .producto {
     flex-direction: column !important;
@@ -98,215 +110,47 @@ footer {
     width: 100%;
   }
 }
+
+/* PAGINACIÓN */
+.paginacion {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.paginacion button {
+  background-color: #FFD700;
+  border: none;
+  padding: 10px 16px;
+  margin: 0 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.paginacion button:hover {
+  background-color: #e6c200;
+}
+
+.paginacion button.active {
+  background-color: #e6c200;
+}
 </style>
 </head>
 
 <body>
 
 <header>
-    <h1>VAC MULTIMARCA</h1>
+    <h1 style="color:yellow;">VAC MULTIMARCA</h1>
     <p>Soluciones en sujeción y amarre</p>
 </header>
 
-<div class="productos">
-
-<!-- 1 -->
-<div class="producto">
-<img src="eslinga.jpg">
-<div class="info">
-<h3>ESLINGA</h3>
-<button onclick="consultarProducto('ESLINGA')">CONSULTAR</button>
-</div>
+<div id="productos-contenedor" class="productos">
+  <!-- Productos se generan automáticamente aquí -->
 </div>
 
-<!-- 2 -->
-<div class="producto">
-<img src="tensor.jpg">
-<div class="info">
-<h3>TENSOR</h3>
-<button onclick="consultarProducto('TENSOR')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 3 -->
-<div class="producto">
-<img src="cintap40mmenchufe.jpg">
-<div class="info">
-<h3>CINTA P40MM ENCHUFE</h3>
-<button onclick="consultarProducto('CINTA P40MM ENCHUFE')">CONSULTAR</button>
-</div>
-</div>
-
-<div class="producto">
-<img src="cintap40mmenchufe-1.jpg">
-<div class="info">
-<h3>CINTA P40MM ENCHUFE - 1</h3>
-<button onclick="consultarProducto('CINTA P40MM ENCHUFE - 1')">CONSULTAR</button>
-</div>
-</div>  
-
-<!-- 4 -->
-<div class="producto">
-<img src="cintap25mm2tramoselastico.jpg">
-<div class="info">
-<h3>CINTA P25MM 2 TRAMOS ELASTICO</h3>
-<button onclick="consultarProducto('CINTA P25MM 2 TRAMOS ELASTICO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 5 -->
-<div class="producto">
-<img src="cintaconganchos.jpg">
-<div class="info">
-<h3>CINTA CON GANCHO S</h3>
-<button onclick="consultarProducto('CINTA CON GANCHO S')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 6 -->
-<div class="producto">
-<img src="redpulpo.jpg">
-<div class="info">
-<h3>RED PULPO</h3>
-<button onclick="consultarProducto('RED PULPO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 7 -->
-<div class="producto">
-<img src="redpulpo25x25.jpg">
-<div class="info">
-<h3>RED PULPO 25x25</h3>
-<button onclick="consultarProducto('RED PULPO 25x25')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 8 -->
-<div class="producto">
-<img src="redpulpo25x25R.jpg">
-<div class="info">
-<h3>RED PULPO 25x25R</h3>
-<button onclick="consultarProducto('RED PULPO 25x25R')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 9 -->
-<div class="producto">
-<img src="redpulpo50x50.jpg">
-<div class="info">
-<h3>RED PULPO 50x50</h3>
-<button onclick="consultarProducto('RED PULPO 50x50')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 10 -->
-<div class="producto">
-<img src="eslingaprolongadorp50mm.jpg">
-<div class="info">
-<h3>ESLINGA PROLONGADOR P50MM</h3>
-<button onclick="consultarProducto('ESLINGA PROLONGADOR P50MM')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 11 -->
-<div class="producto">
-<img src="cintaamarreatraque.jpg">
-<div class="info">
-<h3>CINTA DE AMARRE DE ATRAQUE</h3>
-<button onclick="consultarProducto('CINTA DE AMARRE DE ATRAQUE')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 12 -->
-<div class="producto">
-<img src="cintap25mmelasticox1metro.jpg">
-<div class="info">
-<h3>CINTA P25MM ELASTICO X 1 METRO</h3>
-<button onclick="consultarProducto('CINTA P25MM ELASTICO X 1 METRO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 13 -->
-<div class="producto">
-<img src="cintap25mmelasticox1metro,.jpg">
-<div class="info">
-<h3>CINTA P25MM ELASTICO X 1 METRO</h3>
-<button onclick="consultarProducto('CINTA P25MM ELASTICO X 1 METRO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 14 -->
-<div class="producto">
-<img src="cintaesternon.jpg">
-<div class="info">
-<h3>CINTA ESTERNON</h3>
-<button onclick="consultarProducto('CINTA ESTERNON')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 15 -->
-<div class="producto">
-<img src="cintazuncho.jpg">
-<div class="info">
-<h3>CINTA ZUNCHO</h3>
-<button onclick="consultarProducto('CINTA ZUNCHO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 16 -->
-<div class="producto">
-<img src="zuncho2tramos.jpg">
-<div class="info">
-<h3>ZUNCHO 2 TRAMOS</h3>
-<button onclick="consultarProducto('ZUNCHO 2 TRAMOS')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 17 -->
-<div class="producto">
-<img src="zuncho2tramosp40mmelastico.jpg">
-<div class="info">
-<h3>ZUNCHO 2 TRAMOS P40MM ELASTICO</h3>
-<button onclick="consultarProducto('ZUNCHO 2 TRAMOS P40MM ELASTICO')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 18 -->
-<div class="producto">
-<img src="cintaamarre.jpg">
-<div class="info">
-<h3>CINTA DE AMARRE</h3>
-<button onclick="consultarProducto('CINTA DE AMARRE')">CONSULTAR</button>
-</div>
-</div>
-
-<div class="producto">
-<img src="cintaamarre-1.jpg">
-<div class="info">
-<h3>CINTA DE AMARRE - 1</h3>
-<button onclick="consultarProducto('CINTA DE AMARRE - 1')">CONSULTAR</button>
-</div>
-</div>  
-  
-
-<!-- 19 -->
-<div class="producto">
-<img src="zunchotensor.jpg">
-<div class="info">
-<h3>ZUNCHO TENSOR</h3>
-<button onclick="consultarProducto('ZUNCHO TENSOR')">CONSULTAR</button>
-</div>
-</div>
-
-<!-- 20 -->
-<div class="producto">
-<img src="prolongadorp25.jpg">
-<div class="info">
-<h3>PROLONGADOR PASE 25</h3>
-<button onclick="consultarProducto('PROLONGADOR PASE 25')">CONSULTAR</button>
-</div>
-</div>
-
+<div class="paginacion" id="paginacion">
+  <!-- Botones de página se generan automáticamente aquí -->
 </div>
 
 <footer>
@@ -329,28 +173,96 @@ vacmultimarca
 <p>© 2026 VAC Multimarca</p>
 </footer>
 
-<script>
-function consultarProducto(producto){
-    let telefono = "5491163824585";
-    let mensaje =
-    "Hola, quiero consultar por: " + producto +
-    "%0A%0AEnviado desde la web VAC Multimarca";
-
-    window.open(
-        "https://wa.me/" + telefono + "?text=" + mensaje,
-        "_blank"
-    );
-}
-</script>
-<!-- BOTON WHATSAPP FLOTANTE -->
+<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
    target="_blank"
-   style="position:fixed; bottom:25px; right:25px; width:65px; height:65px; background:#25D366; border-radius:50%; display:flex; align-items:center; justify-content:center; box-shadow:0 8px 20px rgba(0,0,0,0.4); z-index:1000;">
+   style="position:fixed; bottom:25px; right:25px; height:65px; background:#25D366; border-radius:50px; display:flex; align-items:center; justify-content:center; padding:0 15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); z-index:1000;">
    
    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
         alt="WhatsApp"
-        style="width:35px; height:35px;">
+        style="width:35px; height:35px; margin-right:8px;">
+   <span style="color:white; font-weight:bold; font-family:Arial;">WhatsApp</span>
+</a>
 
-</style>
+<script>
+// LISTA DE PRODUCTOS
+const productos = [
+  { nombre: "ESLINGA", imagen: "eslinga.jpg" },
+  { nombre: "TENSOR", imagen: "tensor.jpg" },
+  { nombre: "CINTA P40MM ENCHUFE", imagen: "cintap40mmenchufe.jpg" },
+  { nombre: "CINTA P25MM 2 TRAMOS ELASTICO", imagen: "cintap25mm2tramoselastico.jpg" },
+  { nombre: "CINTA CON GANCHOS", imagen: "cintaconganchos.jpg" },
+  { nombre: "RED PULPO", imagen: "redpulpo.jpg" },
+  { nombre: "RED PULPO 25x25", imagen: "redpulpo25x25.jpg" },
+  { nombre: "RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg" },
+  { nombre: "RED PULPO 50x50", imagen: "redpulpo50x50.jpg" },
+  { nombre: "ESLINGA PROLONGADOR P50MM", imagen: "eslingaprolongadorp50mm.jpg" },
+  { nombre: "CINTA DE AMARRE DE ATRAQUE", imagen: "cintaamarreatraque.jpg" },
+  { nombre: "CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg" },
+  { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg" },
+  { nombre: "CINTA ZUNCHO", imagen: "cintazuncho.jpg" },
+  { nombre: "ZUNCHO 2 TRAMOS", imagen: "zuncho2tramos.jpg" },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg" },
+  { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg" },
+  { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg" },
+  { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg" },
+  // Podes seguir agregando productos sin límite
+];
+
+// CONFIGURACIÓN DE PAGINACIÓN
+const productosPorPagina = 8;
+let paginaActual = 1;
+const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+
+function mostrarProductos(pagina) {
+  const contenedor = document.getElementById("productos-contenedor");
+  contenedor.innerHTML = "";
+  const inicio = (pagina - 1) * productosPorPagina;
+  const fin = inicio + productosPorPagina;
+  const productosPagina = productos.slice(inicio, fin);
+
+  productosPagina.forEach(p => {
+    const div = document.createElement("div");
+    div.className = "producto";
+    div.innerHTML = `
+      <img src="${p.imagen}" alt="${p.nombre}">
+      <div class="info">
+        <h3>${p.nombre}</h3>
+        <button onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
+      </div>
+    `;
+    contenedor.appendChild(div);
+  });
+}
+
+function crearPaginacion() {
+  const pagDiv = document.getElementById("paginacion");
+  pagDiv.innerHTML = "";
+
+  for (let i = 1; i <= totalPaginas; i++) {
+    const btn = document.createElement("button");
+    btn.innerText = i;
+    if (i === paginaActual) btn.classList.add("active");
+    btn.addEventListener("click", () => {
+      paginaActual = i;
+      mostrarProductos(paginaActual);
+      crearPaginacion();
+    });
+    pagDiv.appendChild(btn);
+  }
+}
+
+// FUNCION WHATSAPP
+function consultarProducto(producto){
+    let telefono = "5491163824585"; 
+    let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
+    window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
+
+// MOSTRAR INICIAL
+mostrarProductos(paginaActual);
+crearPaginacion();
+</script>
+
 </body>
 </html>
