@@ -13,6 +13,7 @@ body {
   color: white;
 }
 
+/* TITULO PRINCIPAL */
 h1 {
   text-align: center;
   margin: 40px 0 10px 0;
@@ -21,14 +22,21 @@ h1 {
   font-size: 36px;
 }
 
-h2, h3.subtitle {
+/* SUBTITULO */
+h2 {
   text-align: center;
+  font-size: 20px;
   color: white;
   margin: 5px 0;
 }
+h3.subtitle {
+  text-align: center;
+  font-size: 18px;
+  color: white;
+  margin: 5px 0 40px 0;
+}
 
-h3.subtitle { margin-bottom: 40px; }
-
+/* CONTENEDOR PRODUCTOS */
 .productos {
   display: flex;
   flex-direction: column;
@@ -36,6 +44,7 @@ h3.subtitle { margin-bottom: 40px; }
   padding: 40px 8%;
 }
 
+/* TARJETAS ZIGZAG */
 .producto {
   display: flex;
   align-items: center;
@@ -45,18 +54,39 @@ h3.subtitle { margin-bottom: 40px; }
   padding: 40px;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-.producto:nth-child(even) { flex-direction: row-reverse; }
+/* EFECTO SALIR HACIA AFUERA */
+.producto:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
+}
 
+/* ZIGZAG */
+.producto:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* IMAGEN */
 .producto img {
   width: 38%;
   max-width: 220px;
   border-radius: 15px;
+  transition: transform 0.4s ease;
 }
 
-.info { width: 45%; text-align: center; }
+.producto:hover img {
+  transform: scale(1.05);
+}
 
+/* INFO */
+.info {
+  width: 45%;
+  text-align: center;
+}
+
+/* BOTON */
 button {
   background-color: #FFD700;
   border: none;
@@ -64,11 +94,66 @@ button {
   border-radius: 10px;
   font-weight: bold;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
-footer { text-align: center; margin: 60px 0 120px 0; }
+button:hover {
+  background-color: #e6c200;
+}
 
-/* BOTONES FLOTANTES - VERSION SEGURA */
+/* REDES / FOOTER CENTRADO */
+footer, .redes {
+  text-align: center;
+  margin: 60px 0;
+}
+
+/* VERSION CELULAR */
+@media (max-width: 768px) {
+  .producto {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .producto img,
+  .info {
+    width: 100%;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h2, h3.subtitle {
+    font-size: 16px;
+  }
+}
+
+/* PAGINACIÓN */
+.paginacion {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.paginacion button {
+  background-color: #FFD700;
+  border: none;
+  padding: 10px 16px;
+  margin: 0 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.paginacion button:hover {
+  background-color: #e6c200;
+}
+
+.paginacion button.active {
+  background-color: #e6c200;
+}
+
+/* BOTONES FLOTANTES REDONDOS */
 .boton-flotante {
   position: fixed;
   bottom: 25px;
@@ -78,36 +163,28 @@ footer { text-align: center; margin: 60px 0 120px 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
   box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  z-index: 1000;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  font-size: 12px;
   text-decoration: none;
 }
 
-.boton-whatsapp { background-color: #25D366; right: 20px; }
-.boton-mercado { background-color: #009EE3; left: 20px; }
-
-.boton-flotante img {
-  width: 60%;
-  height: auto;
+/* WhatsApp */
+.boton-whatsapp {
+  background-color: #25D366;
+  right: 25px;
 }
 
-@media (max-width: 768px) {
-  .producto { flex-direction: column !important; text-align: center; }
-  .producto img, .info { width: 100%; }
-  .boton-flotante { width: 50px; height: 50px; bottom: 20px; }
-  .boton-whatsapp { right: 15px; }
-  .boton-mercado { left: 15px; }
+/* Mercado Pago */
+.boton-mercado {
+  background-color: #0033A0;
+  left: 25px;
 }
-
-.paginacion { text-align: center; margin: 40px 0; }
-.paginacion button {
-  background-color: #FFD700;
-  margin: 0 4px;
-  padding: 10px 16px;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.paginacion button.active { background-color: #e6c200; }
 </style>
 </head>
 <body>
@@ -118,25 +195,38 @@ footer { text-align: center; margin: 60px 0 120px 0; }
   <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
 </header>
 
-<div id="productos-contenedor" class="productos"></div>
-<div class="paginacion" id="paginacion"></div>
+<div id="productos-contenedor" class="productos">
+  <!-- Productos se generan automáticamente aquí -->
+</div>
+
+<div class="paginacion" id="paginacion">
+  <!-- Botones de página se generan automáticamente aquí -->
+</div>
 
 <footer>
 <p>Seguinos en redes</p>
-<p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
-<p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">vacmultimarca</a></p>
+<p>
+Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank">@vac_multimarca</a>
+</p>
+<p>
+TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">vacmultimarca</a>
+</p>
 <p>© 2026 VAC Multimarca</p>
 </footer>
 
-<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web" target="_blank" class="boton-flotante boton-whatsapp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<!-- BOTONES FLOTANTES REDONDOS -->
+<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
+   target="_blank" class="boton-flotante boton-whatsapp">
+   WhatsApp
 </a>
 
-<a href="https://www.mercadopago.com.ar" target="_blank" class="boton-flotante boton-mercado">
-  <img src="https://vignette.wikia.nocookie.net/logopedia/images/2/22/Mercado_Pago_logo_2019.svg/revision/latest?cb=20190520113110" alt="MP">
+<a href="#"
+   target="_blank" class="boton-flotante boton-mercado">
+   Mercado Pago
 </a>
 
 <script>
+// LISTA DE PRODUCTOS
 const productos = [
   { nombre: "ESLINGA", imagen: "eslinga.jpg" },
   { nombre: "TENSOR", imagen: "tensor.jpg" },
@@ -158,15 +248,17 @@ const productos = [
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg" },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg" },
   { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg" },
-  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg" }
+  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg" },
+  // Podes seguir agregando productos sin límite
 ];
 
+// CONFIGURACIÓN DE PAGINACIÓN
 const productosPorPagina = 8;
 let paginaActual = 1;
+const totalPaginas = Math.ceil(productos.length / productosPorPagina);
 
 function mostrarProductos(pagina) {
   const contenedor = document.getElementById("productos-contenedor");
-  if(!contenedor) return;
   contenedor.innerHTML = "";
   const inicio = (pagina - 1) * productosPorPagina;
   const fin = inicio + productosPorPagina;
@@ -175,29 +267,45 @@ function mostrarProductos(pagina) {
   productosPagina.forEach(p => {
     const div = document.createElement("div");
     div.className = "producto";
-    div.innerHTML = <img src="${p.imagen}" alt="${p.nombre}"><div class="info"><h3>${p.nombre}</h3><button onclick="consultarProducto('${p.nombre}')">CONSULTAR</button></div>;
+    div.innerHTML = `
+      <img src="${p.imagen}" alt="${p.nombre}">
+      <div class="info">
+        <h3>${p.nombre}</h3>
+        <button onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
+      </div>
+    `;
     contenedor.appendChild(div);
   });
 }
 
 function crearPaginacion() {
   const pagDiv = document.getElementById("paginacion");
-  if(!pagDiv) return;
   pagDiv.innerHTML = "";
-  const total = Math.ceil(productos.length / productosPorPagina);
-  for (let i = 1; i <= total; i++) {
+
+  for (let i = 1; i <= totalPaginas; i++) {
     const btn = document.createElement("button");
     btn.innerText = i;
     if (i === paginaActual) btn.classList.add("active");
-    btn.onclick = () => { paginaActual = i; mostrarProductos(i); crearPaginacion(); window.scrollTo(0,0); };
+    btn.addEventListener("click", () => {
+      paginaActual = i;
+      mostrarProductos(paginaActual);
+      crearPaginacion();
+    });
     pagDiv.appendChild(btn);
   }
 }
 
-function consultarProducto(p) { window.open("https://wa.me/5491163824585?text=Consulta por: "+p, "_blank"); }
+// FUNCION WHATSAPP
+function consultarProducto(producto){
+    let telefono = "5491163824585"; 
+    let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
+    window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
 
-mostrarProductos(1);
+// MOSTRAR INICIAL
+mostrarProductos(paginaActual);
 crearPaginacion();
 </script>
+
 </body>
 </html>
