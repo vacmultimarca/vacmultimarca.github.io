@@ -325,6 +325,36 @@ function consultarProducto(producto){
     );
 }
 </script>
+<!-- BOTON WHATSAPP FLOTANTE -->
+<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
+   class="whatsapp-float"
+   target="_blank">
+   💬
+</a>
 
+<style>
+.whatsapp-float {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  background-color: #25D366;
+  color: white;
+  font-size: 28px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.1);
+}
+</style>
 </body>
 </html>
