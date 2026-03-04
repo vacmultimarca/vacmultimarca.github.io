@@ -28,11 +28,11 @@ h2, p {
 }
 
 /* CONTENEDOR PRODUCTOS */
-. productos  {
-  pantalla : flex ;
-  flex-direction : columna ;
-  espacio : 80 px ;
-  relleno : 40 px  8 % ;
+.productos {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 40px 8%;
 }
 
 /* TARJETAS ZIGZAG */
@@ -48,18 +48,15 @@ h2, p {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* EFECTO SALIR HACIA AFUERA */
 .producto:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
-/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
-/* IMAGEN */
 .producto img {
   width: 45%;
   border-radius: 15px;
@@ -70,13 +67,11 @@ h2, p {
   transform: scale(1.05);
 }
 
-/* INFO */
 .info {
   width: 45%;
   text-align: center;
 }
 
-/* BOTON */
 button {
   background-color: #FFD700;
   border: none;
@@ -91,21 +86,18 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* REDES / FOOTER CENTRADO */
 footer, .redes {
   text-align: center;
   margin: 60px 0;
 }
 
-/* VERSION CELULAR */
 @media (max-width: 768px) {
   .producto {
     flex-direction: column !important;
     text-align: center;
   }
 
-  .producto img,
-  .info {
+  .producto img {
     width: 100%;
   }
 }
@@ -115,7 +107,7 @@ footer, .redes {
 <body>
 
 <header>
-    <h1 style="color:yellow;">VAC MULTIMARCA</h1>
+    <h1>VAC MULTIMARCA</h1>
     <p>Soluciones en sujeción y amarre</p>
 </header>
 
@@ -123,124 +115,82 @@ footer, .redes {
 
 <div class="producto">
 <img src="eslinga.jpg">
+<div class="info">
 <h3>ESLINGA</h3>
 <button onclick="consultarProducto('ESLINGA')">CONSULTAR</button>
+</div>
 </div>
 
 <div class="producto">
 <img src="tensor.jpg">
+<div class="info">
 <h3>TENSOR</h3>
 <button onclick="consultarProducto('TENSOR')">CONSULTAR</button>
+</div>
 </div>
 
 <div class="producto">
 <img src="cintap40mmenchufe.jpg">
-<h3>cinta p40mm enchufe</h3>
-<button onclick="consultarProducto('cinta p40mm enchufe')">CONSULTAR</button>
+<div class="info">
+<h3>CINTA P40MM ENCHUFE</h3>
+<button onclick="consultarProducto('CINTA P40MM ENCHUFE')">CONSULTAR</button>
+</div>
+</div>
 
-  
 <div class="producto">
 <img src="cintap25mm2tramoselastico.jpg">
-<h3>cinta p25mm 2 tramos elastico</h3>
-<button onclick="consultarProducto('cinta p25mm 2 tramos elastico')">CONSULTAR</button>
-</div>      
+<div class="info">
+<h3>CINTA P25MM 2 TRAMOS ELASTICO</h3>
+<button onclick="consultarProducto('CINTA P25MM 2 TRAMOS ELASTICO')">CONSULTAR</button>
+</div>
+</div>
 
-  
 <div class="producto">
 <img src="cintaconganchos.jpg">
-<h3>cinta con gancho s </h3>
-<button onclick="consultarProducto('cinta con gancho s')">CONSULTAR</button>
-</div>    
+<div class="info">
+<h3>CINTA CON GANCHO S</h3>
+<button onclick="consultarProducto('CINTA CON GANCHO S')">CONSULTAR</button>
+</div>
+</div>
 
 <div class="producto">
 <img src="redpulpo.jpg">
+<div class="info">
 <h3>RED PULPO</h3>
 <button onclick="consultarProducto('RED PULPO')">CONSULTAR</button>
 </div>
+</div>
 
- <div class="producto">
+<div class="producto">
 <img src="redpulpo25x25.jpg">
+<div class="info">
 <h3>RED PULPO 25x25</h3>
-<button onclick="consultarProducto('RED PULPO25x25')">CONSULTAR</button>
+<button onclick="consultarProducto('RED PULPO 25x25')">CONSULTAR</button>
+</div>
 </div>
 
 <div class="producto">
 <img src="redpulpo25x25R.jpg">
+<div class="info">
 <h3>RED PULPO 25x25R</h3>
-<button onclick="consultarProducto('RED PULPO25x25R')">CONSULTAR</button>
-</div>      
+<button onclick="consultarProducto('RED PULPO 25x25R')">CONSULTAR</button>
+</div>
+</div>
 
- <div class="producto">
+<div class="producto">
 <img src="redpulpo50x50.jpg">
-<h3>red pulpo 50x50</h3>
-<button onclick="consultarProducto('red pulpo 50x50')">CONSULTAR</button>
-</div> 
+<div class="info">
+<h3>RED PULPO 50x50</h3>
+<button onclick="consultarProducto('RED PULPO 50x50')">CONSULTAR</button>
+</div>
+</div>
 
- <div class="producto">
+<div class="producto">
 <img src="eslingaprolongadorp50mm.jpg">
-<h3>eslinga prolongador p50mm</h3>
-<button onclick="consultarProducto('eslinga prolongador p50mm')">CONSULTAR</button>
-</div>   
-
-<div class="producto">
-<img src="cintaamarreatraque.jpg">
-<h3>CINTA DE AMARRE DE ATRAQUE</h3>
-<button onclick="consultarProducto('CINTA DE AMARRE DE ATRAQUE')">CONSULTAR</button>
+<div class="info">
+<h3>ESLINGA PROLONGADOR P50MM</h3>
+<button onclick="consultarProducto('ESLINGA PROLONGADOR P50MM')">CONSULTAR</button>
 </div>
-
-<div class="producto">
-<img src="cintap25mmelasticox1metro.jpg">
-<h3>cinta p25mm elastico x 1 metro</h3>
-<button onclick="consultarProducto('cinta p25mm elastico x 1 metro')">CONSULTAR</button>
-</div>
-
-<div class="producto">
-<img src="cintap25mmelasticox1metro,.jpg">
-<h3>cinta p25mm elastico x 1 metro,</h3>
-<button onclick="consultarProducto('cinta p25mm elastico x 1 metro,')">CONSULTAR</button>
-</div>    
-
-<div class="producto">
-<img src="cintaesternon.jpg">
-<h3>CINTA ESTERNON</h3>
-<button onclick="consultarProducto('CINTA ESTERNON')">CONSULTAR</button>
-</div>
-
-    
-<div class="producto">
-<img src="cintazuncho.jpg">
-<h3>CINTA ZUNCHO</h3>
-<button onclick="consultarProducto('CINTA ZUNCHO')">CONSULTAR</button>
-</div>
-
-<div class="producto">
-<img src="zuncho2tramos.jpg">
-<h3>ZUNCHO 2 TRAMOS</h3>
-<button onclick="consultarProducto('ZUNCHO 2 TRAMOS')">CONSULTAR</button>
-</div>
-
-<div class="producto">
-<img src="zuncho2tramosp40mmelastico.jpg">
-<h3>ZUNCHO 2 TRAMOS p40mm elastico</h3>
-<button onclick="consultarProducto('ZUNCHO 2 TRAMOS p40mm elastico')">CONSULTAR</button>
-</div>   
-
-<div class="producto">
-<img src="cintaamarre.jpg">
-<h3>CINTA DE AMARRE</h3>
-<button onclick="consultarProducto('CINTA DE AMARRE')">CONSULTAR</button>
-</div>
-
-<div class="producto">
-<img src="zunchotensor.jpg">
-<h3>ZUNCHO TENSOR</h3>
-<button onclick="consultarProducto('ZUNCHO TENSOR')">CONSULTAR</button>
-</div>
-
-<div class="producto">
-<img src="prolongadorp25.jpg">
-<h3>PROLONGADOR PASE 25</h3>
-<button onclick="consultarProducto('PROLONGADOR PASE 25')">CONSULTAR</button>
 </div>
 
 </div>
@@ -266,11 +216,8 @@ vacmultimarca
 </footer>
 
 <script>
-
 function consultarProducto(producto){
-
-    let telefono = "5491163824585"; 
-
+    let telefono = "5491163824585";
     let mensaje =
     "Hola, quiero consultar por: " + producto +
     "%0A%0AEnviado desde la web VAC Multimarca";
@@ -280,7 +227,6 @@ function consultarProducto(producto){
         "_blank"
     );
 }
-
 </script>
 
 </body>
