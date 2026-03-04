@@ -73,10 +73,6 @@ h3.subtitle {
   transition: transform 0.4s ease;
 }
 
-.producto:hover img {
-  transform: scale(1.05);
-}
-
 .info {
   width: 45%;
   text-align: center;
@@ -96,89 +92,71 @@ button:hover {
   background-color: #e6c200;
 }
 
-footer, .redes {
+footer {
   text-align: center;
   margin: 60px 0;
 }
 
 /* =========================================
-   BOTONES FLOTANTES - CORRECCIÓN MP
+   BOTONES FLOTANTES - VERSION FINAL SIMETRICA
    ========================================= */
 .boton-flotante {
   position: fixed;
   bottom: 25px;
-  z-index: 9999;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
   text-decoration: none;
 }
 
 .boton-flotante:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+  transform: scale(1.1);
 }
 
-/* WhatsApp: Sigue siendo un círculo perfecto */
-.boton-whatsapp {
-  background-color: #25D366;
-  right: 25px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-}
-
-.boton-whatsapp img {
-  width: 60%;
+.boton-flotante img {
+  width: 65%; /* Tamaño del logo dentro del circulo */
   height: auto;
 }
 
-/* Mercado Pago: Ahora es una "píldora" para que entre el logo entero */
+.boton-whatsapp {
+  background-color: #25D366;
+  right: 25px;
+}
+
 .boton-mercado {
-  background-color: #009EE3; /* Celeste oficial */
+  background-color: #009EE3; /* Azul Mercado Pago */
   left: 25px;
-  height: 60px;
-  padding: 0 20px; /* Espacio horizontal */
-  border-radius: 30px; /* Bordes muy redondeados */
-  width: auto; /* Ancho automático según el logo */
 }
 
+/* Ajuste para que el logo de MP se vea un poco más grande dentro del circulo */
 .boton-mercado img {
-  height: 40%; /* Ajustamos la altura del logo dentro de la píldora */
-  width: auto;
+  width: 70%; 
 }
 
-/* VERSION CELULAR (Mobile) */
+/* VERSION CELULAR */
 @media (max-width: 768px) {
   .producto {
     flex-direction: column !important;
     text-align: center;
   }
-
-  .producto img,
-  .info {
-    width: 100%;
-  }
-
+  .producto img, .info { width: 100%; }
+  
   h1 { font-size: 28px; }
-  h2, h3.subtitle { font-size: 16px; }
-
-  /* Achicamos botones en mobile */
-  .boton-flotante { bottom: 20px; }
   
-  .boton-whatsapp {
-    right: 20px;
-    width: 50px;
-    height: 50px;
+  /* Botones más chicos en el celu para no tapar el "Consultar" */
+  .boton-flotante {
+    width: 55px;
+    height: 55px;
+    bottom: 15px;
   }
-  
-  .boton-mercado {
-    left: 20px;
-    height: 50px;
-    padding: 0 15px;
-  }
+  .boton-whatsapp { right: 15px; }
+  .boton-mercado { left: 15px; }
 }
 /* ========================================= */
 
@@ -195,7 +173,6 @@ footer, .redes {
   border-radius: 6px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s ease;
 }
 
 .paginacion button.active {
@@ -211,31 +188,24 @@ footer, .redes {
   <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
 </header>
 
-<div id="productos-contenedor" class="productos">
-  </div>
-
-<div class="paginacion" id="paginacion">
-  </div>
+<div id="productos-contenedor" class="productos"></div>
+<div class="paginacion" id="paginacion"></div>
 
 <footer>
 <p>Seguinos en redes</p>
-<p>
-Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a>
-</p>
-<p>
-TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">vacmultimarca</a>
-</p>
+<p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
+<p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">vacmultimarca</a></p>
 <p>© 2026 VAC Multimarca</p>
 </footer>
 
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
-   target="_blank" class="boton-flotante boton-whatsapp" title="Escribinos por WhatsApp">
+   target="_blank" class="boton-flotante boton-whatsapp">
    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
 <a href="https://www.mercadopago.com.ar"
-   target="_blank" class="boton-flotante boton-mercado" title="Pagá con Mercado Pago">
-   <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.21.22/mercadopago/logo__small.png" alt="Mercado Pago">
+   target="_blank" class="boton-flotante boton-mercado">
+   <img src="https://vignette.wikia.nocookie.net/logopedia/images/2/22/Mercado_Pago_logo_2019.svg/revision/latest?cb=20190520113110" alt="Mercado Pago">
 </a>
 
 <script>
@@ -291,7 +261,6 @@ function mostrarProductos(pagina) {
 function crearPaginacion() {
   const pagDiv = document.getElementById("paginacion");
   pagDiv.innerHTML = "";
-
   for (let i = 1; i <= totalPaginas; i++) {
     const btn = document.createElement("button");
     btn.innerText = i;
