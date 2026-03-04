@@ -57,18 +57,15 @@ h3.subtitle {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* EFECTO SALIR HACIA AFUERA */
 .producto:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
-/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
-/* IMAGEN */
 .producto img {
   width: 38%;
   max-width: 220px;
@@ -80,13 +77,11 @@ h3.subtitle {
   transform: scale(1.05);
 }
 
-/* INFO */
 .info {
   width: 45%;
   text-align: center;
 }
 
-/* BOTON */
 button {
   background-color: #FFD700;
   border: none;
@@ -101,10 +96,43 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* REDES / FOOTER CENTRADO */
 footer, .redes {
   text-align: center;
   margin: 60px 0;
+}
+
+/* BOTONES FLOTANTES CORREGIDOS */
+.boton-flotante {
+  position: fixed;
+  bottom: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
+  transition: transform 0.3s ease;
+}
+
+.boton-flotante:hover {
+  transform: scale(1.1);
+}
+
+.boton-flotante img {
+  width: 60%;
+  height: auto;
+}
+
+.boton-whatsapp {
+  background-color: #25D366;
+  right: 25px;
+}
+
+.boton-mercado {
+  background-color: #009EE3; /* Celeste oficial de Mercado Pago */
+  left: 25px;
 }
 
 /* VERSION CELULAR */
@@ -119,16 +147,19 @@ footer, .redes {
     width: 100%;
   }
 
-  h1 {
-    font-size: 28px;
-  }
+  h1 { font-size: 28px; }
+  h2, h3.subtitle { font-size: 16px; }
 
-  h2, h3.subtitle {
-    font-size: 16px;
+  /* Achicamos botones en mobile para que no tapen pantalla */
+  .boton-flotante {
+    width: 50px;
+    height: 50px;
+    bottom: 20px;
   }
+  .boton-whatsapp { right: 20px; }
+  .boton-mercado { left: 20px; }
 }
 
-/* PAGINACIÓN */
 .paginacion {
   text-align: center;
   margin: 40px 0;
@@ -145,45 +176,8 @@ footer, .redes {
   transition: 0.3s ease;
 }
 
-.paginacion button:hover {
-  background-color: #e6c200;
-}
-
 .paginacion button.active {
   background-color: #e6c200;
-}
-
-/* BOTONES FLOTANTES REDONDOS */
-.boton-flotante {
-  position: fixed;
-  bottom: 25px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-align: center;
-  font-family: Arial, sans-serif;
-  font-size: 12px;
-  text-decoration: none;
-}
-
-/* WhatsApp */
-.boton-whatsapp {
-  background-color: #25D366;
-  right: 25px;
-}
-
-/* Mercado Pago */
-.boton-mercado {
-  background-color: #0033A0;
-  left: 25px;
 }
 </style>
 </head>
@@ -196,37 +190,33 @@ footer, .redes {
 </header>
 
 <div id="productos-contenedor" class="productos">
-  <!-- Productos se generan automáticamente aquí -->
-</div>
+  </div>
 
 <div class="paginacion" id="paginacion">
-  <!-- Botones de página se generan automáticamente aquí -->
-</div>
+  </div>
 
 <footer>
 <p>Seguinos en redes</p>
 <p>
-Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank">@vac_multimarca</a>
+Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a>
 </p>
 <p>
-TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">vacmultimarca</a>
+TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">vacmultimarca</a>
 </p>
 <p>© 2026 VAC Multimarca</p>
 </footer>
 
-<!-- BOTONES FLOTANTES REDONDOS -->
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
    target="_blank" class="boton-flotante boton-whatsapp">
-   WhatsApp
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
-<a href="#"
+<a href="https://www.mercadopago.com.ar"
    target="_blank" class="boton-flotante boton-mercado">
-   Mercado Pago
+   <img src="https://http2.mlstatic.com/frontend-assets/mp-web-navigation/ui-navigation/5.21.22/mercadopago/logo__small.png" alt="Mercado Pago" style="width: 80%;">
 </a>
 
 <script>
-// LISTA DE PRODUCTOS
 const productos = [
   { nombre: "ESLINGA", imagen: "eslinga.jpg" },
   { nombre: "TENSOR", imagen: "tensor.jpg" },
@@ -248,11 +238,9 @@ const productos = [
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg" },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg" },
   { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg" },
-  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg" },
-  // Podes seguir agregando productos sin límite
+  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg" }
 ];
 
-// CONFIGURACIÓN DE PAGINACIÓN
 const productosPorPagina = 8;
 let paginaActual = 1;
 const totalPaginas = Math.ceil(productos.length / productosPorPagina);
@@ -290,19 +278,18 @@ function crearPaginacion() {
       paginaActual = i;
       mostrarProductos(paginaActual);
       crearPaginacion();
+      window.scrollTo(0,0);
     });
     pagDiv.appendChild(btn);
   }
 }
 
-// FUNCION WHATSAPP
 function consultarProducto(producto){
     let telefono = "5491163824585"; 
     let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
     window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
 }
 
-// MOSTRAR INICIAL
 mostrarProductos(paginaActual);
 crearPaginacion();
 </script>
