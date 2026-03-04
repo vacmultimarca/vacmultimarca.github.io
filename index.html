@@ -20,23 +20,18 @@ h1 {
   margin: 50px 0 10px 0;
   color: #FFD700;
   letter-spacing: 2px;
-  font-size: 50px;
+  font-size: 48px;
 }
 
-/* SUBTITULO */
-h2, p {
+h2 {
   text-align: center;
-  margin: 5px 0;
-}
-
-#subtitulo-fabricantes {
-  font-size: 20px;
+  margin: 0;
+  font-size: 22px;
   color: white;
 }
 
-#subtitulo-sujecion {
-  font-size: 18px;
-  color: white;
+h3 {
+  margin: 10px 0;
 }
 
 /* CONTENEDOR PRODUCTOS */
@@ -60,20 +55,17 @@ h2, p {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* EFECTO SALIR HACIA AFUERA */
 .producto:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
-/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
-/* IMAGEN */
 .producto img {
-  width: 40%;
+  width: 38%;
   max-width: 220px;
   border-radius: 15px;
   transition: transform 0.4s ease;
@@ -83,7 +75,6 @@ h2, p {
   transform: scale(1.05);
 }
 
-/* INFO */
 .info {
   width: 45%;
   text-align: center;
@@ -152,33 +143,33 @@ footer, .redes {
 .flotante {
   position: fixed;
   bottom: 25px;
-  height: 65px;
-  border-radius: 50px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   z-index: 1000;
-  font-weight: bold;
-  font-family: Arial, sans-serif;
-  color: white;
   cursor: pointer;
-  transition: 0.3s ease;
+  text-decoration: none;
 }
 
-.flotante:hover {
-  filter: brightness(1.1);
+.flotante img {
+  width: 35px;
+  height: 35px;
 }
 
+/* WhatsApp derecha */
 #whatsapp {
   right: 25px;
-  background: #25D366;
+  background-color: #25D366;
 }
 
+/* Mercado Pago izquierda */
 #mercadopago {
   left: 25px;
-  background: #003087; /* Azul oficial de Mercado Pago */
+  background-color: #003087;
 }
 </style>
 </head>
@@ -187,8 +178,8 @@ footer, .redes {
 
 <header>
   <h1>VAC MULTIMARCA</h1>
-  <p id="subtitulo-fabricantes">Somos fabricantes</p>
-  <p id="subtitulo-sujecion">Soluciones en sujeción y amarre</p>
+  <h2>Somos fabricantes</h2>
+  <h2>Soluciones en sujeción y amarre</h2>
 </header>
 
 <div id="productos-contenedor" class="productos">
@@ -201,31 +192,19 @@ footer, .redes {
 
 <footer>
   <p>Seguinos en redes</p>
-
-  <p>
-    Instagram:
-    <a href="https://instagram.com/vac_multimarca" target="_blank">
-      @vac_multimarca
-    </a>
-  </p>
-
-  <p>
-    TikTok:
-    <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">
-      vacmultimarca
-    </a>
-  </p>
-
+  <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank">@vac_multimarca</a></p>
+  <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">vacmultimarca</a></p>
   <p>© 2026 VAC Multimarca</p>
 </footer>
 
 <!-- BOTONES FLOTANTES -->
-<a id="whatsapp" href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="flotante">
-  WhatsApp
+<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
+   target="_blank" id="whatsapp" class="flotante">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
 
-<a id="mercadopago" href="#" target="_blank" class="flotante">
-  Mercado Pago
+<a href="#" id="mercadopago" class="flotante">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/MercadoPago_Logo.svg" alt="Mercado Pago">
 </a>
 
 <script>
