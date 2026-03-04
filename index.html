@@ -17,21 +17,29 @@ body {
 /* TITULO PRINCIPAL */
 h1 {
   text-align: center;
-  margin: 50px 0 10px 0;
+  margin: 30px 0 10px 0;
   color: #FFD700;
+  font-size: 2.8em;
   letter-spacing: 2px;
-  font-size: 48px;
 }
 
-h2 {
+/* SUBTITULO */
+h2, p {
   text-align: center;
-  margin: 0;
-  font-size: 22px;
-  color: white;
+  margin: 5px 0;
 }
 
-h3 {
-  margin: 10px 0;
+/* SUBTITULO PERSONALIZADO */
+.somos-fabricantes {
+  color: white;
+  font-size: 1.2em;
+  margin-top: 5px;
+}
+
+.soluciones {
+  color: white;
+  font-size: 1.1em;
+  margin-top: 5px;
 }
 
 /* CONTENEDOR PRODUCTOS */
@@ -60,13 +68,15 @@ h3 {
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
+/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
+/* IMAGEN */
 .producto img {
-  width: 38%;
-  max-width: 220px;
+  width: 40%;        
+  max-width: 220px;  
   border-radius: 15px;
   transition: transform 0.4s ease;
 }
@@ -75,12 +85,13 @@ h3 {
   transform: scale(1.05);
 }
 
+/* INFO */
 .info {
   width: 45%;
   text-align: center;
 }
 
-/* BOTON */
+/* BOTON PRODUCTO */
 button {
   background-color: #FFD700;
   border: none;
@@ -95,23 +106,10 @@ button:hover {
   background-color: #e6c200;
 }
 
-/* REDES / FOOTER CENTRADO */
+/* REDES / FOOTER */
 footer, .redes {
   text-align: center;
   margin: 60px 0;
-}
-
-/* VERSION CELULAR */
-@media (max-width: 768px) {
-  .producto {
-    flex-direction: column !important;
-    text-align: center;
-  }
-
-  .producto img,
-  .info {
-    width: 100%;
-  }
 }
 
 /* PAGINACIÓN */
@@ -139,12 +137,12 @@ footer, .redes {
   background-color: #e6c200;
 }
 
-/* BOTONES FLOTANTES */
-.flotante {
+/* BOTONES FLOTANTES REDONDOS */
+.boton-flotante {
   position: fixed;
   bottom: 25px;
-  width: 60px;
-  height: 60px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -152,34 +150,73 @@ footer, .redes {
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   z-index: 1000;
   cursor: pointer;
-  text-decoration: none;
 }
 
-.flotante img {
-  width: 35px;
-  height: 35px;
-}
-
-/* WhatsApp derecha */
-#whatsapp {
+.boton-whatsapp {
   right: 25px;
   background-color: #25D366;
+  flex-direction: row;
 }
 
-/* Mercado Pago izquierda */
-#mercadopago {
+.boton-mercadopago {
   left: 25px;
-  background-color: #003087;
+  background-color: #009EE3;
+  flex-direction: row;
+}
+
+.boton-flotante img {
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+}
+
+.boton-flotante span {
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  font-size: 0.85em;
+}
+
+/* MÓVIL: botones más chicos y solo logo */
+@media (max-width: 768px) {
+  .producto {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .producto img,
+  .info {
+    width: 100%;
+  }
+
+  .boton-flotante {
+    width: 50px;
+    height: 50px;
+    padding: 0;
+  }
+
+  .boton-flotante img {
+    width: 28px;
+    height: 28px;
+    margin: 0;
+  }
+
+  .boton-flotante span {
+    display: none;
+  }
+
+  h1 {
+    font-size: 2.2em;
+  }
 }
 </style>
 </head>
 
 <body>
-
 <header>
-  <h1>VAC MULTIMARCA</h1>
-  <h2>Somos fabricantes</h2>
-  <h2>Soluciones en sujeción y amarre</h2>
+    <h1>VAC MULTIMARCA</h1>
+    <div class="somos-fabricantes">Somos fabricantes</div>
+    <div class="soluciones">Soluciones en sujeción y amarre</div>
 </header>
 
 <div id="productos-contenedor" class="productos">
@@ -191,20 +228,37 @@ footer, .redes {
 </div>
 
 <footer>
-  <p>Seguinos en redes</p>
-  <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank">@vac_multimarca</a></p>
-  <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">vacmultimarca</a></p>
-  <p>© 2026 VAC Multimarca</p>
+<p>Seguinos en redes</p>
+
+<p>Instagram:
+<a href="https://instagram.com/vac_multimarca" target="_blank">
+@vac_multimarca
+</a>
+</p>
+
+<p>TikTok:
+<a href="https://www.tiktok.com/@vacmultimarca" target="_blank">
+vacmultimarca
+</a>
+</p>
+
+<p>© 2026 VAC Multimarca</p>
 </footer>
 
-<!-- BOTONES FLOTANTES -->
+<!-- BOTÓN FLOTANTE WHATSAPP -->
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
-   target="_blank" id="whatsapp" class="flotante">
+   target="_blank"
+   class="boton-flotante boton-whatsapp">
    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+   <span>WhatsApp</span>
 </a>
 
-<a href="#" id="mercadopago" class="flotante">
-   <img src="https://upload.wikimedia.org/wikipedia/commons/3/34/MercadoPago_Logo.svg" alt="Mercado Pago">
+<!-- BOTÓN FLOTANTE MERCADO PAGO -->
+<a href="https://www.mercadopago.com.ar/tu_alias_de_pago"
+   target="_blank"
+   class="boton-flotante boton-mercadopago">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Mercado_Pago_logo.svg" alt="Mercado Pago">
+   <span>Mercado Pago</span>
 </a>
 
 <script>
