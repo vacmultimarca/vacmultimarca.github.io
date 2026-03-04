@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAC Multimarca</title>
+
 <style>
 body {
   background-color: #111111;
@@ -16,19 +17,24 @@ body {
 /* TITULO PRINCIPAL */
 h1 {
   text-align: center;
-  margin: 50px 0 10px 0;
+  margin: 50px 0 5px 0;
   color: #FFD700;
   letter-spacing: 2px;
+  font-size: 50px;
 }
 
-/* SUBTITULO */
-h2, p.subtitulo {
+h2 {
   text-align: center;
+  margin: 0;
+  color: white;
+  font-size: 28px;
 }
 
-p.subtitulo {
-  font-size: 20px;  /* más grande que antes */
-  margin-top: 5px;
+h3 {
+  text-align: center;
+  margin: 5px 0 20px 0;
+  color: white;
+  font-size: 24px;
 }
 
 /* CONTENEDOR PRODUCTOS */
@@ -65,7 +71,7 @@ p.subtitulo {
 
 /* IMAGEN */
 .producto img {
-  width: 38%;        /* fotos un poquito más grandes */
+  width: 40%;
   max-width: 220px;
   border-radius: 15px;
   transition: transform 0.4s ease;
@@ -99,7 +105,7 @@ button:hover {
 /* REDES / FOOTER CENTRADO */
 footer, .redes {
   text-align: center;
-  margin: 60px 0;
+  margin: 60px 0 40px 0;
 }
 
 /* VERSION CELULAR */
@@ -139,14 +145,49 @@ footer, .redes {
 .paginacion button.active {
   background-color: #e6c200;
 }
+
+/* BOTONES FLOTANTES ABAJO */
+.flotante {
+  position: fixed;
+  bottom: 25px;
+  height: 65px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  z-index: 1000;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  text-decoration: none;
+}
+
+#whatsapp-btn {
+  right: 25px;
+  background: #25D366;
+}
+
+#mercadopago-btn {
+  left: 25px;
+  background: #003087;
+}
+
+.flotante img {
+  width: 35px;
+  height: 35px;
+  margin-right: 8px;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-    <h1 style="color:yellow;">VAC MULTIMARCA</h1>
-    <p class="subtitulo">Somos fabricantes</p>
-    <p>Soluciones en sujeción y amarre</p>
+    <h1>VAC MULTIMARCA</h1>
+    <h2>SOMOS FABRICANTES</h2>
+    <h3>Soluciones en sujeción y amarre</h3>
 </header>
 
 <div id="productos-contenedor" class="productos">
@@ -178,24 +219,15 @@ vacmultimarca
 </footer>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
-<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
-   target="_blank"
-   style="position:fixed; bottom:25px; right:25px; height:65px; background:#25D366; border-radius:50px; display:flex; align-items:center; justify-content:center; padding:0 15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); z-index:1000;">
-   
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-        style="width:35px; height:35px; margin-right:8px;">
-   <span style="color:white; font-weight:bold; font-family:Arial;">WhatsApp</span>
+<a id="whatsapp-btn" href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="flotante">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  WhatsApp
 </a>
 
 <!-- BOTÓN FLOTANTE MERCADO PAGO -->
-<a href="TU_URL_DE_PAGO" target="_blank"
-   style="position:fixed; bottom:25px; left:25px; height:65px; background:#003087; border-radius:50px; display:flex; align-items:center; justify-content:center; padding:0 15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); z-index:1000;">
-   
-   <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Mercado_Pago_logo.svg"
-        alt="Mercado Pago"
-        style="width:35px; height:35px; margin-right:8px;">
-   <span style="color:white; font-weight:bold; font-family:Arial;">Botón de Mercado Pago</span>
+<a id="mercadopago-btn" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=TU_ALIAS" target="_blank" class="flotante">
+  <img src="https://www.mercadopago.com/org-img/MP3/front/home/logo-mercadopago.svg" alt="Mercado Pago">
+  Mercado Pago
 </a>
 
 <script>
