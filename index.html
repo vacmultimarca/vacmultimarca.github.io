@@ -22,9 +22,10 @@ h1 {
   letter-spacing: 2px;
 }
 
-/* SUBTITULO */
-h2, p {
+h2 {
   text-align: center;
+  font-size: 22px; /* letra un poco más grande */
+  margin-bottom: 20px;
 }
 
 /* CONTENEDOR PRODUCTOS */
@@ -48,21 +49,19 @@ h2, p {
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
-/* EFECTO SALIR HACIA AFUERA */
 .producto:hover {
   transform: translateY(-12px) scale(1.02);
   box-shadow: 0 30px 60px rgba(0,0,0,0.8);
 }
 
-/* ZIGZAG */
 .producto:nth-child(even) {
   flex-direction: row-reverse;
 }
 
 /* IMAGEN */
 .producto img {
-  width: 38%;        /* fotos un poquito más grandes */
-  max-width: 220px;  /* deja que crezca un poco en pantallas grandes */
+  width: 40%;
+  max-width: 220px;
   border-radius: 15px;
   transition: transform 0.4s ease;
 }
@@ -135,6 +134,36 @@ footer, .redes {
 .paginacion button.active {
   background-color: #e6c200;
 }
+
+/* BOTONES FLOTANTES */
+.boton-flotante {
+  position: fixed;
+  height: 65px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+  z-index: 1000;
+  color: white;
+  font-weight: bold;
+  font-family: Arial;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+#whatsapp {
+  bottom: 25px;
+  right: 25px;
+  background: #25D366;
+}
+
+#mercadopago {
+  bottom: 100px;
+  right: 25px;
+  background: #003087;
+}
 </style>
 </head>
 
@@ -142,7 +171,7 @@ footer, .redes {
 
 <header>
     <h1 style="color:yellow;">VAC MULTIMARCA</h1>
-    <p>Soluciones en sujeción y amarre</p>
+    <h2>Somos fabricantes</h2>
 </header>
 
 <div id="productos-contenedor" class="productos">
@@ -174,14 +203,15 @@ vacmultimarca
 </footer>
 
 <!-- BOTÓN FLOTANTE WHATSAPP -->
-<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
-   target="_blank"
-   style="position:fixed; bottom:25px; right:25px; height:65px; background:#25D366; border-radius:50px; display:flex; align-items:center; justify-content:center; padding:0 15px; box-shadow:0 8px 20px rgba(0,0,0,0.4); z-index:1000;">
-   
-   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-        style="width:35px; height:35px; margin-right:8px;">
-   <span style="color:white; font-weight:bold; font-family:Arial;">WhatsApp</span>
+<a id="whatsapp" href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:35px; height:35px; margin-right:8px;">
+   WhatsApp
+</a>
+
+<!-- BOTÓN FLOTANTE MERCADO PAGO -->
+<a id="mercadopago" href="URL_DE_TU_PAGO_MP" target="_blank">
+   <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/MercadoPago_logo.svg" alt="Mercado Pago" style="width:35px; height:35px; margin-right:8px;">
+   Mercado Pago
 </a>
 
 <script>
@@ -206,8 +236,6 @@ const productos = [
   { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg" },
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg" },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg" },
-  { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg" },
-  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg" },
   // Podes seguir agregando productos sin límite
 ];
 
