@@ -17,24 +17,26 @@ body {
 /* TITULO PRINCIPAL */
 h1 {
   text-align: center;
-  margin: 50px 0 5px 0;
+  margin: 50px 0 10px 0;
   color: #FFD700;
   letter-spacing: 2px;
   font-size: 50px;
 }
 
-h2 {
+/* SUBTITULO */
+h2, p {
   text-align: center;
-  margin: 0;
-  color: white;
-  font-size: 28px;
+  margin: 5px 0;
 }
 
-h3 {
-  text-align: center;
-  margin: 5px 0 20px 0;
+#subtitulo-fabricantes {
+  font-size: 20px;
   color: white;
-  font-size: 24px;
+}
+
+#subtitulo-sujecion {
+  font-size: 18px;
+  color: white;
 }
 
 /* CONTENEDOR PRODUCTOS */
@@ -105,7 +107,7 @@ button:hover {
 /* REDES / FOOTER CENTRADO */
 footer, .redes {
   text-align: center;
-  margin: 60px 0 40px 0;
+  margin: 60px 0;
 }
 
 /* VERSION CELULAR */
@@ -146,7 +148,7 @@ footer, .redes {
   background-color: #e6c200;
 }
 
-/* BOTONES FLOTANTES ABAJO */
+/* BOTONES FLOTANTES */
 .flotante {
   position: fixed;
   bottom: 25px;
@@ -158,26 +160,25 @@ footer, .redes {
   padding: 0 15px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.4);
   z-index: 1000;
-  color: white;
   font-weight: bold;
-  font-family: Arial;
-  text-decoration: none;
+  font-family: Arial, sans-serif;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
-#whatsapp-btn {
+.flotante:hover {
+  filter: brightness(1.1);
+}
+
+#whatsapp {
   right: 25px;
   background: #25D366;
 }
 
-#mercadopago-btn {
+#mercadopago {
   left: 25px;
-  background: #003087;
-}
-
-.flotante img {
-  width: 35px;
-  height: 35px;
-  margin-right: 8px;
+  background: #003087; /* Azul oficial de Mercado Pago */
 }
 </style>
 </head>
@@ -185,9 +186,9 @@ footer, .redes {
 <body>
 
 <header>
-    <h1>VAC MULTIMARCA</h1>
-    <h2>SOMOS FABRICANTES</h2>
-    <h3>Soluciones en sujeción y amarre</h3>
+  <h1>VAC MULTIMARCA</h1>
+  <p id="subtitulo-fabricantes">Somos fabricantes</p>
+  <p id="subtitulo-sujecion">Soluciones en sujeción y amarre</p>
 </header>
 
 <div id="productos-contenedor" class="productos">
@@ -199,34 +200,31 @@ footer, .redes {
 </div>
 
 <footer>
-<p>Seguinos en redes</p>
+  <p>Seguinos en redes</p>
 
-<p>
-Instagram:
-<a href="https://instagram.com/vac_multimarca" target="_blank">
-@vac_multimarca
-</a>
-</p>
+  <p>
+    Instagram:
+    <a href="https://instagram.com/vac_multimarca" target="_blank">
+      @vac_multimarca
+    </a>
+  </p>
 
-<p>
-TikTok:
-<a href="https://www.tiktok.com/@vacmultimarca" target="_blank">
-vacmultimarca
-</a>
-</p>
+  <p>
+    TikTok:
+    <a href="https://www.tiktok.com/@vacmultimarca" target="_blank">
+      vacmultimarca
+    </a>
+  </p>
 
-<p>© 2026 VAC Multimarca</p>
+  <p>© 2026 VAC Multimarca</p>
 </footer>
 
-<!-- BOTÓN FLOTANTE WHATSAPP -->
-<a id="whatsapp-btn" href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="flotante">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<!-- BOTONES FLOTANTES -->
+<a id="whatsapp" href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="flotante">
   WhatsApp
 </a>
 
-<!-- BOTÓN FLOTANTE MERCADO PAGO -->
-<a id="mercadopago-btn" href="https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=TU_ALIAS" target="_blank" class="flotante">
-  <img src="https://www.mercadopago.com/org-img/MP3/front/home/logo-mercadopago.svg" alt="Mercado Pago">
+<a id="mercadopago" href="#" target="_blank" class="flotante">
   Mercado Pago
 </a>
 
