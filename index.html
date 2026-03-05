@@ -150,13 +150,17 @@ footer, .redes {
   color: #111111;
 }
 
-/* MENSAJE GRACIAS */
+/* MENSAJE INSTRUCCIÓN */
 .mensaje-suscripcion {
   display: none;
   text-align: center;
   color: #FFD700;
-  font-size: 15px;
-  margin: 8px 0;
+  font-size: 14px;
+  margin: 8px 20px;
+  padding: 10px 20px;
+  border: 1px solid #FFD700;
+  border-radius: 12px;
+  background-color: rgba(255, 215, 0, 0.08);
   animation: fadeIn 0.5s ease;
 }
 
@@ -210,7 +214,11 @@ footer, .redes {
 
   <!-- BOTÓN SUSCRIBIRSE -->
   <button class="boton-suscribir" onclick="suscribirse()">⭐ SUSCRIBIRME</button>
-  <p class="mensaje-suscripcion" id="mensajeSuscripcion">✅ ¡Gracias por suscribirte a VAC Multimarca!</p>
+  <p class="mensaje-suscripcion" id="mensajeSuscripcion">
+    📲 ¡Ya casi estás! Para completar tu suscripción<br>
+    <strong>enviá el mensaje que te apareció en WhatsApp.</strong><br>
+    ¡Gracias por sumarte a VAC Multimarca!
+  </p>
 
   <h2>Somos fabricantes</h2>
   <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
@@ -319,8 +327,7 @@ function suscribirse() {
   const msg = document.getElementById("mensajeSuscripcion");
   btn.style.display = "none";
   msg.style.display = "block";
-  // Aviso por WhatsApp al dueño
-  let mensaje = "🔔 Nuevo suscriptor en VAC Multimarca%0AAlguien se acaba de suscribir a tu página web.";
+  let mensaje = "Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas.";
   window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
 }
 
