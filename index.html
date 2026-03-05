@@ -129,6 +129,42 @@ footer, .redes {
 .paginacion button:hover { background-color: #e6c200; }
 .paginacion button.active { background-color: #e6c200; }
 
+/* BOTÓN SUSCRIBIRSE */
+.boton-suscribir {
+  display: block;
+  margin: 12px auto;
+  background-color: transparent;
+  border: 2px solid #FFD700;
+  color: #FFD700;
+  padding: 10px 30px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 0.3s ease;
+}
+
+.boton-suscribir:hover {
+  background-color: #FFD700;
+  color: #111111;
+}
+
+/* MENSAJE GRACIAS */
+.mensaje-suscripcion {
+  display: none;
+  text-align: center;
+  color: #FFD700;
+  font-size: 15px;
+  margin: 8px 0;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* BOTONES FLOTANTES REDONDOS */
 .boton-flotante {
   position: fixed;
@@ -171,6 +207,11 @@ footer, .redes {
 
 <header>
   <h1>VAC MULTIMARCA</h1>
+
+  <!-- BOTÓN SUSCRIBIRSE -->
+  <button class="boton-suscribir" onclick="suscribirse()">⭐ SUSCRIBIRME</button>
+  <p class="mensaje-suscripcion" id="mensajeSuscripcion">✅ ¡Gracias por suscribirte a VAC Multimarca!</p>
+
   <h2>Somos fabricantes</h2>
   <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
 </header>
@@ -268,9 +309,19 @@ function crearPaginacion() {
 }
 
 function consultarProducto(producto){
-    let telefono = "5491163824585"; 
+    let telefono = "5491163824585";
     let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
     window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
+
+function suscribirse() {
+  const btn = document.querySelector(".boton-suscribir");
+  const msg = document.getElementById("mensajeSuscripcion");
+  btn.style.display = "none";
+  msg.style.display = "block";
+  // Aviso por WhatsApp al dueño
+  let mensaje = "🔔 Nuevo suscriptor en VAC Multimarca%0AAlguien se acaba de suscribir a tu página web.";
+  window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
 }
 
 mostrarProductos(paginaActual);
