@@ -194,7 +194,7 @@ footer, .redes {
   </svg>
 </a>
 
-<!-- BOTÓN MERCADO PAGO con texto MP -->
+<!-- BOTÓN MERCADO PAGO -->
 <a href="#"
    target="_blank" class="boton-flotante boton-mercado" title="Pagar con Mercado Pago">
   MP
@@ -261,6 +261,7 @@ function crearPaginacion() {
       paginaActual = i;
       mostrarProductos(paginaActual);
       crearPaginacion();
+      window.scrollTo({ top: 0, behavior: "smooth" });
     });
     pagDiv.appendChild(btn);
   }
