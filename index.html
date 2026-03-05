@@ -150,17 +150,38 @@ footer, .redes {
   color: #111111;
 }
 
+/* CARTEL SUSCRIPCION */
 .mensaje-suscripcion {
   display: none;
   text-align: center;
   color: #FFD700;
   font-size: 14px;
   margin: 8px 20px;
-  padding: 10px 20px;
+  padding: 16px 20px;
   border: 1px solid #FFD700;
   border-radius: 12px;
   background-color: rgba(255, 215, 0, 0.08);
   animation: fadeIn 0.5s ease;
+}
+
+/* BOTÓN CONFIRMAR WHATSAPP */
+.boton-confirmar-ws {
+  display: inline-block;
+  margin-top: 12px;
+  background-color: #25D366;
+  border: none;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 25px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.boton-confirmar-ws:hover {
+  background-color: #1ebe5d;
 }
 
 @keyframes fadeIn {
@@ -211,12 +232,19 @@ footer, .redes {
 <header>
   <h1>VAC MULTIMARCA</h1>
 
-  <button class="boton-suscribir" onclick="suscribirse()">⭐ SUSCRIBIRME</button>
-  <p class="mensaje-suscripcion" id="mensajeSuscripcion">
-    📲 ¡Ya casi estás! Para completar tu suscripción<br>
-    <strong>enviá el mensaje que te apareció en WhatsApp.</strong><br>
-    ¡Gracias por sumarte a VAC Multimarca!
-  </p>
+  <!-- BOTÓN SUSCRIBIRSE -->
+  <button class="boton-suscribir" id="btnSuscribir" onclick="suscribirse()">⭐ SUSCRIBIRME</button>
+
+  <!-- CARTEL QUE APARECE DESPUÉS -->
+  <div class="mensaje-suscripcion" id="mensajeSuscripcion">
+    📲 ¡Gracias por querer sumarte a VAC Multimarca!<br><br>
+    Para completar tu suscripción y recibir nuestras novedades,<br>
+    tocá el botón de abajo y enviá el mensaje por WhatsApp.<br><br>
+    <a href="https://wa.me/5491163824585?text=Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas."
+       target="_blank" class="boton-confirmar-ws">
+      ✅ Confirmar suscripción por WhatsApp
+    </a>
+  </div>
 
   <h2>Somos fabricantes</h2>
   <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
@@ -321,12 +349,8 @@ function consultarProducto(producto){
 }
 
 function suscribirse() {
-  const btn = document.querySelector(".boton-suscribir");
-  const msg = document.getElementById("mensajeSuscripcion");
-  btn.style.display = "none";
-  msg.style.display = "block";
-  let mensaje = "Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas.";
-  window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
+  document.getElementById("btnSuscribir").style.display = "none";
+  document.getElementById("mensajeSuscripcion").style.display = "block";
 }
 
 mostrarProductos(paginaActual);
