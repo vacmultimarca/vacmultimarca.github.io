@@ -111,8 +111,9 @@ h3.subtitle {
 }
 
 .envio {
-  font-size: 14px;
-  color: #aaaaaa;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
   margin-bottom: 16px;
 }
 
@@ -361,12 +362,12 @@ function mostrarProductos(pagina) {
 
     const precioHTML = p.precio
       ? `<p class="precio">${p.precio}</p>
-         <p class="envio">🚚 🏪 Envío por Paq.ar - Solo retiro en sucursal (5 días hábiles para retirar)</p>
+         <p class="envio">🚚 Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
            <button class="btn-comprar" onclick="window.open('https://mpago.la/1Ne4XRB','_blank')">💳 COMPRAR</button>
          </div>`
-      : `<p class="envio">🚚 🏪 Envío por Paq.ar - Solo retiro en sucursal (5 días hábiles para retirar)</p>
+      : `<p class="envio">🚚 Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
          </div>`;
