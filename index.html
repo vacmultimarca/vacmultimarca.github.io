@@ -361,12 +361,12 @@ function mostrarProductos(pagina) {
 
     const precioHTML = p.precio
       ? `<p class="precio">${p.precio}</p>
-         <p class="envio">🚚 Envío: ${envio} (domicilio o sucursal)</p>
+         <p class="envio">🚚 🏪 Envío por Paq.ar - Solo retiro en sucursal (5 días hábiles para retirar)</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
            <button class="btn-comprar" onclick="window.open('https://mpago.la/1Ne4XRB','_blank')">💳 COMPRAR</button>
          </div>`
-      : `<p class="envio">🚚 Envío: ${envio} (domicilio o sucursal)</p>
+      : `<p class="envio">🚚 🏪 Envío por Paq.ar - Solo retiro en sucursal (5 días hábiles para retirar)</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
          </div>`;
