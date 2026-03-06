@@ -320,27 +320,27 @@ footer {
 
 <script>
 const productos = [
-  { nombre: "ESLINGA", imagen: "eslinga.jpg", precio: null },
-  { nombre: "TENSOR", imagen: "tensor.jpg", precio: null },
-  { nombre: "CINTA P40MM ENCHUFE", imagen: "cintap40mmenchufe.jpg", precio: null },
-  { nombre: "CINTA P25MM 2 TRAMOS ELASTICO", imagen: "cintap25mm2tramoselastico.jpg", precio: null },
-  { nombre: "CINTA CON GANCHOS", imagen: "cintaconganchos.jpg", precio: null },
-  { nombre: "RED PULPO", imagen: "redpulpo.jpg", precio: null },
-  { nombre: "RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null },
-  { nombre: "RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null },
-  { nombre: "RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null },
-  { nombre: "ESLINGA PROLONGADOR P50MM", imagen: "eslingaprolongadorp50mm.jpg", precio: null },
-  { nombre: "CINTA DE AMARRE DE ATRAQUE", imagen: "cintaamarreatraque.jpg", precio: null },
-  { nombre: "CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: null },
-  { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null },
-  { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null },
+  { nombre: "ESLINGA", imagen: "eslinga.jpg", precio: null, envio: true },
+  { nombre: "TENSOR", imagen: "tensor.jpg", precio: null, envio: true },
+  { nombre: "CINTA P40MM ENCHUFE", imagen: "cintap40mmenchufe.jpg", precio: null, envio: true },
+  { nombre: "CINTA P25MM 2 TRAMOS ELASTICO", imagen: "cintap25mm2tramoselastico.jpg", precio: null, envio: true },
+  { nombre: "CINTA CON GANCHOS", imagen: "cintaconganchos.jpg", precio: null, envio: true },
+  { nombre: "RED PULPO", imagen: "redpulpo.jpg", precio: null, envio: true },
+  { nombre: "RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null, envio: true },
+  { nombre: "RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null, envio: true },
+  { nombre: "RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null, envio: true },
+  { nombre: "ESLINGA PROLONGADOR P50MM", imagen: "eslingaprolongadorp50mm.jpg", precio: null, envio: true },
+  { nombre: "CINTA DE AMARRE DE ATRAQUE", imagen: "cintaamarreatraque.jpg", precio: null, envio: true },
+  { nombre: "CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: null, envio: true },
+  { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null, envio: true },
+  { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null, envio: true },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$19.500" },
-  { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null },
-  { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null },
-  { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null },
-  { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg", precio: null },
-  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg", precio: null },
+  { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null, envio: true },
+  { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null, envio: true },
+  { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null, envio: true },
+  { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg", precio: null, envio: true },
+  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg", precio: null, envio: true },
 ];
 
 const envio = "$9.800";
@@ -366,7 +366,8 @@ function mostrarProductos(pagina) {
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
            <button class="btn-comprar" onclick="window.open('https://mpago.la/15Yj7SG','_blank')">💳 COMPRAR</button>
          </div>`
-      : `<div class="botones-producto">
+      : `<p class="envio">🚚 Envío: ${envio} (domicilio o sucursal)</p>
+         <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
          </div>`;
 
