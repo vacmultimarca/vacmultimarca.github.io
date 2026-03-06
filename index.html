@@ -336,7 +336,7 @@ const productos = [
   { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null, envio: true },
   { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$19.500" },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$29.300" },
   { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null, envio: true },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null, envio: true },
@@ -362,12 +362,12 @@ function mostrarProductos(pagina) {
 
     const precioHTML = p.precio
       ? `<p class="precio">${p.precio}</p>
-         <p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal | ${envio}</p>
+         <p class="envio">📦 Envío por Paq.ar - Correo Argentino - Envío gratis</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
            <button class="btn-comprar" onclick="window.open('https://mpago.la/1Ne4XRB','_blank')">💳 COMPRAR</button>
          </div>`
-      : `<p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal | ${envio}</p>
+      : `<p class="envio">📦 Envío por Paq.ar - Correo Argentino - Envío gratis</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
          </div>`;
