@@ -21,13 +21,13 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .info { width: 45%; text-align: center; }
 .info h3 { margin-bottom: 8px; }
 .precio { font-size: 22px; font-weight: bold; color: #FFD700; margin: 6px 0; }
+.stock { font-size: 14px; color: #25D366; font-weight: bold; margin: 4px 0 8px 0; }
 .envio { font-size: 16px; font-weight: bold; color: #ffffff; margin-bottom: 16px; }
 .botones-producto { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 .btn-consultar { background-color: #FFD700; border: none; padding: 12px 22px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s ease; font-size: 14px; }
 .btn-consultar:hover { background-color: #e6c200; }
 .btn-comprar { background-color: #009EE3; border: none; padding: 12px 22px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s ease; color: white; font-size: 14px; }
 .btn-comprar:hover { background-color: #0088c7; }
-footer { text-align: center; margin: 60px 0; }
 @media (max-width: 768px) { .producto { flex-direction: column !important; text-align: center; } .producto img, .info { width: 100%; } h2, h3.subtitle { font-size: 16px; } }
 .paginacion { text-align: center; margin: 40px 0; }
 .paginacion button { background-color: #FFD700; border: none; padding: 10px 16px; margin: 0 4px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
@@ -43,12 +43,19 @@ footer { text-align: center; margin: 60px 0; }
 .boton-flotante:hover { transform: scale(1.12); box-shadow: 0 10px 25px rgba(0,0,0,0.7); }
 .boton-whatsapp { background-color: #25D366; right: 25px; }
 .boton-mercado { background-color: #009EE3; left: 25px; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; color: white; letter-spacing: 1px; }
-.carrusel { width: 38%; max-width: 220px; }
+.carrusel { width: 38%; max-width: 220px; touch-action: pan-y; }
 .carrusel img { width: 100%; border-radius: 15px; display: none; }
 .carrusel img.activa { display: block; }
 .carrusel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
 .carrusel-dots span { width: 10px; height: 10px; border-radius: 50%; background: #FFD700; opacity: 0.4; cursor: pointer; display: inline-block; }
 .carrusel-dots span.activo { opacity: 1; }
+.resenas { background: #0d0d0d; padding: 40px 8%; }
+.resenas h2 { color: #FFD700; text-align: center; margin-bottom: 30px; font-size: 22px; }
+.resenas-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+.resena { background: #1a1a1a; border-radius: 15px; padding: 20px; max-width: 300px; flex: 1; min-width: 220px; }
+.resena-estrellas { color: #FFD700; font-size: 18px; margin-bottom: 8px; }
+.resena-texto { color: #cccccc; font-size: 14px; font-style: italic; margin-bottom: 10px; }
+.resena-autor { color: #FFD700; font-size: 13px; font-weight: bold; }
 </style>
 </head>
 <body>
@@ -74,6 +81,27 @@ footer { text-align: center; margin: 60px 0; }
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
 
+<section class="resenas">
+  <h2>&#11088; Lo que dicen nuestros clientes</h2>
+  <div class="resenas-grid">
+    <div class="resena">
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+      <p class="resena-texto">"Excelente calidad, las cintas son muy resistentes. Las uso para sujetar carga en mi camioneta y no fallaron nunca."</p>
+      <p class="resena-autor">- Marcelo R., Buenos Aires</p>
+    </div>
+    <div class="resena">
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+      <p class="resena-texto">"Muy buena atencion, llegaron rapido y el producto es de primera. Lo recomiendo a todos los que necesiten amarre."</p>
+      <p class="resena-autor">- Diego M., Tigre</p>
+    </div>
+    <div class="resena">
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
+      <p class="resena-texto">"Compre el zuncho y es increible. Se nota que es fabricacion propia, mucho mejor que lo que venden en ferias."</p>
+      <p class="resena-autor">- Carlos V., San Fernando</p>
+    </div>
+  </div>
+</section>
+
 <footer style="background:#1a1a1a; padding:40px 20px; text-align:center; margin-top:60px; color:white;">
   <div style="max-width:600px; margin:0 auto;">
     <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px; border-radius:10px; margin-bottom:10px;">
@@ -90,17 +118,16 @@ footer { text-align: center; margin: 60px 0; }
     <hr style="border:1px solid #333; margin:20px 0;">
     <p style="color:#aaaaaa; font-size:13px;">&#128274; Pagos seguros con Mercado Pago</p>
     <p style="color:#aaaaaa; font-size:13px;">&#128230; Envios por Paq.ar - Correo Argentino</p>
-    <p style="color:#555; font-size:12px; margin-top:20px;">© 2026 VAC Multimarca - Todos los derechos reservados</p>
+    <p style="color:#555; font-size:12px; margin-top:20px;">2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
 
-<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp" title="Contactar por WhatsApp">
+<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="34" height="34">
     <path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.1 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.9-11.9c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5.1 8.1 7.1 1.1.5 2 .8 2.7 1 1.1.4 2.2.3 3 .2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.2-.2-.5-.3-1-.5z"/>
   </svg>
 </a>
-
-<a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado" title="Pagar con Mercado Pago">MP</a>
+<a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado">MP</a>
 
 <script>
 var productos = [
@@ -152,7 +179,7 @@ function mostrarProductos(pagina) {
         imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + '>';
         dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
       }
-      imgHTML = '<div class="carrusel">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
+      imgHTML = '<div class="carrusel" id="car-' + idx + '">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
     } else {
       imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '">';
     }
@@ -160,6 +187,7 @@ function mostrarProductos(pagina) {
     var botonesHTML = "";
     if (p.precio) {
       botonesHTML = '<p class="precio">' + p.precio + '</p>' +
+        '<p class="stock">&#10003; Stock disponible</p>' +
         '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
         '<div class="botones-producto">' +
         '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
@@ -174,6 +202,28 @@ function mostrarProductos(pagina) {
 
     div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + botonesHTML + '</div>';
     contenedor.appendChild(div);
+  }
+
+  // Swipe tactil
+  var carruseles = contenedor.querySelectorAll(".carrusel");
+  for (var c = 0; c < carruseles.length; c++) {
+    (function(car) {
+      var startX = 0;
+      car.addEventListener("touchstart", function(e) { startX = e.touches[0].clientX; }, {passive:true});
+      car.addEventListener("touchend", function(e) {
+        var diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) < 30) return;
+        var imgs = car.querySelectorAll("img");
+        var dots = car.querySelectorAll("span");
+        var actual = 0;
+        for (var i = 0; i < imgs.length; i++) { if (imgs[i].className === "activa") actual = i; }
+        var next = diff > 0 ? Math.min(actual+1, imgs.length-1) : Math.max(actual-1, 0);
+        for (var i = 0; i < imgs.length; i++) {
+          imgs[i].className = i === next ? "activa" : "";
+          dots[i].className = i === next ? "activo" : "";
+        }
+      }, {passive:true});
+    })(carruseles[c]);
   }
 }
 
