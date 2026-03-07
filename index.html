@@ -271,6 +271,44 @@ footer {
   color: white;
   letter-spacing: 1px;
 }
+
+.carrusel {
+  position: relative;
+  width: 38%;
+  max-width: 220px;
+}
+
+.carrusel img {
+  width: 100%;
+  border-radius: 15px;
+  display: none;
+}
+
+.carrusel img.activa {
+  display: block;
+}
+
+.carrusel-botones {
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.carrusel-botones button {
+  background: #FFD700;
+  border: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+  opacity: 0.5;
+}
+
+.carrusel-botones button.activo {
+  opacity: 1;
+}
 </style>
 </head>
 <body>
@@ -307,7 +345,7 @@ footer {
     <p style="color:#aaaaaa; font-size:14px; margin:0 0 20px 0;">Somos fabricantes con más de 10 años en el rubro</p>
     <hr style="border:1px solid #333; margin:20px 0;">
     <p>📞 <a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
-    <p>✉️ <a href="/cdn-cgi/l/email-protection#82f4e3e1eff7eef6ebefe3f0e1e3c2e5efe3ebeeace1edef" style="color:white; text-decoration:none;"><span class="_cf_email_" data-cfemail="760017151b031a021f1b1704151736111b171f1a5815191b">[email&#160;protected]</span></a></p>
+    <p>✉️ <a href="/cdn-cgi/l/email-protection#532532303e263f273a3e3221303213343e323a3f7d303c3e" style="color:white; text-decoration:none;"><span class="_cf_email_" data-cfemail="6c1a0d0f0119001805010d1e0f0d2c0b010d0500420f0301">[email&#160;protected]</span></a></p>
     <p>📍 <a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4°, San Fernando</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
     <p style="margin:10px 0;">Seguinos en redes</p>
@@ -349,13 +387,13 @@ const productos = [
   { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null, envio: true },
   { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$29.300", link: "https://mpago.la/1Ne4XRB", envio: true },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagenes: ["zuncho2tramosp40mmelastico.jpg","zuncho2tramosp40mmelastico-2.jpg","zuncho2tramosp40mmelastico-3.jpg"], precio: "$29.300", link: "https://mpago.la/1Ne4XRB", envio: true },
   { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null, envio: true },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null, envio: true },
   { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg", precio: null, envio: true },
   { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg", precio: null, envio: true },
-  { nombre: "1 red pulpo 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17,690", link: "https://mpago.la/19BUqy2", envio: true },
+  { nombre: "RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17.690", link: "https://mpago.la/19BUqy2", envio: true },
 ];
 
 const envio = "$9.800";
@@ -386,8 +424,17 @@ function mostrarProductos(pagina) {
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
          </div>`;
 
+    let imagenHTML;
+    if (p.imagenes) {
+      const imgs = p.imagenes.map((img, i) => <img src="${img}" alt="${p.nombre}" class="${i===0?'activa':''}">).join('');
+      const dots = p.imagenes.map((_, i) => <button class="${i===0?'activo':''}" onclick="cambiarFoto(this,${i})"></button>).join('');
+      imagenHTML = <div class="carrusel" id="carrusel-${p.nombre.replace(/ /g,'-')}">${imgs}<div class="carrusel-botones">${dots}</div></div>;
+    } else {
+      imagenHTML = <img src="${p.imagen}" alt="${p.nombre}">;
+    }
+
     div.innerHTML = `
-      <img src="${p.imagen}" alt="${p.nombre}">
+      ${imagenHTML}
       <div class="info">
         <h3>${p.nombre}</h3>
         ${precioHTML}
@@ -418,6 +465,12 @@ function consultarProducto(producto) {
   let telefono = "5491163824585";
   let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
   window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
+
+function cambiarFoto(btn, idx) {
+  const carrusel = btn.closest('.carrusel');
+  carrusel.querySelectorAll('img').forEach((img, i) => img.classList.toggle('activa', i === idx));
+  carrusel.querySelectorAll('button').forEach((b, i) => b.classList.toggle('activo', i === idx));
 }
 
 function suscribirse() {
