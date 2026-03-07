@@ -5,310 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAC Multimarca</title>
 <style>
-body {
-  background-color: #111111;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  color: white;
-}
-
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 30px;
-  flex-wrap: wrap;
-}
-
-.logo-container img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-  border-radius: 12px;
-}
-
-.logo-container h1 {
-  text-align: left;
-  margin: 0;
-  color: #FFD700;
-  letter-spacing: 2px;
-  font-size: 36px;
-}
-
-@media (max-width: 480px) {
-  .logo-container { flex-direction: column; }
-  .logo-container h1 { text-align: center; font-size: 28px; }
-}
-
-h2 {
-  text-align: center;
-  font-size: 20px;
-  color: white;
-  margin: 5px 0;
-}
-h3.subtitle {
-  text-align: center;
-  font-size: 18px;
-  color: white;
-  margin: 5px 0 40px 0;
-}
-
-.productos {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-  padding: 40px 8%;
-}
-
-.producto {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 40px;
-  background: #1a1a1a;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.producto:hover {
-  transform: translateY(-12px) scale(1.02);
-  box-shadow: 0 30px 60px rgba(0,0,0,0.8);
-}
-
-.producto:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.producto img {
-  width: 38%;
-  max-width: 220px;
-  border-radius: 15px;
-  transition: transform 0.4s ease;
-}
-
-.producto:hover img {
-  transform: scale(1.05);
-}
-
-.info {
-  width: 45%;
-  text-align: center;
-}
-
-.info h3 {
-  margin-bottom: 8px;
-}
-
-.precio {
-  font-size: 22px;
-  font-weight: bold;
-  color: #FFD700;
-  margin: 6px 0;
-}
-
-.envio {
-  font-size: 16px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 16px;
-}
-
-.botones-producto {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.btn-consultar {
-  background-color: #FFD700;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  font-size: 14px;
-}
-
+body { background-color: #111111; font-family: Arial, sans-serif; margin: 0; padding: 0; color: white; }
+.logo-container { display: flex; align-items: center; justify-content: center; gap: 20px; margin-top: 30px; flex-wrap: wrap; }
+.logo-container img { width: 100px; height: 100px; object-fit: contain; border-radius: 12px; }
+.logo-container h1 { text-align: left; margin: 0; color: #FFD700; letter-spacing: 2px; font-size: 36px; }
+@media (max-width: 480px) { .logo-container { flex-direction: column; } .logo-container h1 { text-align: center; font-size: 28px; } }
+h2 { text-align: center; font-size: 20px; color: white; margin: 5px 0; }
+h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 40px 0; }
+.productos { display: flex; flex-direction: column; gap: 40px; padding: 40px 8%; }
+.producto { display: flex; align-items: center; justify-content: center; gap: 40px; background: #1a1a1a; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); transition: transform 0.4s ease, box-shadow 0.4s ease; }
+.producto:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
+.producto:nth-child(even) { flex-direction: row-reverse; }
+.producto img { width: 38%; max-width: 220px; border-radius: 15px; transition: transform 0.4s ease; }
+.producto:hover img { transform: scale(1.05); }
+.info { width: 45%; text-align: center; }
+.info h3 { margin-bottom: 8px; }
+.precio { font-size: 22px; font-weight: bold; color: #FFD700; margin: 6px 0; }
+.envio { font-size: 16px; font-weight: bold; color: #ffffff; margin-bottom: 16px; }
+.botones-producto { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+.btn-consultar { background-color: #FFD700; border: none; padding: 12px 22px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s ease; font-size: 14px; }
 .btn-consultar:hover { background-color: #e6c200; }
-
-.btn-comprar {
-  background-color: #009EE3;
-  border: none;
-  padding: 12px 22px;
-  border-radius: 10px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-  color: white;
-  font-size: 14px;
-}
-
+.btn-comprar { background-color: #009EE3; border: none; padding: 12px 22px; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s ease; color: white; font-size: 14px; }
 .btn-comprar:hover { background-color: #0088c7; }
-
-footer {
-  text-align: center;
-  margin: 60px 0;
-}
-
-@media (max-width: 768px) {
-  .producto {
-    flex-direction: column !important;
-    text-align: center;
-  }
-  .producto img, .info { width: 100%; }
-  h2, h3.subtitle { font-size: 16px; }
-}
-
-.paginacion {
-  text-align: center;
-  margin: 40px 0;
-}
-
-.paginacion button {
-  background-color: #FFD700;
-  border: none;
-  padding: 10px 16px;
-  margin: 0 4px;
-  border-radius: 6px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
+footer { text-align: center; margin: 60px 0; }
+@media (max-width: 768px) { .producto { flex-direction: column !important; text-align: center; } .producto img, .info { width: 100%; } h2, h3.subtitle { font-size: 16px; } }
+.paginacion { text-align: center; margin: 40px 0; }
+.paginacion button { background-color: #FFD700; border: none; padding: 10px 16px; margin: 0 4px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s ease; }
 .paginacion button:hover { background-color: #e6c200; }
 .paginacion button.active { background-color: #e6c200; }
-
-.boton-suscribir {
-  display: block;
-  margin: 12px auto;
-  background-color: transparent;
-  border: 2px solid #FFD700;
-  color: #FFD700;
-  padding: 10px 30px;
-  border-radius: 25px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  letter-spacing: 1px;
-  transition: 0.3s ease;
-}
-
-.boton-suscribir:hover {
-  background-color: #FFD700;
-  color: #111111;
-}
-
-.mensaje-suscripcion {
-  display: none;
-  text-align: center;
-  color: #FFD700;
-  font-size: 14px;
-  margin: 8px 20px;
-  padding: 16px 20px;
-  border: 1px solid #FFD700;
-  border-radius: 12px;
-  background-color: rgba(255, 215, 0, 0.08);
-  animation: fadeIn 0.5s ease;
-}
-
-.boton-confirmar-ws {
-  display: inline-block;
-  margin-top: 12px;
-  background-color: #25D366;
-  border: none;
-  color: white;
-  padding: 10px 24px;
-  border-radius: 25px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  text-decoration: none;
-  transition: 0.3s ease;
-}
-
+.boton-suscribir { display: block; margin: 12px auto; background-color: transparent; border: 2px solid #FFD700; color: #FFD700; padding: 10px 30px; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer; letter-spacing: 1px; transition: 0.3s ease; }
+.boton-suscribir:hover { background-color: #FFD700; color: #111111; }
+.mensaje-suscripcion { display: none; text-align: center; color: #FFD700; font-size: 14px; margin: 8px 20px; padding: 16px 20px; border: 1px solid #FFD700; border-radius: 12px; background-color: rgba(255,215,0,0.08); animation: fadeIn 0.5s ease; }
+.boton-confirmar-ws { display: inline-block; margin-top: 12px; background-color: #25D366; border: none; color: white; padding: 10px 24px; border-radius: 25px; font-size: 15px; font-weight: bold; cursor: pointer; text-decoration: none; transition: 0.3s ease; }
 .boton-confirmar-ws:hover { background-color: #1ebe5d; }
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.boton-flotante {
-  position: fixed;
-  bottom: 25px;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-  z-index: 1000;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.boton-flotante:hover {
-  transform: scale(1.12);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
-}
-
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+.boton-flotante { position: fixed; bottom: 25px; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 6px 15px rgba(0,0,0,0.5); z-index: 1000; text-decoration: none; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.boton-flotante:hover { transform: scale(1.12); box-shadow: 0 10px 25px rgba(0,0,0,0.7); }
 .boton-whatsapp { background-color: #25D366; right: 25px; }
-
-.boton-mercado {
-  background-color: #009EE3;
-  left: 25px;
-  font-family: Arial, sans-serif;
-  font-size: 15px;
-  font-weight: 900;
-  color: white;
-  letter-spacing: 1px;
-}
-
-.carrusel {
-  position: relative;
-  width: 38%;
-  max-width: 220px;
-}
-
-.carrusel img {
-  width: 100%;
-  border-radius: 15px;
-  display: none;
-}
-
-.carrusel img.activa {
-  display: block;
-}
-
-.carrusel-botones {
-  display: flex;
-  justify-content: center;
-  gap: 6px;
-  margin-top: 8px;
-}
-
-.carrusel-botones button {
-  background: #FFD700;
-  border: none;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  padding: 0;
-  opacity: 0.5;
-}
-
-.carrusel-botones button.activo {
-  opacity: 1;
-}
+.boton-mercado { background-color: #009EE3; left: 25px; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; color: white; letter-spacing: 1px; }
+.carrusel { width: 38%; max-width: 220px; }
+.carrusel img { width: 100%; border-radius: 15px; display: none; }
+.carrusel img.activa { display: block; }
+.carrusel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.carrusel-dots span { width: 10px; height: 10px; border-radius: 50%; background: #FFD700; opacity: 0.4; cursor: pointer; display: inline-block; }
+.carrusel-dots span.activo { opacity: 1; }
 </style>
 </head>
 <body>
@@ -318,21 +58,17 @@ footer {
     <img src="logovac.jpg" alt="Logo VAC Multimarca">
     <h1>VAC MULTIMARCA</h1>
   </div>
-
-  <button class="boton-suscribir" id="btnSuscribir" onclick="suscribirse()">⭐ SUSCRIBIRME</button>
-
+  <button class="boton-suscribir" id="btnSuscribir" onclick="suscribirse()">&#11088; SUSCRIBIRME</button>
   <div class="mensaje-suscripcion" id="mensajeSuscripcion">
-    📲 ¡Gracias por querer sumarte a VAC Multimarca!<br><br>
-    Para completar tu suscripción y recibir nuestras novedades,<br>
-    tocá el botón de abajo y enviá el mensaje por WhatsApp.<br><br>
-    <a href="https://wa.me/5491163824585?text=Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas."
-       target="_blank" class="boton-confirmar-ws">
-      ✅ Confirmar suscripción por WhatsApp
+    &#128242; Gracias por querer sumarte a VAC Multimarca!<br><br>
+    Para completar tu suscripcion y recibir nuestras novedades,<br>
+    toca el boton de abajo y envia el mensaje por WhatsApp.<br><br>
+    <a href="https://wa.me/5491163824585?text=Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas." target="_blank" class="boton-confirmar-ws">
+      &#9989; Confirmar suscripcion por WhatsApp
     </a>
   </div>
-
   <h2>Somos fabricantes</h2>
-  <h3 class="subtitle">Soluciones en sujeción y amarre</h3>
+  <h3 class="subtitle">Soluciones en sujecion y amarre</h3>
 </header>
 
 <div id="productos-contenedor" class="productos"></div>
@@ -342,135 +78,138 @@ footer {
   <div style="max-width:600px; margin:0 auto;">
     <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px; border-radius:10px; margin-bottom:10px;">
     <h3 style="color:#FFD700; margin:0 0 5px 0; font-size:20px;">VAC MULTIMARCA</h3>
-    <p style="color:#aaaaaa; font-size:14px; margin:0 0 20px 0;">Somos fabricantes con más de 10 años en el rubro</p>
+    <p style="color:#aaaaaa; font-size:14px; margin:0 0 20px 0;">Somos fabricantes con mas de 10 anos en el rubro</p>
     <hr style="border:1px solid #333; margin:20px 0;">
-    <p>📞 <a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
-    <p>✉️ <a href="/cdn-cgi/l/email-protection#532532303e263f273a3e3221303213343e323a3f7d303c3e" style="color:white; text-decoration:none;"><span class="_cf_email_" data-cfemail="6c1a0d0f0119001805010d1e0f0d2c0b010d0500420f0301">[email&#160;protected]</span></a></p>
-    <p>📍 <a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4°, San Fernando</a></p>
+    <p>&#128222; <a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
+    <p>&#9993; <a href="mailto:vacmultimarca@gmail.com" style="color:white; text-decoration:none;">vacmultimarca@gmail.com</a></p>
+    <p>&#128205; <a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4, San Fernando</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
     <p style="margin:10px 0;">Seguinos en redes</p>
-    <p>📸 Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
-    <p>🎵 TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">@vacmultimarca</a></p>
+    <p>&#128248; Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
+    <p>&#127925; TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">@vacmultimarca</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
-    <p style="color:#aaaaaa; font-size:13px;">🔒 Pagos seguros con Mercado Pago</p>
-    <p style="color:#aaaaaa; font-size:13px;">📦 Envíos por Paq.ar - Correo Argentino</p>
+    <p style="color:#aaaaaa; font-size:13px;">&#128274; Pagos seguros con Mercado Pago</p>
+    <p style="color:#aaaaaa; font-size:13px;">&#128230; Envios por Paq.ar - Correo Argentino</p>
     <p style="color:#555; font-size:12px; margin-top:20px;">© 2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
 
-<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca"
-   target="_blank" class="boton-flotante boton-whatsapp" title="Contactar por WhatsApp">
+<a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp" title="Contactar por WhatsApp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="34" height="34">
     <path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.1 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.9-11.9c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5.1 8.1 7.1 1.1.5 2 .8 2.7 1 1.1.4 2.2.3 3 .2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.2-.2-.5-.3-1-.5z"/>
   </svg>
 </a>
 
-<a href="https://link.mercadopago.com.ar/vac"
-   target="_blank" class="boton-flotante boton-mercado" title="Pagar con Mercado Pago">
-  MP
-</a>
+<a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado" title="Pagar con Mercado Pago">MP</a>
 
 <script>
-const productos = [
-  { nombre: "ESLINGA", imagen: "eslinga.jpg", precio: null, envio: true },
-  { nombre: "TENSOR", imagen: "tensor.jpg", precio: null, envio: true },
-  { nombre: "CINTA P40MM ENCHUFE", imagen: "cintap40mmenchufe.jpg", precio: null, envio: true },
-  { nombre: "CINTA P25MM 2 TRAMOS ELASTICO", imagen: "cintap25mm2tramoselastico.jpg", precio: null, envio: true },
-  { nombre: "CINTA CON GANCHOS", imagen: "cintaconganchos.jpg", precio: null, envio: true },
-  { nombre: "RED PULPO", imagen: "redpulpo.jpg", precio: null, envio: true },
-  { nombre: "RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null, envio: true },
-  { nombre: "RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null, envio: true },
-  { nombre: "RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null, envio: true },
-  { nombre: "ESLINGA PROLONGADOR P50MM", imagen: "eslingaprolongadorp50mm.jpg", precio: null, envio: true },
-  { nombre: "CINTA DE AMARRE DE ATRAQUE", imagen: "cintaamarreatraque.jpg", precio: null, envio: true },
-  { nombre: "CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: null, envio: true },
-  { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null, envio: true },
-  { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagenes: ["zuncho2tramosp40mmelastico.jpg","zuncho2tramosp40mmelastico-2.jpg","zuncho2tramosp40mmelastico-3.jpg"], precio: "$29.300", link: "https://mpago.la/1Ne4XRB", envio: true },
-  { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null, envio: true },
-  { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null, envio: true },
-  { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg", precio: null, envio: true },
-  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg", precio: null, envio: true },
-  { nombre: "RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17.690", link: "https://mpago.la/19BUqy2", envio: true },
+var productos = [
+  { nombre: "ESLINGA", imagen: "eslinga.jpg", precio: null },
+  { nombre: "TENSOR", imagen: "tensor.jpg", precio: null },
+  { nombre: "CINTA P40MM ENCHUFE", imagen: "cintap40mmenchufe.jpg", precio: null },
+  { nombre: "CINTA P25MM 2 TRAMOS ELASTICO", imagen: "cintap25mm2tramoselastico.jpg", precio: null },
+  { nombre: "CINTA CON GANCHOS", imagen: "cintaconganchos.jpg", precio: null },
+  { nombre: "RED PULPO", imagen: "redpulpo.jpg", precio: null },
+  { nombre: "RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null },
+  { nombre: "RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null },
+  { nombre: "RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null },
+  { nombre: "ESLINGA PROLONGADOR P50MM", imagen: "eslingaprolongadorp50mm.jpg", precio: null },
+  { nombre: "CINTA DE AMARRE DE ATRAQUE", imagen: "cintaamarreatraque.jpg", precio: null },
+  { nombre: "CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: null },
+  { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null },
+  { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagenes: ["zuncho2tramosp40mmelastico.jpg","zuncho2tramosp40mmelastico-2.jpg","zuncho2tramosp40mmelastico-3.jpg"], precio: "$29.300", link: "https://mpago.la/1Ne4XRB" },
+  { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null },
+  { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null },
+  { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null },
+  { nombre: "CINTA P40MM ENCHUFE-1", imagen: "cintap40mmenchufe-1.jpg", precio: null },
+  { nombre: "CINTA AMARRE - 1", imagen: "cintaamarre-1.jpg", precio: null },
+  { nombre: "RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17.690", link: "https://mpago.la/19BUqy2" }
 ];
 
-const envio = "$9.800";
-const productosPorPagina = 8;
-let paginaActual = 1;
-const totalPaginas = Math.ceil(productos.length / productosPorPagina);
+var productosPorPagina = 8;
+var paginaActual = 1;
+var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 
 function mostrarProductos(pagina) {
-  const contenedor = document.getElementById("productos-contenedor");
+  var contenedor = document.getElementById("productos-contenedor");
   contenedor.innerHTML = "";
-  const inicio = (pagina - 1) * productosPorPagina;
-  const fin = inicio + productosPorPagina;
-  const productosPagina = productos.slice(inicio, fin);
+  var inicio = (pagina - 1) * productosPorPagina;
+  var fin = inicio + productosPorPagina;
+  var lista = productos.slice(inicio, fin);
 
-  productosPagina.forEach(p => {
-    const div = document.createElement("div");
+  for (var idx = 0; idx < lista.length; idx++) {
+    var p = lista[idx];
+    var div = document.createElement("div");
     div.className = "producto";
 
-    const precioHTML = p.precio
-      ? `<p class="precio">${p.precio}</p>
-         <p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
-         <div class="botones-producto">
-           <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
-           <button class="btn-comprar" onclick="window.open('${p.link}','_blank')">💳 COMPRAR</button>
-         </div>`
-      : `<p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
-         <div class="botones-producto">
-           <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
-         </div>`;
-
-    let imagenHTML;
+    var imgHTML = "";
     if (p.imagenes) {
-      const imgs = p.imagenes.map((img, i) => <img src="${img}" alt="${p.nombre}" class="${i===0?'activa':''}">).join('');
-      const dots = p.imagenes.map((_, i) => <button class="${i===0?'activo':''}" onclick="cambiarFoto(this,${i})"></button>).join('');
-      imagenHTML = <div class="carrusel" id="carrusel-${p.nombre.replace(/ /g,'-')}">${imgs}<div class="carrusel-botones">${dots}</div></div>;
+      var imgs = "";
+      var dots = "";
+      for (var i = 0; i < p.imagenes.length; i++) {
+        imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + '>';
+        dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
+      }
+      imgHTML = '<div class="carrusel">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
     } else {
-      imagenHTML = <img src="${p.imagen}" alt="${p.nombre}">;
+      imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '">';
     }
 
-    div.innerHTML = `
-      ${imagenHTML}
-      <div class="info">
-        <h3>${p.nombre}</h3>
-        ${precioHTML}
-      </div>
-    `;
+    var botonesHTML = "";
+    if (p.precio) {
+      botonesHTML = '<p class="precio">' + p.precio + '</p>' +
+        '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
+        '<div class="botones-producto">' +
+        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
+        '<button class="btn-comprar" onclick="window.open(\'' + p.link + '\',\'_blank\')">&#128179; COMPRAR</button>' +
+        '</div>';
+    } else {
+      botonesHTML = '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
+        '<div class="botones-producto">' +
+        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
+        '</div>';
+    }
+
+    div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + botonesHTML + '</div>';
     contenedor.appendChild(div);
-  });
+  }
 }
 
 function crearPaginacion() {
-  const pagDiv = document.getElementById("paginacion");
+  var pagDiv = document.getElementById("paginacion");
   pagDiv.innerHTML = "";
-  for (let i = 1; i <= totalPaginas; i++) {
-    const btn = document.createElement("button");
+  for (var i = 1; i <= totalPaginas; i++) {
+    var btn = document.createElement("button");
     btn.innerText = i;
     if (i === paginaActual) btn.classList.add("active");
-    btn.addEventListener("click", () => {
-      paginaActual = i;
-      mostrarProductos(paginaActual);
-      crearPaginacion();
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+    (function(num) {
+      btn.addEventListener("click", function() {
+        paginaActual = num;
+        mostrarProductos(paginaActual);
+        crearPaginacion();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })(i);
     pagDiv.appendChild(btn);
   }
 }
 
 function consultarProducto(producto) {
-  let telefono = "5491163824585";
-  let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
+  var telefono = "5491163824585";
+  var mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
   window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
 }
 
-function cambiarFoto(btn, idx) {
-  const carrusel = btn.closest('.carrusel');
-  carrusel.querySelectorAll('img').forEach((img, i) => img.classList.toggle('activa', i === idx));
-  carrusel.querySelectorAll('button').forEach((b, i) => b.classList.toggle('activo', i === idx));
+function cambiarFoto(el, idx) {
+  var carrusel = el.parentElement.parentElement;
+  var imgs = carrusel.querySelectorAll("img");
+  var dots = carrusel.querySelectorAll("span");
+  for (var i = 0; i < imgs.length; i++) {
+    imgs[i].className = i === idx ? "activa" : "";
+    dots[i].className = i === idx ? "activo" : "";
+  }
 }
 
 function suscribirse() {
