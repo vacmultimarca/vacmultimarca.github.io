@@ -59,7 +59,6 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 </style>
 </head>
 <body>
-
 <header>
   <div class="logo-container">
     <img src="logovac.jpg" alt="Logo VAC Multimarca">
@@ -194,7 +193,8 @@ function mostrarProductos(pagina) {
         '<button class="btn-comprar" onclick="window.open(\'' + p.link + '\',\'_blank\')">&#128179; COMPRAR</button>' +
         '</div>';
     } else {
-      botonesHTML = '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
+      botonesHTML = '<p class="stock">&#10003; Stock disponible</p>' +
+        '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
         '<div class="botones-producto">' +
         '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
         '</div>';
@@ -204,7 +204,6 @@ function mostrarProductos(pagina) {
     contenedor.appendChild(div);
   }
 
-  // Swipe tactil
   var carruseles = contenedor.querySelectorAll(".carrusel");
   for (var c = 0; c < carruseles.length; c++) {
     (function(car) {
