@@ -307,7 +307,7 @@ footer {
     <p style="color:#aaaaaa; font-size:14px; margin:0 0 20px 0;">Somos fabricantes con más de 10 años en el rubro</p>
     <hr style="border:1px solid #333; margin:20px 0;">
     <p>📞 <a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
-    <p>✉️ <a href="mailto:vacmultimarca@gmail.com" style="color:white; text-decoration:none;">vacmultimarca@gmail.com</a></p>
+    <p>✉️ <a href="/cdn-cgi/l/email-protection#82f4e3e1eff7eef6ebefe3f0e1e3c2e5efe3ebeeace1edef" style="color:white; text-decoration:none;"><span class="_cf_email_" data-cfemail="760017151b031a021f1b1704151736111b171f1a5815191b">[email&#160;protected]</span></a></p>
     <p>📍 <a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4°, San Fernando</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
     <p style="margin:10px 0;">Seguinos en redes</p>
@@ -332,7 +332,7 @@ footer {
   MP
 </a>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const productos = [
   { nombre: "ESLINGA", imagen: "eslinga.jpg", precio: null, envio: true },
   { nombre: "TENSOR", imagen: "tensor.jpg", precio: null, envio: true },
@@ -349,7 +349,7 @@ const productos = [
   { nombre: "CINTA ESTERNON", imagen: "cintaesternon.jpg", precio: null, envio: true },
   { nombre: "CINTA P40MM CON ELASTICO", imagen: "cintap40mmconelastico.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO-1", imagen: "zuncho2tramosp40mmelastico-1.jpg", precio: null, envio: true },
-  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$29.300" },
+  { nombre: "ZUNCHO 2 TRAMOS P40MM ELASTICO", imagen: "zuncho2tramosp40mmelastico.jpg", precio: "$29.300", link: "https://mpago.la/1Ne4XRB", envio: true },
   { nombre: "CINTA DE AMARRE", imagen: "cintaamarre.jpg", precio: null, envio: true },
   { nombre: "ZUNCHO TENSOR", imagen: "zunchotensor.jpg", precio: null, envio: true },
   { nombre: "PROLONGADOR PASE 25", imagen: "prolongadorp25.jpg", precio: null, envio: true },
@@ -378,7 +378,7 @@ function mostrarProductos(pagina) {
          <p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
-           <button class="btn-comprar" onclick="window.open('https://mpago.la/1Ne4XRB','_blank')">💳 COMPRAR</button>
+           <button class="btn-comprar" onclick="window.open(p.link,'_blank')">💳 COMPRAR</button>
          </div>`
       : `<p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
@@ -416,17 +416,4 @@ function crearPaginacion() {
 function consultarProducto(producto) {
   let telefono = "5491163824585";
   let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
-  window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
-}
-
-function suscribirse() {
-  document.getElementById("btnSuscribir").style.display = "none";
-  document.getElementById("mensajeSuscripcion").style.display = "block";
-}
-
-mostrarProductos(paginaActual);
-crearPaginacion();
-</script>
-
-</body>
-</html>
+  window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank"
