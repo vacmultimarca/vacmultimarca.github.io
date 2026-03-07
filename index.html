@@ -416,4 +416,16 @@ function crearPaginacion() {
 function consultarProducto(producto) {
   let telefono = "5491163824585";
   let mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
-  window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank"
+  window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+}
+
+function suscribirse() {
+  document.getElementById("btnSuscribir").style.display = "none";
+  document.getElementById("mensajeSuscripcion").style.display = "block";
+}
+
+mostrarProductos(paginaActual);
+crearPaginacion();
+</script>
+</body>
+</html>
