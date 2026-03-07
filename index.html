@@ -378,7 +378,7 @@ function mostrarProductos(pagina) {
          <p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
            <button class="btn-consultar" onclick="consultarProducto('${p.nombre}')">CONSULTAR</button>
-           <button class="btn-comprar" onclick="window.open(p.link,'_blank')">💳 COMPRAR</button>
+           <button class="btn-comprar" onclick="window.open('${p.link}','_blank')">💳 COMPRAR</button>
          </div>`
       : `<p class="envio">Envío por Paq.ar - Correo Argentino - Retiro en sucursal</p>
          <div class="botones-producto">
