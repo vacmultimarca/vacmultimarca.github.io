@@ -43,7 +43,8 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .boton-flotante:hover { transform: scale(1.12); box-shadow: 0 10px 25px rgba(0,0,0,0.7); }
 .boton-whatsapp { background-color: #25D366; right: 25px; }
 .boton-mercado { background-color: #009EE3; left: 25px; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; color: white; letter-spacing: 1px; }
-.carrusel { width: 38%; max-width: 280px; touch-action: pan-y; }
+.carrusel { width: 100%; max-width: 280px; touch-action: pan-y; }
+@media (max-width: 768px) { .carrusel { width: 100%; max-width: 100%; } }
 .carrusel img { width: 100%; border-radius: 15px; display: none; cursor: pointer; }
 .carrusel img.activa { display: block; }
 .carrusel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
@@ -56,8 +57,6 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .resena-estrellas { color: #FFD700; font-size: 18px; margin-bottom: 8px; }
 .resena-texto { color: #cccccc; font-size: 14px; font-style: italic; margin-bottom: 10px; }
 .resena-autor { color: #FFD700; font-size: 13px; font-weight: bold; }
-
-/* LIGHTBOX */
 .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
 .lightbox.activo { display: flex; }
 .lightbox img { max-width: 92%; max-height: 88vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
@@ -66,7 +65,6 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
   <span class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</span>
   <img id="lightbox-img" src="" alt="Foto ampliada">
