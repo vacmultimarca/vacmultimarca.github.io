@@ -238,18 +238,23 @@ function confirmarCompra() {
     return;
   }
 
-  var mensaje = "Hola VAC Multimarca! Acabo de realizar una compra:" +
-    "%0A%0AProducto: " + producto +
-    "%0ANombre: " + nombre +
-    "%0ATelefono: " + telefono +
-    "%0ALocalidad: " + localidad +
-    "%0ACodigo postal: " + postal +
-    (direccion ? "%0ADireccion: " + direccion : "") +
-    "%0A%0AEnviado desde vacmultimarca.github.io";
+  var datos = new FormData();
+  datos.append("Producto", producto);
+  datos.append("Nombre", nombre);
+  datos.append("Telefono", telefono);
+  datos.append("Localidad", localidad);
+  datos.append("Codigo postal", postal);
+  if (direccion) datos.append("Direccion", direccion);
+  datos.append("_subject", "Nuevo pedido: " + producto);
+
+  fetch("https://formspree.io/f/xjgagvwb", {
+    method: "POST",
+    body: datos,
+    headers: { "Accept": "application/json" }
+  });
 
   cerrarModal();
-  window.location.href = "https://wa.me/5491163824585?text=" + mensaje;
-  setTimeout(function() { window.open(linkPagoActual, "_blank"); }, 2000);
+  window.location.href = linkPagoActual;
 }
 
 function mostrarProductos(pagina) {
@@ -272,7 +277,7 @@ function mostrarProductos(pagina) {
         imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
         dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
       }
-      imgHTML = '<div class="carrusel" id="car-' + idx + '">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
+      imgHTML = '<div class="carrusel">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
     } else {
       imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)">';
     }
