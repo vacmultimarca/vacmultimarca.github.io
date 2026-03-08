@@ -59,15 +59,14 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .resena-autor { color: #FFD700; font-size: 13px; font-weight: bold; }
 .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
 .lightbox.activo { display: flex; }
-.lightbox img { max-width: 92%; max-height: 88vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
-.lightbox-cerrar { position: absolute; top: 18px; right: 24px; font-size: 38px; color: white; cursor: pointer; font-weight: bold; line-height: 1; }
-
-/* MODAL FORMULARIO */
+.lightbox img { max-width: 92%; max-height: 88vh; border-radius: 12px; }
+.lightbox-cerrar { position: absolute; top: 18px; right: 24px; font-size: 38px; color: white; cursor: pointer; font-weight: bold; }
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 8888; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
 .modal-overlay.activo { display: flex; }
 .modal { background: #1a1a1a; border-radius: 20px; padding: 30px; max-width: 420px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid #333; }
-.modal h3 { color: #FFD700; text-align: center; margin: 0 0 6px 0; font-size: 20px; }
-.modal .modal-producto { color: #aaaaaa; text-align: center; font-size: 13px; margin: 0 0 20px 0; }
+.modal-titulo { color: #FFD700; text-align: center; font-size: 22px; font-weight: bold; margin: 0 0 10px 0; }
+.modal-sucursal { text-align: center; color: #FFD700; font-weight: bold; font-size: 14px; background: rgba(255,215,0,0.1); border: 1px solid #FFD700; border-radius: 10px; padding: 8px 12px; margin: 0 0 12px 0; }
+.modal-producto { color: #aaaaaa; text-align: center; font-size: 13px; margin: 0 0 16px 0; }
 .modal input { width: 100%; padding: 12px 14px; margin-bottom: 12px; border-radius: 10px; border: 1px solid #444; background: #111; color: white; font-size: 15px; box-sizing: border-box; }
 .modal input:focus { outline: none; border-color: #FFD700; }
 .modal input::placeholder { color: #666; }
@@ -80,17 +79,15 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 </head>
 <body>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
   <span class="lightbox-cerrar">&times;</span>
   <img id="lightbox-img" src="" alt="Foto ampliada">
 </div>
 
-<!-- MODAL FORMULARIO COMPRA -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
-    <h3><h3>&#128179; Datos para el envio</h3>#128179; Datos para el envio</h3>
-    <p style="text-align:center; color:#FFD700; font-weight:bold; font-size:14px; margin: 0 0 4px 0;"><h3>&#128179; Datos para el envio</h3>#128230; Para ser retirado en sucursal de Paq.ar / Correo Argentino</p>
+    <p class="modal-titulo">Datos para el envio</p>
+    <p class="modal-sucursal">Para ser retirado en sucursal de Paq.ar / Correo Argentino</p>
     <p class="modal-producto" id="modalProductoNombre"></p>
     <input type="text" id="campo-nombre" placeholder="Nombre y apellido *">
     <input type="tel" id="campo-telefono" placeholder="Telefono *">
@@ -99,7 +96,7 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
     <input type="text" id="campo-direccion" placeholder="Direccion (opcional)">
     <div class="modal-botones">
       <button class="btn-modal-cancelar" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn-modal-confirmar" onclick="confirmarCompra()">&#9989; Confirmar y pagar</button>
+      <button class="btn-modal-confirmar" onclick="confirmarCompra()">Confirmar y pagar</button>
     </div>
   </div>
 </div>
@@ -109,13 +106,13 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
     <img src="logovac.jpg" alt="Logo VAC Multimarca">
     <h1>VAC MULTIMARCA</h1>
   </div>
-  <button class="boton-suscribir" id="btnSuscribir" onclick="suscribirse()">&#11088; SUSCRIBIRME</button>
+  <button class="boton-suscribir" id="btnSuscribir" onclick="suscribirse()">SUSCRIBIRME</button>
   <div class="mensaje-suscripcion" id="mensajeSuscripcion">
-    &#128242; Gracias por querer sumarte a VAC Multimarca!<br><br>
+    Gracias por querer sumarte a VAC Multimarca!<br><br>
     Para completar tu suscripcion y recibir nuestras novedades,<br>
     toca el boton de abajo y envia el mensaje por WhatsApp.<br><br>
     <a href="https://wa.me/5491163824585?text=Hola%20VAC%20Multimarca%2C%20quiero%20suscribirme%20para%20recibir%20novedades%20y%20ofertas." target="_blank" class="boton-confirmar-ws">
-      &#9989; Confirmar suscripcion por WhatsApp
+      Confirmar suscripcion por WhatsApp
     </a>
   </div>
   <h2>Somos fabricantes</h2>
@@ -126,7 +123,7 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 <div class="paginacion" id="paginacion"></div>
 
 <section class="resenas">
-  <h2>&#11088; Lo que dicen nuestros clientes</h2>
+  <h2>Lo que dicen nuestros clientes</h2>
   <div class="resenas-grid">
     <div class="resena">
       <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
@@ -152,16 +149,15 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
     <h3 style="color:#FFD700; margin:0 0 5px 0; font-size:20px;">VAC MULTIMARCA</h3>
     <p style="color:#aaaaaa; font-size:14px; margin:0 0 20px 0;">Somos fabricantes con mas de 10 anos en el rubro</p>
     <hr style="border:1px solid #333; margin:20px 0;">
-    <p>&#128222; <a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
-    <p>&#9993; <a href="mailto:vacmultimarca@gmail.com" style="color:white; text-decoration:none;">vacmultimarca@gmail.com</a></p>
-    <p>&#128205; <a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4, San Fernando</a></p>
+    <p><a href="tel:+5491163824585" style="color:white; text-decoration:none;">11 6382-4585</a></p>
+    <p><a href="mailto:vacmultimarca@gmail.com" style="color:white; text-decoration:none;">vacmultimarca@gmail.com</a></p>
+    <p><a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank" style="color:white; text-decoration:none;">Necochea 1129 4, San Fernando</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
-    <p style="margin:10px 0;">Seguinos en redes</p>
-    <p>&#128248; Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
-    <p>&#127925; TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">@vacmultimarca</a></p>
+    <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#FFD700;">@vac_multimarca</a></p>
+    <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#FFD700;">@vacmultimarca</a></p>
     <hr style="border:1px solid #333; margin:20px 0;">
-    <p style="color:#aaaaaa; font-size:13px;">&#128274; Pagos seguros con Mercado Pago</p>
-    <p style="color:#aaaaaa; font-size:13px;">&#128230; Envios por Paq.ar - Correo Argentino</p>
+    <p style="color:#aaaaaa; font-size:13px;">Pagos seguros con Mercado Pago</p>
+    <p style="color:#aaaaaa; font-size:13px;">Envios por Paq.ar - Correo Argentino</p>
     <p style="color:#555; font-size:12px; margin-top:20px;">2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
@@ -243,12 +239,12 @@ function confirmarCompra() {
   }
 
   var mensaje = "Hola VAC Multimarca! Acabo de realizar una compra:" +
-    "%0A%0A🛒 Producto: " + producto +
-    "%0A👤 Nombre: " + nombre +
-    "%0A📞 Telefono: " + telefono +
-    "%0A📍 Localidad: " + localidad +
-    "%0A📮 Codigo postal: " + postal +
-    (direccion ? "%0A🏠 Direccion: " + direccion : "") +
+    "%0A%0AProducto: " + producto +
+    "%0ANombre: " + nombre +
+    "%0ATelefono: " + telefono +
+    "%0ALocalidad: " + localidad +
+    "%0ACodigo postal: " + postal +
+    (direccion ? "%0ADireccion: " + direccion : "") +
     "%0A%0AEnviado desde vacmultimarca.github.io";
 
   window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
@@ -291,14 +287,14 @@ function mostrarProductos(pagina) {
         '<p class="stock">&#10003; Stock disponible</p>' +
         '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
         '<div class="botones-producto">' +
-        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
-        '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g, "\\'") + '\',\'' + p.link + '\')">&#128179; COMPRAR</button>' +
+        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g, "\\'") + '\')">CONSULTAR</button>' +
+        '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g, "\\'") + '\',\'' + p.link + '\')">COMPRAR</button>' +
         '</div>';
     } else {
       botonesHTML = '<p class="stock">&#10003; Stock disponible</p>' +
         '<p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p>' +
         '<div class="botones-producto">' +
-        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre + '\')">CONSULTAR</button>' +
+        '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g, "\\'") + '\')">CONSULTAR</button>' +
         '</div>';
     }
 
