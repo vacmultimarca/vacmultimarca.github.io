@@ -16,7 +16,7 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .producto { display: flex; align-items: center; justify-content: center; gap: 40px; background: #1a1a1a; padding: 40px; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); transition: transform 0.4s ease, box-shadow 0.4s ease; }
 .producto:hover { transform: translateY(-12px) scale(1.02); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
 .producto:nth-child(even) { flex-direction: row-reverse; }
-.producto img { width: 38%; max-width: 220px; border-radius: 15px; transition: transform 0.4s ease; }
+.producto img { width: 38%; max-width: 280px; border-radius: 15px; transition: transform 0.4s ease; cursor: pointer; }
 .producto:hover img { transform: scale(1.05); }
 .info { width: 45%; text-align: center; }
 .info h3 { margin-bottom: 8px; }
@@ -43,8 +43,8 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .boton-flotante:hover { transform: scale(1.12); box-shadow: 0 10px 25px rgba(0,0,0,0.7); }
 .boton-whatsapp { background-color: #25D366; right: 25px; }
 .boton-mercado { background-color: #009EE3; left: 25px; font-family: Arial, sans-serif; font-size: 15px; font-weight: 900; color: white; letter-spacing: 1px; }
-.carrusel { width: 38%; max-width: 220px; touch-action: pan-y; }
-.carrusel img { width: 100%; border-radius: 15px; display: none; }
+.carrusel { width: 38%; max-width: 280px; touch-action: pan-y; }
+.carrusel img { width: 100%; border-radius: 15px; display: none; cursor: pointer; }
 .carrusel img.activa { display: block; }
 .carrusel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
 .carrusel-dots span { width: 10px; height: 10px; border-radius: 50%; background: #FFD700; opacity: 0.4; cursor: pointer; display: inline-block; }
@@ -56,9 +56,22 @@ h3.subtitle { text-align: center; font-size: 18px; color: white; margin: 5px 0 4
 .resena-estrellas { color: #FFD700; font-size: 18px; margin-bottom: 8px; }
 .resena-texto { color: #cccccc; font-size: 14px; font-style: italic; margin-bottom: 10px; }
 .resena-autor { color: #FFD700; font-size: 13px; font-weight: bold; }
+
+/* LIGHTBOX */
+.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; align-items: center; justify-content: center; }
+.lightbox.activo { display: flex; }
+.lightbox img { max-width: 92%; max-height: 88vh; border-radius: 12px; box-shadow: 0 0 40px rgba(0,0,0,0.8); }
+.lightbox-cerrar { position: absolute; top: 18px; right: 24px; font-size: 38px; color: white; cursor: pointer; font-weight: bold; line-height: 1; }
 </style>
 </head>
 <body>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
+  <span class="lightbox-cerrar" onclick="cerrarLightbox()">&times;</span>
+  <img id="lightbox-img" src="" alt="Foto ampliada">
+</div>
+
 <header>
   <div class="logo-container">
     <img src="logovac.jpg" alt="Logo VAC Multimarca">
@@ -159,6 +172,15 @@ var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 
+function abrirLightbox(src) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox").classList.add("activo");
+}
+
+function cerrarLightbox() {
+  document.getElementById("lightbox").classList.remove("activo");
+}
+
 function mostrarProductos(pagina) {
   var contenedor = document.getElementById("productos-contenedor");
   contenedor.innerHTML = "";
@@ -176,12 +198,12 @@ function mostrarProductos(pagina) {
       var imgs = "";
       var dots = "";
       for (var i = 0; i < p.imagenes.length; i++) {
-        imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + '>';
+        imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
         dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
       }
       imgHTML = '<div class="carrusel" id="car-' + idx + '">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
     } else {
-      imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '">';
+      imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)">';
     }
 
     var botonesHTML = "";
@@ -216,7 +238,7 @@ function mostrarProductos(pagina) {
         var imgs = car.querySelectorAll("img");
         var dots = car.querySelectorAll("span");
         var actual = 0;
-        for (var i = 0; i < imgs.length; i++) { if (imgs[i].className === "activa") actual = i; }
+        for (var i = 0; i < imgs.length; i++) { if (imgs[i].className.indexOf("activa") !== -1) actual = i; }
         var next = diff > 0 ? Math.min(actual+1, imgs.length-1) : Math.max(actual-1, 0);
         for (var i = 0; i < imgs.length; i++) {
           imgs[i].className = i === next ? "activa" : "";
