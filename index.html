@@ -247,13 +247,9 @@ function confirmarCompra() {
     (direccion ? "%0ADireccion: " + direccion : "") +
     "%0A%0AEnviado desde vacmultimarca.github.io";
 
-  window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
-
-  setTimeout(function() {
-    window.open(linkPagoActual, "_blank");
-  }, 1500);
-
   cerrarModal();
+  window.location.href = "https://wa.me/5491163824585?text=" + mensaje;
+  setTimeout(function() { window.open(linkPagoActual, "_blank"); }, 2000);
 }
 
 function mostrarProductos(pagina) {
@@ -344,9 +340,8 @@ function crearPaginacion() {
 }
 
 function consultarProducto(producto) {
-  var telefono = "5491163824585";
   var mensaje = "Hola, quiero consultar por: " + producto + "%0A%0AEnviado desde la web VAC Multimarca";
-  window.open("https://wa.me/" + telefono + "?text=" + mensaje, "_blank");
+  window.open("https://wa.me/5491163824585?text=" + mensaje, "_blank");
 }
 
 function cambiarFoto(el, idx) {
