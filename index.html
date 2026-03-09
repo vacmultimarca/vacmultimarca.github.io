@@ -10,6 +10,8 @@ body{background:#111;font-family:Arial,sans-serif;margin:0;padding:0;color:white
 .logo-container img{width:100px;height:100px;object-fit:contain;border-radius:12px;}
 .logo-container h1{text-align:left;margin:0;color:#FFD700;letter-spacing:2px;font-size:36px;}
 @media(max-width:480px){.logo-container{flex-direction:column;}.logo-container h1{text-align:center;font-size:28px;}}
+.visitas{text-align:center;color:#aaa;font-size:13px;margin:8px 0 0 0;}
+.visitas span{color:#FFD700;font-weight:bold;}
 h2{text-align:center;font-size:20px;color:white;margin:5px 0;}
 h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 .botones-header{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 20px;}
@@ -74,10 +76,13 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 .btn-cancelar:hover{border-color:#aaa;color:white;}
 .btn-confirmar{flex:2;padding:12px;border-radius:10px;border:none;background:#009EE3;color:white;font-size:15px;font-weight:bold;cursor:pointer;transition:0.3s;}
 .btn-confirmar:hover{background:#0088c7;}
-.boton-flotante{position:fixed;bottom:25px;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 15px rgba(0,0,0,0.5);z-index:1000;text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;}
+.boton-flotante{position:fixed;width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 6px 15px rgba(0,0,0,0.5);z-index:1000;text-decoration:none;transition:transform 0.3s,box-shadow 0.3s;}
 .boton-flotante:hover{transform:scale(1.12);}
-.boton-whatsapp{background:#25D366;right:25px;}
-.boton-mercado{background:#009EE3;left:25px;font-family:Arial,sans-serif;font-size:15px;font-weight:900;color:white;letter-spacing:1px;}
+.boton-whatsapp{background:#25D366;right:25px;bottom:25px;}
+.boton-mercado{background:#009EE3;left:25px;bottom:25px;font-family:Arial,sans-serif;font-size:15px;font-weight:900;color:white;letter-spacing:1px;}
+.boton-arriba{background:#FFD700;left:50%;bottom:25px;transform:translateX(-50%);display:none;font-size:22px;color:#111;font-weight:bold;}
+.boton-arriba.visible{display:flex;}
+.boton-arriba:hover{transform:translateX(-50%) scale(1.12);}
 </style>
 </head>
 <body>
@@ -109,6 +114,7 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
     <img src="logovac.jpg" alt="Logo VAC Multimarca">
     <h1>VAC MULTIMARCA</h1>
   </div>
+  <p class="visitas">Visitas a la pagina: <span id="contadorVisitas">...</span></p>
   <div class="botones-header">
     <button class="btn-header btn-suscribir" id="btnSuscribir" onclick="suscribirse()">SUSCRIBIRME</button>
     <button class="btn-header btn-compartir" onclick="compartirPagina()">Compartir pagina</button>
@@ -174,6 +180,7 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
   </svg>
 </a>
 <a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado">MP</a>
+<button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
 var productos = [
@@ -206,6 +213,19 @@ var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 var linkPagoActual = "";
+
+// CONTADOR DE VISITAS
+fetch("https://api.countapi.xyz/hit/vacmultimarca.github.io/visitas")
+  .then(function(r){ return r.json(); })
+  .then(function(d){ document.getElementById("contadorVisitas").innerText = d.value; })
+  .catch(function(){ document.getElementById("contadorVisitas").innerText = "---"; });
+
+// BOTON ARRIBA
+window.addEventListener("scroll", function() {
+  var btn = document.getElementById("botonArriba");
+  if (window.scrollY > 400) { btn.classList.add("visible"); }
+  else { btn.classList.remove("visible"); }
+});
 
 function abrirLightbox(src) {
   document.getElementById("lightbox-img").src = src;
@@ -262,16 +282,14 @@ function compartirPagina() {
 function mostrarProductos(pagina) {
   var contenedor = document.getElementById("productos-contenedor");
   contenedor.innerHTML = "";
-  var inicio = (pagina - 1) * productosPorPagina;
-  var lista = productos.slice(inicio, inicio + productosPorPagina);
+  var lista = productos.slice((pagina-1)*productosPorPagina, pagina*productosPorPagina);
   for (var idx = 0; idx < lista.length; idx++) {
     var p = lista[idx];
     var div = document.createElement("div");
     div.className = "producto";
     var imgHTML = "";
     if (p.imagenes) {
-      var imgs = "";
-      var dots = "";
+      var imgs = ""; var dots = "";
       for (var i = 0; i < p.imagenes.length; i++) {
         imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
         dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
@@ -297,8 +315,7 @@ function mostrarProductos(pagina) {
       car.addEventListener("touchend", function(e) {
         var diff = startX - e.changedTouches[0].clientX;
         if (Math.abs(diff) < 30) return;
-        var imgs = car.querySelectorAll("img");
-        var dots = car.querySelectorAll("span");
+        var imgs = car.querySelectorAll("img"); var dots = car.querySelectorAll("span");
         var actual = 0;
         for (var i = 0; i < imgs.length; i++) { if (imgs[i].className.indexOf("activa") !== -1) actual = i; }
         var next = diff > 0 ? Math.min(actual+1, imgs.length-1) : Math.max(actual-1, 0);
@@ -330,8 +347,7 @@ function consultarProducto(producto) {
 }
 function cambiarFoto(el, idx) {
   var carrusel = el.parentElement.parentElement;
-  var imgs = carrusel.querySelectorAll("img");
-  var dots = carrusel.querySelectorAll("span");
+  var imgs = carrusel.querySelectorAll("img"); var dots = carrusel.querySelectorAll("span");
   for (var i = 0; i < imgs.length; i++) { imgs[i].className = i===idx?"activa":""; dots[i].className = i===idx?"activo":""; }
 }
 function suscribirse() {
