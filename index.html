@@ -32,8 +32,9 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 .info{width:45%;text-align:center;}
 .info h3{margin-bottom:8px;}
 .precio{font-size:22px;font-weight:bold;color:#FFD700;margin:6px 0;}
-.stock{font-size:14px;color:#25D366;font-weight:bold;margin:4px 0 8px 0;}
-.envio{font-size:16px;font-weight:bold;color:#fff;margin-bottom:16px;}
+.stock{font-size:14px;color:#25D366;font-weight:bold;margin:4px 0 6px 0;}
+.envio{font-size:14px;font-weight:bold;color:#fff;margin:4px 0 2px 0;}
+.envio-costo{font-size:12px;color:#aaa;margin:0 0 16px 0;line-height:1.6;}
 .botones-producto{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
 .btn-consultar{background:#FFD700;border:none;padding:12px 22px;border-radius:10px;font-weight:bold;cursor:pointer;transition:0.3s;font-size:14px;}
 .btn-consultar:hover{background:#e6c200;}
@@ -292,11 +293,23 @@ function mostrarProductos(pagina) {
     } else {
       imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)">';
     }
+    var envioInfo = '<p class="envio">&#128666; Envio por Paq.ar / Correo Argentino</p>'
+      + '<p class="envio-costo">Costo de envio aprox. $6.000 · a confirmar segun codigo postal<br>Retiro en sucursal · 3 a 5 dias habiles</p>';
     var botonesHTML = "";
     if (p.precio) {
-      botonesHTML = '<p class="precio">' + p.precio + '</p><p class="stock">&#10003; Stock disponible</p><p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p><div class="botones-producto"><button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button><button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">COMPRAR</button></div>';
+      botonesHTML = '<p class="precio">' + p.precio + '</p>'
+        + '<p class="stock">&#10003; Stock disponible</p>'
+        + envioInfo
+        + '<div class="botones-producto">'
+        + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button>'
+        + '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">COMPRAR</button>'
+        + '</div>';
     } else {
-      botonesHTML = '<p class="stock">&#10003; Stock disponible</p><p class="envio">Envio por Paq.ar - Correo Argentino - Retiro en sucursal</p><div class="botones-producto"><button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button></div>';
+      botonesHTML = '<p class="stock">&#10003; Stock disponible</p>'
+        + envioInfo
+        + '<div class="botones-producto">'
+        + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button>'
+        + '</div>';
     }
     div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + botonesHTML + '</div>';
     contenedor.appendChild(div);
