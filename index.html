@@ -12,7 +12,7 @@ body{background:#111;font-family:Arial,sans-serif;margin:0;padding:0;color:white
 @media(max-width:480px){.logo-container{flex-direction:column;}.logo-container h1{text-align:center;font-size:28px;}}
 .visitas{text-align:center;color:#aaa;font-size:13px;margin:8px 0 0 0;}
 h2{text-align:center;font-size:20px;color:white;margin:5px 0;}
-h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
+h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 .botones-header{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin:12px 20px;}
 .btn-header{background:transparent;padding:10px 28px;border-radius:25px;font-size:15px;font-weight:bold;cursor:pointer;letter-spacing:1px;transition:0.3s ease;}
 .btn-suscribir{border:2px solid #FFD700;color:#FFD700;}
@@ -23,7 +23,19 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 .btn-ws-confirmar{display:inline-block;margin-top:12px;background:#25D366;color:white;padding:10px 24px;border-radius:25px;font-size:15px;font-weight:bold;text-decoration:none;transition:0.3s;}
 .btn-ws-confirmar:hover{background:#1ebe5d;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-.productos{display:flex;flex-direction:column;gap:40px;padding:40px 8%;}
+
+/* BUSCADOR */
+.buscador-container{padding:0 8% 30px 8%;}
+.buscador-wrap{position:relative;max-width:500px;margin:0 auto;}
+.buscador-wrap input{width:100%;padding:14px 48px 14px 18px;border-radius:25px;border:2px solid #FFD700;background:#1a1a1a;color:white;font-size:16px;box-sizing:border-box;outline:none;}
+.buscador-wrap input::placeholder{color:#666;}
+.buscador-wrap input:focus{border-color:#FFD700;box-shadow:0 0 0 3px rgba(255,215,0,0.15);}
+.buscador-icono{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#FFD700;font-size:18px;pointer-events:none;}
+.buscador-resultado{text-align:center;color:#aaa;font-size:13px;margin-top:8px;}
+.btn-limpiar{display:none;margin:8px auto 0 auto;background:transparent;border:1px solid #555;color:#aaa;padding:5px 16px;border-radius:20px;cursor:pointer;font-size:13px;}
+.btn-limpiar:hover{border-color:#FFD700;color:#FFD700;}
+
+.productos{display:flex;flex-direction:column;gap:40px;padding:0 8% 40px 8%;}
 .producto{display:flex;align-items:center;justify-content:center;gap:40px;background:#1a1a1a;padding:40px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.6);transition:transform 0.4s,box-shadow 0.4s;}
 .producto:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,0.8);}
 .producto:nth-child(even){flex-direction:row-reverse;}
@@ -42,10 +54,13 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 .btn-comprar:hover{background:#0088c7;}
 .btn-compartir-producto{background:#25D366;border:none;padding:12px 16px;border-radius:10px;font-weight:bold;cursor:pointer;transition:0.3s;color:white;font-size:14px;display:flex;align-items:center;gap:6px;}
 .btn-compartir-producto:hover{background:#1ebe5d;}
+.btn-video{background:#FF0000;border:none;padding:12px 16px;border-radius:10px;font-weight:bold;cursor:pointer;transition:0.3s;color:white;font-size:14px;display:flex;align-items:center;gap:6px;text-decoration:none;}
+.btn-video:hover{background:#cc0000;}
 .toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#25D366;color:white;padding:10px 24px;border-radius:25px;font-size:14px;font-weight:bold;z-index:9999;display:none;animation:fadeIn 0.3s ease;}
 .toast.visible{display:block;}
+.no-resultados{text-align:center;color:#aaa;font-size:16px;padding:40px 0;}
 @media(max-width:768px){.producto{flex-direction:column!important;text-align:center;}.producto img,.info{width:100%;}}
-.paginacion{text-align:center;margin:40px 0;}
+.paginacion{text-align:center;margin:20px 0 40px 0;}
 .paginacion button{background:#FFD700;border:none;padding:10px 16px;margin:0 4px;border-radius:6px;font-weight:bold;cursor:pointer;transition:0.3s;}
 .paginacion button:hover,.paginacion button.active{background:#e6c200;}
 .carrusel{width:100%;max-width:280px;touch-action:pan-y;}
@@ -141,6 +156,17 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
   <h3 class="subtitle">Soluciones en sujecion y amarre</h3>
 </header>
 
+<div class="buscador-container">
+  <div class="buscador-wrap">
+    <input type="text" id="campoBusqueda" placeholder="&#128269; Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
+    <span class="buscador-icono">&#128269;</span>
+  </div>
+  <p class="buscador-resultado" id="resultadoBusqueda"></p>
+  <div style="text-align:center;">
+    <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">✕ Limpiar busqueda</button>
+  </div>
+</div>
+
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
 
@@ -194,13 +220,13 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 40px 0;}
 
 <script>
 var productos = [
-  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: null },
+  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: null, video: "https://youtube.com/shorts/rkz9mcE0Hy8" },
   { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: null },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: null },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: null, video: "https://youtube.com/shorts/7At5FSW7Ryo" },
   { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: null },
   { nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: null },
   { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: null },
-  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null },
+  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null, video: "https://youtube.com/shorts/jblTZOFIMoo" },
   { nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null },
   { nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null },
   { nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$20.180", link: "https://mpago.la/24p1YXR" },
@@ -218,13 +244,14 @@ var productos = [
   { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS", imagen: "cintaamarre-1.jpg", precio: null },
   { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17.690", link: "https://mpago.la/19BUqy2" },
   { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$30.674", link: "https://mpago.la/2nMMEf7" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s" }
+  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s", video: "https://youtube.com/shorts/6QlfBBTabbE" }
 ];
 
 var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 var linkPagoActual = "";
+var busquedaActiva = false;
 
 window.addEventListener("scroll", function() {
   var btn = document.getElementById("botonArriba");
@@ -237,6 +264,52 @@ function mostrarToast(msg) {
   t.innerText = msg;
   t.classList.add("visible");
   setTimeout(function(){ t.classList.remove("visible"); }, 2500);
+}
+
+function buscarProducto() {
+  var query = document.getElementById("campoBusqueda").value.trim().toLowerCase();
+  var btnLimpiar = document.getElementById("btnLimpiar");
+  var resultado = document.getElementById("resultadoBusqueda");
+  var paginacion = document.getElementById("paginacion");
+
+  if (query.length === 0) {
+    limpiarBusqueda();
+    return;
+  }
+
+  busquedaActiva = true;
+  btnLimpiar.style.display = "inline-block";
+  paginacion.style.display = "none";
+
+  var filtrados = productos.filter(function(p) {
+    return p.nombre.toLowerCase().indexOf(query) !== -1;
+  });
+
+  var contenedor = document.getElementById("productos-contenedor");
+  contenedor.innerHTML = "";
+
+  if (filtrados.length === 0) {
+    contenedor.innerHTML = '<p class="no-resultados">No se encontraron productos para "' + query + '"</p>';
+    resultado.innerText = "";
+    return;
+  }
+
+  resultado.innerText = filtrados.length + " producto(s) encontrado(s)";
+
+  for (var i = 0; i < filtrados.length; i++) {
+    var globalIdx = productos.indexOf(filtrados[i]);
+    contenedor.appendChild(crearTarjeta(filtrados[i], globalIdx));
+  }
+  iniciarCarruseles();
+}
+
+function limpiarBusqueda() {
+  document.getElementById("campoBusqueda").value = "";
+  document.getElementById("resultadoBusqueda").innerText = "";
+  document.getElementById("btnLimpiar").style.display = "none";
+  document.getElementById("paginacion").style.display = "block";
+  busquedaActiva = false;
+  mostrarProductos(paginaActual);
 }
 
 function compartirProducto(nombre, idx) {
@@ -315,62 +388,39 @@ function compartirPagina() {
   }
 }
 
-function irAProducto() {
-  var params = new URLSearchParams(window.location.search);
-  var idx = params.get("producto");
-  if (idx !== null) {
-    idx = parseInt(idx);
-    var pagina = Math.floor(idx / productosPorPagina) + 1;
-    paginaActual = pagina;
-    mostrarProductos(paginaActual);
-    crearPaginacion();
-    setTimeout(function() {
-      var cards = document.querySelectorAll(".producto");
-      var posEnPagina = idx % productosPorPagina;
-      if (cards[posEnPagina]) {
-        cards[posEnPagina].scrollIntoView({ behavior: "smooth", block: "center" });
-        cards[posEnPagina].style.boxShadow = "0 0 0 3px #FFD700";
-      }
-    }, 300);
+function crearTarjeta(p, globalIdx) {
+  var div = document.createElement("div");
+  div.className = "producto";
+  var imgHTML = "";
+  if (p.imagenes) {
+    var imgs = ""; var dots = "";
+    for (var i = 0; i < p.imagenes.length; i++) {
+      imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
+      dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
+    }
+    imgHTML = '<div class="carrusel">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
+  } else {
+    imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)">';
   }
+  var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
+    + '<p class="stock">&#10003; Stock disponible</p>'
+    + '<p class="envio-info">&#128666; Envio por Paq.ar / Correo Argentino</p>'
+    + '<p class="envio-info">Retiro en sucursal &nbsp;|&nbsp; 3 a 5 dias habiles</p>'
+    + '<p class="envio-gratis">&#10003; ENVIO GRATIS</p>';
+  var botones = '<div class="botones-producto">'
+    + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button>'
+    + (p.link ? '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">COMPRAR</button>' : '')
+    + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">&#9654; Ver video</a>' : '')
+    + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
+    + '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+    + ' Compartir</button>'
+    + '</div>';
+  div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
+  return div;
 }
 
-function mostrarProductos(pagina) {
-  var contenedor = document.getElementById("productos-contenedor");
-  contenedor.innerHTML = "";
-  var lista = productos.slice((pagina-1)*productosPorPagina, pagina*productosPorPagina);
-  for (var idx = 0; idx < lista.length; idx++) {
-    var p = lista[idx];
-    var globalIdx = (pagina-1)*productosPorPagina + idx;
-    var div = document.createElement("div");
-    div.className = "producto";
-    var imgHTML = "";
-    if (p.imagenes) {
-      var imgs = ""; var dots = "";
-      for (var i = 0; i < p.imagenes.length; i++) {
-        imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
-        dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
-      }
-      imgHTML = '<div class="carrusel">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
-    } else {
-      imgHTML = '<img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)">';
-    }
-    var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
-      + '<p class="stock">&#10003; Stock disponible</p>'
-      + '<p class="envio-info">&#128666; Envio por Paq.ar / Correo Argentino</p>'
-      + '<p class="envio-info">Retiro en sucursal &nbsp;|&nbsp; 3 a 5 dias habiles</p>'
-      + '<p class="envio-gratis">&#10003; ENVIO GRATIS</p>';
-    var botones = '<div class="botones-producto">'
-      + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">CONSULTAR</button>'
-      + (p.link ? '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">COMPRAR</button>' : '')
-      + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')" title="Compartir este producto">'
-      + '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
-      + ' Compartir</button>'
-      + '</div>';
-    div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
-    contenedor.appendChild(div);
-  }
-  var carruseles = contenedor.querySelectorAll(".carrusel");
+function iniciarCarruseles() {
+  var carruseles = document.querySelectorAll(".carrusel");
   for (var c = 0; c < carruseles.length; c++) {
     (function(car) {
       var startX = 0;
@@ -387,6 +437,18 @@ function mostrarProductos(pagina) {
     })(carruseles[c]);
   }
 }
+
+function mostrarProductos(pagina) {
+  var contenedor = document.getElementById("productos-contenedor");
+  contenedor.innerHTML = "";
+  var lista = productos.slice((pagina-1)*productosPorPagina, pagina*productosPorPagina);
+  for (var idx = 0; idx < lista.length; idx++) {
+    var globalIdx = (pagina-1)*productosPorPagina + idx;
+    contenedor.appendChild(crearTarjeta(lista[idx], globalIdx));
+  }
+  iniciarCarruseles();
+}
+
 function crearPaginacion() {
   var pagDiv = document.getElementById("paginacion");
   pagDiv.innerHTML = "";
@@ -417,6 +479,27 @@ function suscribirse() {
   document.getElementById("btnSuscribir").style.display = "none";
   document.getElementById("mensajeSuscripcion").style.display = "block";
 }
+
+function irAProducto() {
+  var params = new URLSearchParams(window.location.search);
+  var idx = params.get("producto");
+  if (idx !== null) {
+    idx = parseInt(idx);
+    var pagina = Math.floor(idx / productosPorPagina) + 1;
+    paginaActual = pagina;
+    mostrarProductos(paginaActual);
+    crearPaginacion();
+    setTimeout(function() {
+      var cards = document.querySelectorAll(".producto");
+      var posEnPagina = idx % productosPorPagina;
+      if (cards[posEnPagina]) {
+        cards[posEnPagina].scrollIntoView({ behavior: "smooth", block: "center" });
+        cards[posEnPagina].style.boxShadow = "0 0 0 3px #FFD700";
+      }
+    }, 300);
+  }
+}
+
 mostrarProductos(paginaActual);
 crearPaginacion();
 irAProducto();
