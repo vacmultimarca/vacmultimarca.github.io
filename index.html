@@ -23,18 +23,14 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 .btn-ws-confirmar{display:inline-block;margin-top:12px;background:#25D366;color:white;padding:10px 24px;border-radius:25px;font-size:15px;font-weight:bold;text-decoration:none;transition:0.3s;}
 .btn-ws-confirmar:hover{background:#1ebe5d;}
 @keyframes fadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
-
-/* BUSCADOR */
 .buscador-container{padding:0 8% 30px 8%;}
 .buscador-wrap{position:relative;max-width:500px;margin:0 auto;}
 .buscador-wrap input{width:100%;padding:14px 48px 14px 18px;border-radius:25px;border:2px solid #FFD700;background:#1a1a1a;color:white;font-size:16px;box-sizing:border-box;outline:none;}
 .buscador-wrap input::placeholder{color:#666;}
 .buscador-wrap input:focus{border-color:#FFD700;box-shadow:0 0 0 3px rgba(255,215,0,0.15);}
-.buscador-icono{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:#FFD700;font-size:18px;pointer-events:none;}
 .buscador-resultado{text-align:center;color:#aaa;font-size:13px;margin-top:8px;}
 .btn-limpiar{display:none;margin:8px auto 0 auto;background:transparent;border:1px solid #555;color:#aaa;padding:5px 16px;border-radius:20px;cursor:pointer;font-size:13px;}
 .btn-limpiar:hover{border-color:#FFD700;color:#FFD700;}
-
 .productos{display:flex;flex-direction:column;gap:40px;padding:0 8% 40px 8%;}
 .producto{display:flex;align-items:center;justify-content:center;gap:40px;background:#1a1a1a;padding:40px;border-radius:20px;box-shadow:0 20px 40px rgba(0,0,0,0.6);transition:transform 0.4s,box-shadow 0.4s;}
 .producto:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 60px rgba(0,0,0,0.8);}
@@ -159,7 +155,6 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 <div class="buscador-container">
   <div class="buscador-wrap">
     <input type="text" id="campoBusqueda" placeholder="&#128269; Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
-    <span class="buscador-icono">&#128269;</span>
   </div>
   <p class="buscador-resultado" id="resultadoBusqueda"></p>
   <div style="text-align:center;">
@@ -220,16 +215,16 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 
 <script>
 var productos = [
-  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: null, video: "https://youtube.com/shorts/rkz9mcE0Hy8" },
+  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: null, video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
   { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: null },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: null, video: "https://youtube.com/shorts/7At5FSW7Ryo" },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: null, video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
   { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: null },
   { nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: null },
   { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: null },
-  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null, video: "https://youtube.com/shorts/jblTZOFIMoo" },
+  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: null, video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
   { nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: null },
   { nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: null },
-  { nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$20.180", link: "https://mpago.la/24p1YXR" },
+  { nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$20.180", link: "https://mpago.la/24p1YXR", video: "https://www.youtube.com/shorts/7At5FSW7Ryo" },
   { nombre: "2 CINTA DE AMARRE DE ATRAQUE P25MM X 2 METROS", imagen: "cintaamarreatraque.jpg", precio: null },
   { nombre: "2 CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: null },
   { nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: null },
@@ -244,14 +239,13 @@ var productos = [
   { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS", imagen: "cintaamarre-1.jpg", precio: null },
   { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$17.690", link: "https://mpago.la/19BUqy2" },
   { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$30.674", link: "https://mpago.la/2nMMEf7" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s", video: "https://youtube.com/shorts/6QlfBBTabbE" }
+  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s" }
 ];
 
 var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 var linkPagoActual = "";
-var busquedaActiva = false;
 
 window.addEventListener("scroll", function() {
   var btn = document.getElementById("botonArriba");
@@ -271,34 +265,20 @@ function buscarProducto() {
   var btnLimpiar = document.getElementById("btnLimpiar");
   var resultado = document.getElementById("resultadoBusqueda");
   var paginacion = document.getElementById("paginacion");
-
-  if (query.length === 0) {
-    limpiarBusqueda();
-    return;
-  }
-
-  busquedaActiva = true;
+  if (query.length === 0) { limpiarBusqueda(); return; }
   btnLimpiar.style.display = "inline-block";
   paginacion.style.display = "none";
-
-  var filtrados = productos.filter(function(p) {
-    return p.nombre.toLowerCase().indexOf(query) !== -1;
-  });
-
+  var filtrados = productos.filter(function(p) { return p.nombre.toLowerCase().indexOf(query) !== -1; });
   var contenedor = document.getElementById("productos-contenedor");
   contenedor.innerHTML = "";
-
   if (filtrados.length === 0) {
     contenedor.innerHTML = '<p class="no-resultados">No se encontraron productos para "' + query + '"</p>';
     resultado.innerText = "";
     return;
   }
-
   resultado.innerText = filtrados.length + " producto(s) encontrado(s)";
-
   for (var i = 0; i < filtrados.length; i++) {
-    var globalIdx = productos.indexOf(filtrados[i]);
-    contenedor.appendChild(crearTarjeta(filtrados[i], globalIdx));
+    contenedor.appendChild(crearTarjeta(filtrados[i], productos.indexOf(filtrados[i])));
   }
   iniciarCarruseles();
 }
@@ -308,7 +288,6 @@ function limpiarBusqueda() {
   document.getElementById("resultadoBusqueda").innerText = "";
   document.getElementById("btnLimpiar").style.display = "none";
   document.getElementById("paginacion").style.display = "block";
-  busquedaActiva = false;
   mostrarProductos(paginaActual);
 }
 
@@ -323,10 +302,7 @@ function compartirProducto(nombre, idx) {
     }).catch(function() {
       var ta = document.createElement("textarea");
       ta.value = texto + url;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      document.body.removeChild(ta);
+      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
       mostrarToast("✓ Link copiado!");
     });
   }
@@ -336,9 +312,8 @@ function abrirLightbox(src) {
   document.getElementById("lightbox-img").src = src;
   document.getElementById("lightbox").classList.add("activo");
 }
-function cerrarLightbox() {
-  document.getElementById("lightbox").classList.remove("activo");
-}
+function cerrarLightbox() { document.getElementById("lightbox").classList.remove("activo"); }
+
 function abrirModal(nombre, link) {
   linkPagoActual = link;
   document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
@@ -350,9 +325,8 @@ function abrirModal(nombre, link) {
   document.getElementById("campo-sucursal-cp").value = "";
   document.getElementById("modalOverlay").classList.add("activo");
 }
-function cerrarModal() {
-  document.getElementById("modalOverlay").classList.remove("activo");
-}
+function cerrarModal() { document.getElementById("modalOverlay").classList.remove("activo"); }
+
 function confirmarCompra() {
   var nombre = document.getElementById("campo-nombre").value.trim();
   var telefono = document.getElementById("campo-telefono").value.trim();
@@ -362,30 +336,23 @@ function confirmarCompra() {
   var sucCP = document.getElementById("campo-sucursal-cp").value.trim();
   var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
   if (!nombre || !telefono || !sucNombre || !sucDireccion || !sucLocalidad || !sucCP) {
-    alert("Por favor completa todos los campos obligatorios (*)");
-    return;
+    alert("Por favor completa todos los campos obligatorios (*)"); return;
   }
   var datos = new FormData();
-  datos.append("Producto", producto);
-  datos.append("Nombre", nombre);
-  datos.append("Telefono", telefono);
-  datos.append("Sucursal", sucNombre);
-  datos.append("Direccion sucursal", sucDireccion);
-  datos.append("Localidad sucursal", sucLocalidad);
-  datos.append("CP sucursal", sucCP);
+  datos.append("Producto", producto); datos.append("Nombre", nombre); datos.append("Telefono", telefono);
+  datos.append("Sucursal", sucNombre); datos.append("Direccion sucursal", sucDireccion);
+  datos.append("Localidad sucursal", sucLocalidad); datos.append("CP sucursal", sucCP);
   datos.append("_subject", "Nuevo pedido: " + producto);
   fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
   cerrarModal();
   window.location.href = linkPagoActual;
 }
+
 function compartirPagina() {
   var url = "https://vacmultimarca.github.io";
   var texto = "Mira los productos de VAC Multimarca! Cintas y zunchos de amarre directo de fabrica. Envios a todo el pais: ";
-  if (navigator.share) {
-    navigator.share({ title: "VAC Multimarca", text: texto, url: url });
-  } else {
-    window.open("https://wa.me/?text=" + encodeURIComponent(texto + url), "_blank");
-  }
+  if (navigator.share) { navigator.share({ title: "VAC Multimarca", text: texto, url: url }); }
+  else { window.open("https://wa.me/?text=" + encodeURIComponent(texto + url), "_blank"); }
 }
 
 function crearTarjeta(p, globalIdx) {
@@ -413,8 +380,7 @@ function crearTarjeta(p, globalIdx) {
     + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">&#9654; Ver video</a>' : '')
     + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
     + '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
-    + ' Compartir</button>'
-    + '</div>';
+    + ' Compartir</button></div>';
   div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
   return div;
 }
@@ -443,8 +409,7 @@ function mostrarProductos(pagina) {
   contenedor.innerHTML = "";
   var lista = productos.slice((pagina-1)*productosPorPagina, pagina*productosPorPagina);
   for (var idx = 0; idx < lista.length; idx++) {
-    var globalIdx = (pagina-1)*productosPorPagina + idx;
-    contenedor.appendChild(crearTarjeta(lista[idx], globalIdx));
+    contenedor.appendChild(crearTarjeta(lista[idx], (pagina-1)*productosPorPagina + idx));
   }
   iniciarCarruseles();
 }
@@ -458,15 +423,14 @@ function crearPaginacion() {
     if (i === paginaActual) btn.classList.add("active");
     (function(num) {
       btn.addEventListener("click", function() {
-        paginaActual = num;
-        mostrarProductos(paginaActual);
-        crearPaginacion();
+        paginaActual = num; mostrarProductos(paginaActual); crearPaginacion();
         window.scrollTo({ top: 0, behavior: "smooth" });
       });
     })(i);
     pagDiv.appendChild(btn);
   }
 }
+
 function consultarProducto(producto) {
   window.open("https://wa.me/5491163824585?text=Hola,%20quiero%20consultar%20por:%20" + encodeURIComponent(producto) + "%0AEnviado%20desde%20la%20web%20VAC%20Multimarca", "_blank");
 }
@@ -479,27 +443,20 @@ function suscribirse() {
   document.getElementById("btnSuscribir").style.display = "none";
   document.getElementById("mensajeSuscripcion").style.display = "block";
 }
-
 function irAProducto() {
   var params = new URLSearchParams(window.location.search);
   var idx = params.get("producto");
   if (idx !== null) {
     idx = parseInt(idx);
-    var pagina = Math.floor(idx / productosPorPagina) + 1;
-    paginaActual = pagina;
-    mostrarProductos(paginaActual);
-    crearPaginacion();
+    paginaActual = Math.floor(idx / productosPorPagina) + 1;
+    mostrarProductos(paginaActual); crearPaginacion();
     setTimeout(function() {
       var cards = document.querySelectorAll(".producto");
-      var posEnPagina = idx % productosPorPagina;
-      if (cards[posEnPagina]) {
-        cards[posEnPagina].scrollIntoView({ behavior: "smooth", block: "center" });
-        cards[posEnPagina].style.boxShadow = "0 0 0 3px #FFD700";
-      }
+      var pos = idx % productosPorPagina;
+      if (cards[pos]) { cards[pos].scrollIntoView({ behavior: "smooth", block: "center" }); cards[pos].style.boxShadow = "0 0 0 3px #FFD700"; }
     }, 300);
   }
 }
-
 mostrarProductos(paginaActual);
 crearPaginacion();
 irAProducto();
