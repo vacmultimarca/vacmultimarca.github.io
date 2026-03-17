@@ -81,7 +81,9 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 .modal-overlay.activo{display:flex;}
 .modal{background:#1a1a1a;border-radius:20px;padding:30px;max-width:440px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.8);border:1px solid #333;margin:auto;}
 .modal-titulo{color:#FFD700;text-align:center;font-size:20px;font-weight:bold;margin:0 0 6px 0;}
-.modal-sucursal{text-align:center;color:#FFD700;font-weight:bold;font-size:13px;background:rgba(255,215,0,0.1);border:1px solid #FFD700;border-radius:10px;padding:7px 12px;margin:0 0 14px 0;}
+.modal-subtitulo{text-align:center;color:#FFD700;font-weight:bold;font-size:13px;background:rgba(255,215,0,0.1);border:1px solid #FFD700;border-radius:10px;padding:7px 12px;margin:0 0 10px 0;}
+.modal-aviso{background:rgba(255,60,60,0.12);border:1px solid #ff4444;border-radius:10px;padding:10px 14px;margin:0 0 14px 0;color:#fff;font-size:13px;line-height:1.6;}
+.modal-aviso strong{color:#ff6666;font-size:14px;}
 .modal-producto{color:#aaa;text-align:center;font-size:13px;margin:0 0 14px 0;}
 .modal-seccion{color:#FFD700;font-size:13px;font-weight:bold;margin:14px 0 6px 0;text-align:left;letter-spacing:1px;border-bottom:1px solid #333;padding-bottom:4px;}
 .modal input{width:100%;padding:11px 14px;margin-bottom:10px;border-radius:10px;border:1px solid #444;background:#111;color:white;font-size:14px;box-sizing:border-box;}
@@ -113,16 +115,19 @@ h3.subtitle{text-align:center;font-size:18px;color:white;margin:5px 0 20px 0;}
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <p class="modal-titulo">Datos para el envio</p>
-    <p class="modal-sucursal">Retiro en sucursal Paq.ar / Correo Argentino</p>
+    <p class="modal-subtitulo">&#128666; Envio por Paq.ar / Correo Argentino</p>
+    <div class="modal-aviso">
+      <strong>&#9888;&#65039; IMPORTANTE</strong><br>
+      Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.
+    </div>
     <p class="modal-producto" id="modalProductoNombre"></p>
     <p class="modal-seccion">&#128100; TUS DATOS PERSONALES</p>
     <input type="text" id="campo-nombre" placeholder="Nombre y apellido *">
     <input type="tel" id="campo-telefono" placeholder="Telefono *">
-    <p class="modal-seccion">&#128230; SUCURSAL DONDE QUERES RECIBIR TU PEDIDO</p>
-    <input type="text" id="campo-sucursal-nombre" placeholder="Nombre de la sucursal (ej: Correo Arg. Centro) *">
-    <input type="text" id="campo-sucursal-direccion" placeholder="Direccion de la sucursal *">
-    <input type="text" id="campo-sucursal-localidad" placeholder="Localidad *">
-    <input type="text" id="campo-sucursal-cp" placeholder="Codigo postal de la sucursal *">
+    <p class="modal-seccion">&#128205; TU DIRECCION</p>
+    <input type="text" id="campo-direccion" placeholder="Direccion (calle y numero) *">
+    <input type="text" id="campo-localidad" placeholder="Localidad *">
+    <input type="text" id="campo-cp" placeholder="Codigo postal *">
     <div class="modal-botones">
       <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
       <button class="btn-confirmar" onclick="confirmarCompra()">Confirmar y pagar</button>
@@ -239,8 +244,8 @@ var productos = [
   { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$13.592", link: "https://mpago.la/2dxZJ65" },
   { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$15.560", link: "https://mpago.la/2JdizqW" },
   { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$27.090", link: "https://mpago.la/2eSmqBH" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },   
-  { nombre: "1 RED PULPO 20x40", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$15.560", link: "https://mpago.la/2JdizqW" }
+  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$24.900", link: "https://mpago.la/2rjZE9s", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
+  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$15.560", link: "https://mpago.la/2JdizqW" }
 ];
 
 var productosPorPagina = 8;
@@ -309,10 +314,9 @@ function abrirModal(nombre, link) {
   document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
   document.getElementById("campo-nombre").value = "";
   document.getElementById("campo-telefono").value = "";
-  document.getElementById("campo-sucursal-nombre").value = "";
-  document.getElementById("campo-sucursal-direccion").value = "";
-  document.getElementById("campo-sucursal-localidad").value = "";
-  document.getElementById("campo-sucursal-cp").value = "";
+  document.getElementById("campo-direccion").value = "";
+  document.getElementById("campo-localidad").value = "";
+  document.getElementById("campo-cp").value = "";
   document.getElementById("modalOverlay").classList.add("activo");
 }
 function cerrarModal() { document.getElementById("modalOverlay").classList.remove("activo"); }
@@ -320,18 +324,20 @@ function cerrarModal() { document.getElementById("modalOverlay").classList.remov
 function confirmarCompra() {
   var nombre = document.getElementById("campo-nombre").value.trim();
   var telefono = document.getElementById("campo-telefono").value.trim();
-  var sucNombre = document.getElementById("campo-sucursal-nombre").value.trim();
-  var sucDireccion = document.getElementById("campo-sucursal-direccion").value.trim();
-  var sucLocalidad = document.getElementById("campo-sucursal-localidad").value.trim();
-  var sucCP = document.getElementById("campo-sucursal-cp").value.trim();
+  var direccion = document.getElementById("campo-direccion").value.trim();
+  var localidad = document.getElementById("campo-localidad").value.trim();
+  var cp = document.getElementById("campo-cp").value.trim();
   var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
-  if (!nombre || !telefono || !sucNombre || !sucDireccion || !sucLocalidad || !sucCP) {
+  if (!nombre || !telefono || !direccion || !localidad || !cp) {
     alert("Por favor completa todos los campos obligatorios (*)"); return;
   }
   var datos = new FormData();
-  datos.append("Producto", producto); datos.append("Nombre", nombre); datos.append("Telefono", telefono);
-  datos.append("Sucursal", sucNombre); datos.append("Direccion sucursal", sucDireccion);
-  datos.append("Localidad sucursal", sucLocalidad); datos.append("CP sucursal", sucCP);
+  datos.append("Producto", producto);
+  datos.append("Nombre", nombre);
+  datos.append("Telefono", telefono);
+  datos.append("Direccion", direccion);
+  datos.append("Localidad", localidad);
+  datos.append("Codigo postal", cp);
   datos.append("_subject", "Nuevo pedido: " + producto);
   fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
   cerrarModal(); window.location.href = linkPagoActual;
