@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAC Multimarca</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --azul: #1a73e8;
@@ -85,12 +86,29 @@ header::before {
   box-shadow: 0 0 25px rgba(255,214,0,0.25);
 }
 .logo-titulo { text-align: left; }
-.logo-titulo h1 { margin: 0; color: var(--amarillo); letter-spacing: 3px; font-size: 36px; text-shadow: 0 0 20px rgba(255,214,0,0.4); }
-.logo-titulo .tagline { color: #c8a800; font-size: 14px; letter-spacing: 2px; margin: 4px 0 0 0; text-transform: uppercase; }
+.logo-titulo h1 {
+  margin: 0;
+  color: var(--amarillo);
+  letter-spacing: 4px;
+  font-size: 38px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(255,214,0,0.4);
+  text-transform: uppercase;
+}
+.logo-titulo .tagline {
+  color: #c8a800;
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin: 5px 0 0 0;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 400;
+}
 @media(max-width:480px) {
   .logo-container { flex-direction: column; }
   .logo-titulo { text-align: center; }
-  .logo-titulo h1 { font-size: 26px; }
+  .logo-titulo h1 { font-size: 28px; }
 }
 .visitas { text-align: center; color: #555; font-size: 12px; margin: 10px 0 0 0; position: relative; }
 .botones-header { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 20px 0 20px; position: relative; }
@@ -146,6 +164,18 @@ header::before {
 .info { flex: 1; text-align: center; padding: 0 10px; }
 .info h3 { margin: 0 0 12px 0; font-size: 16px; color: #ddd; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.5; }
 .precio { font-size: 30px; font-weight: 900; color: var(--amarillo); margin: 8px 0; text-shadow: 0 0 15px rgba(255,214,0,0.3); }
+
+/* BADGE 20% OFF */
+.badge-descuento {
+  display: inline-flex; align-items: center; gap: 5px;
+  background: var(--rojo); color: white;
+  font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600;
+  letter-spacing: 1px; padding: 5px 13px; border-radius: 4px;
+  margin: 4px 0 10px 0; text-transform: uppercase;
+  border-left: 3px solid #b71c1c;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.3);
+}
+
 .stock { font-size: 14px; color: var(--verde); font-weight: bold; margin: 6px 0; }
 .envio-info { font-size: 13px; color: #aaa; margin: 4px 0; line-height: 1.8; }
 .envio-gratis { font-size: 14px; font-weight: bold; color: var(--verde); margin: 10px 0 16px 0; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3); border-radius: 20px; padding: 5px 16px; display: inline-block; }
@@ -376,10 +406,10 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 
 <script>
 var productos = [
-  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$26.916", link: "https://mpago.la/1gRz1MA", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
-  { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$16.900", link: "https://mpago.la/2vjW5Cy" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$16.595", link: "https://mpago.la/2oiFvGG", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: "$24.250", link: "https://mpago.la/1aej1TF" },
+  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$25.216", link: "https://mpago.la/1NE9Y56", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
+  { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$15.700", link: "https://mpago.la/2QXD5VB" },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$15.220", link: "https://mpago.la/1jVTJtQ", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: null },
   { nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: null },
   { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: "$18.806", link: "https://mpago.la/1F8C5c6" },
   { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: "$15.560", link: "https://mpago.la/2JdizqW", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
@@ -396,7 +426,7 @@ var productos = [
   { nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$13.592", link: "https://mpago.la/2dxZJ65" },
   { nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$15.003", link: "https://mpago.la/1pP9PPg" },
   { nombre: "4 PROLONGADOR PASE 25 X 43 CM DE LARGO", imagen: "prolongadorp25.jpg", precio: "$16.791", link: "https://mpago.la/1XM5Rx6" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$16.595", link: "https://mpago.la/2oiFvGG", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$15.220", link: "https://mpago.la/1jVTJtQ", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
   { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$13.592", link: "https://mpago.la/2dxZJ65" },
   { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$15.560", link: "https://mpago.la/2JdizqW" },
   { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$27.090", link: "https://mpago.la/2eSmqBH" },
@@ -528,6 +558,7 @@ function crearTarjeta(p, globalIdx) {
     imgHTML = '<div class="producto-img-wrap"><img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)"></div>';
   }
   var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
+    + '<div class="badge-descuento">&#128181; 20% OFF pagando en efectivo</div>'
     + '<p class="stock">&#10003; Stock disponible</p>'
     + '<p class="envio-info">&#128666; Envio por Paq.ar / Correo Argentino</p>'
     + '<p class="envio-info">&#128337; Llega en 3 a 5 dias habiles</p>'
