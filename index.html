@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>VAC Multimarca</title>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --azul: #1a73e8;
@@ -27,9 +26,6 @@ body {
     repeating-linear-gradient(-45deg, transparent 0px, transparent 80px, rgba(255,214,0,0.025) 80px, rgba(255,214,0,0.025) 81px);
 }
 
-/* ==============================
-   ANIMACIONES DE ENTRADA
-   ============================== */
 @keyframes entradaArriba {
   from { opacity: 0; transform: translateY(40px); }
   to   { opacity: 1; transform: translateY(0); }
@@ -43,73 +39,59 @@ body {
   to   { opacity: 1; transform: translateY(0); }
 }
 
-.logo-container img  { animation: entradaLogo 0.7s ease forwards; }
-.logo-titulo         { animation: entradaArriba 0.7s 0.2s ease both; }
-.botones-header      { animation: entradaArriba 0.7s 0.4s ease both; }
-.subtitulos          { animation: entradaArriba 0.7s 0.5s ease both; }
-.buscador-container  { animation: entradaArriba 0.7s 0.6s ease both; }
+.botones-header     { animation: entradaArriba 0.7s 0.4s ease both; }
+.subtitulos         { animation: entradaArriba 0.7s 0.5s ease both; }
+.buscador-container { animation: entradaArriba 0.7s 0.6s ease both; }
 
-/* Scroll reveal */
 .animar-scroll {
-  opacity: 0;
-  transform: translateY(35px);
+  opacity: 0; transform: translateY(35px);
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
-.animar-scroll.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.animar-scroll.visible { opacity: 1; transform: translateY(0); }
 
-/* ==============================
-   HEADER
-   ============================== */
+/* HEADER */
 header {
   background: #0d0d0d;
   border-bottom: 2px solid var(--amarillo);
   padding-bottom: 24px;
-  position: relative;
-  overflow: hidden;
+  position: relative; overflow: hidden;
 }
 header::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
   background: repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,214,0,0.025) 20px, rgba(255,214,0,0.025) 21px);
   pointer-events: none;
 }
+
 .logo-container {
   display: flex; align-items: center; justify-content: center;
-  gap: 24px; padding-top: 30px; flex-wrap: wrap; position: relative;
+  gap: 20px; padding-top: 30px; flex-wrap: wrap; position: relative;
 }
-.logo-container img {
+
+.logo-carita {
   width: 100px; height: 100px; object-fit: contain;
   border-radius: 12px; border: 2px solid var(--amarillo);
   box-shadow: 0 0 25px rgba(255,214,0,0.25);
+  flex-shrink: 0;
+  animation: entradaLogo 0.7s ease forwards;
 }
-.logo-titulo { text-align: left; }
-.logo-titulo h1 {
-  margin: 0;
-  color: var(--amarillo);
-  letter-spacing: 4px;
-  font-size: 38px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-shadow: 0 0 20px rgba(255,214,0,0.4);
-  text-transform: uppercase;
+
+/* PNG letras - negro a amarillo dorado */
+.logo-letras {
+  height: 85px; width: auto; object-fit: contain;
+  filter: invert(1) sepia(1) saturate(10) hue-rotate(3deg) brightness(1.05);
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  background: transparent;
+  animation: entradaLogo 0.7s 0.15s ease both;
 }
-.logo-titulo .tagline {
-  color: #c8a800;
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin: 5px 0 0 0;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
+
+@media(max-width:520px) {
+  .logo-container { flex-direction: column; gap: 12px; }
+  .logo-letras { height: 60px; }
+  .logo-carita { width: 80px; height: 80px; }
 }
-@media(max-width:480px) {
-  .logo-container { flex-direction: column; }
-  .logo-titulo { text-align: center; }
-  .logo-titulo h1 { font-size: 28px; }
-}
+
 .visitas { text-align: center; color: #555; font-size: 12px; margin: 10px 0 0 0; position: relative; }
 .botones-header { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 20px 0 20px; position: relative; }
 .btn-header { padding: 10px 26px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; border: none; }
@@ -128,9 +110,7 @@ header::before {
 .subtitulos h2 { color: #fff; font-size: 18px; margin: 4px 0; text-transform: uppercase; letter-spacing: 2px; font-weight: normal; }
 .subtitulos h3 { color: #777; font-size: 14px; margin: 4px 0; font-weight: normal; letter-spacing: 1px; }
 
-/* ==============================
-   BUSCADOR
-   ============================== */
+/* BUSCADOR */
 .buscador-container { padding: 20px 8%; background: #0d0d0d; border-bottom: 1px solid rgba(255,214,0,0.2); }
 .buscador-wrap { position: relative; max-width: 540px; margin: 0 auto; }
 .buscador-wrap input {
@@ -144,9 +124,7 @@ header::before {
 .btn-limpiar { display: none; margin: 8px auto 0 auto; background: transparent; border: 1px solid #444; color: #888; padding: 5px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: 0.3s; }
 .btn-limpiar:hover { border-color: var(--amarillo); color: var(--amarillo); }
 
-/* ==============================
-   PRODUCTOS
-   ============================== */
+/* PRODUCTOS */
 .productos { display: flex; flex-direction: column; }
 .producto {
   display: flex; align-items: center; justify-content: center; gap: 40px;
@@ -165,11 +143,10 @@ header::before {
 .info h3 { margin: 0 0 12px 0; font-size: 16px; color: #ddd; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.5; }
 .precio { font-size: 30px; font-weight: 900; color: var(--amarillo); margin: 8px 0; text-shadow: 0 0 15px rgba(255,214,0,0.3); }
 
-/* BADGE 20% OFF */
 .badge-descuento {
   display: inline-flex; align-items: center; gap: 5px;
   background: var(--rojo); color: white;
-  font-family: 'Oswald', sans-serif; font-size: 12px; font-weight: 600;
+  font-size: 12px; font-weight: 700;
   letter-spacing: 1px; padding: 5px 13px; border-radius: 4px;
   margin: 4px 0 10px 0; text-transform: uppercase;
   border-left: 3px solid #b71c1c;
@@ -179,32 +156,32 @@ header::before {
 .stock { font-size: 14px; color: var(--verde); font-weight: bold; margin: 6px 0; }
 .envio-info { font-size: 13px; color: #aaa; margin: 4px 0; line-height: 1.8; }
 .envio-gratis { font-size: 14px; font-weight: bold; color: var(--verde); margin: 10px 0 16px 0; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3); border-radius: 20px; padding: 5px 16px; display: inline-block; }
+
 .botones-producto { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
 .btn-consultar { background: var(--amarillo); border: none; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 13px; color: #0d0d0d; text-transform: uppercase; }
 .btn-consultar:hover { background: var(--amarillo-oscuro); transform: translateY(-1px); }
 .btn-comprar { background: var(--azul); border: none; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: white; font-size: 13px; text-transform: uppercase; }
 .btn-comprar:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+.btn-efectivo { background: transparent; border: 2px solid #4caf50; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: #4caf50; font-size: 13px; text-transform: uppercase; }
+.btn-efectivo:hover { background: #4caf50; color: #0d0d0d; transform: translateY(-1px); }
 .btn-video { background: transparent; border: 2px solid var(--rojo); padding: 11px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--rojo); font-size: 13px; display: flex; align-items: center; gap: 5px; text-decoration: none; }
 .btn-video:hover { background: var(--rojo); color: white; }
 .btn-compartir-producto { background: transparent; border: 2px solid var(--verde); padding: 11px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--verde); font-size: 13px; display: flex; align-items: center; gap: 5px; }
 .btn-compartir-producto:hover { background: var(--verde); color: white; }
 .no-resultados { text-align: center; color: #444; font-size: 16px; padding: 60px 0; }
+
 @media(max-width:768px) {
   .producto { flex-direction: column !important; padding: 28px 6%; }
   .producto-img-wrap { width: 100%; max-width: 100%; }
   .info { width: 100%; padding: 0; }
 }
 
-/* ==============================
-   PAGINACION
-   ============================== */
+/* PAGINACION */
 .paginacion { text-align: center; padding: 28px 0; background: #0d0d0d; border-top: 1px solid rgba(255,214,0,0.15); border-bottom: 1px solid rgba(255,214,0,0.15); }
 .paginacion button { background: transparent; border: 2px solid var(--amarillo); color: var(--amarillo); padding: 10px 18px; margin: 0 4px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
 .paginacion button:hover, .paginacion button.active { background: var(--amarillo); color: #0d0d0d; }
 
-/* ==============================
-   CARRUSEL
-   ============================== */
+/* CARRUSEL */
 .carrusel { width: 100%; touch-action: pan-y; }
 .carrusel img { width: 100%; border-radius: 10px; display: none; cursor: pointer; }
 .carrusel img.activa { display: block; }
@@ -212,9 +189,7 @@ header::before {
 .carrusel-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--amarillo); opacity: 0.3; cursor: pointer; display: inline-block; transition: 0.3s; }
 .carrusel-dots span.activo { opacity: 1; }
 
-/* ==============================
-   RESEÑAS
-   ============================== */
+/* RESENAS */
 .resenas { padding: 50px 8%; background: #0d0d0d; border-top: 2px solid var(--amarillo); }
 .resenas h2 { color: var(--amarillo); text-align: center; margin-bottom: 30px; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
 .resenas-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
@@ -224,24 +199,23 @@ header::before {
 .resena-texto { color: #888; font-size: 14px; font-style: italic; margin-bottom: 12px; line-height: 1.6; }
 .resena-autor { color: #c8a800; font-size: 13px; font-weight: bold; }
 
-/* ==============================
-   LIGHTBOX
-   ============================== */
+/* LIGHTBOX */
 .lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 9999; align-items: center; justify-content: center; }
 .lightbox.activo { display: flex; }
 .lightbox img { max-width: 92%; max-height: 88vh; border-radius: 10px; border: 1px solid var(--amarillo); }
 .lightbox-cerrar { position: absolute; top: 18px; right: 24px; font-size: 38px; color: white; cursor: pointer; font-weight: bold; }
 
-/* ==============================
-   MODAL
-   ============================== */
+/* MODAL */
 .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 8888; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
 .modal-overlay.activo { display: flex; }
 .modal { background: #111; border-radius: 10px; padding: 30px; max-width: 440px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid var(--amarillo); margin: auto; }
 .modal-titulo { color: var(--amarillo); text-align: center; font-size: 20px; font-weight: bold; margin: 0 0 6px 0; text-transform: uppercase; }
+.modal-titulo.efectivo { color: #4caf50; }
 .modal-subtitulo { text-align: center; color: #c8a800; font-weight: bold; font-size: 13px; background: rgba(255,214,0,0.06); border: 1px solid rgba(255,214,0,0.2); border-radius: 6px; padding: 7px 12px; margin: 0 0 10px 0; }
 .modal-aviso { background: rgba(255,60,60,0.08); border: 1px solid rgba(255,60,60,0.3); border-radius: 6px; padding: 10px 14px; margin: 0 0 14px 0; color: #ccc; font-size: 13px; line-height: 1.6; }
 .modal-aviso strong { color: #ff6666; }
+.modal-aviso.efectivo-aviso { background: rgba(76,175,80,0.08); border-color: rgba(76,175,80,0.3); }
+.modal-aviso.efectivo-aviso strong { color: #4caf50; }
 .modal-producto { color: #888; text-align: center; font-size: 13px; margin: 0 0 14px 0; }
 .modal-seccion { color: #c8a800; font-size: 12px; font-weight: bold; margin: 14px 0 6px 0; text-align: left; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
 .modal input { width: 100%; padding: 11px 14px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #2a2a2a; background: rgba(255,255,255,0.04); color: white; font-size: 14px; transition: 0.3s; }
@@ -252,19 +226,17 @@ header::before {
 .btn-cancelar:hover { border-color: #666; color: white; }
 .btn-confirmar { flex: 2; padding: 12px; border-radius: 6px; border: none; background: var(--azul); color: white; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
 .btn-confirmar:hover { background: var(--azul-oscuro); }
+.btn-confirmar-efectivo { flex: 2; padding: 12px; border-radius: 6px; border: none; background: #4caf50; color: white; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+.btn-confirmar-efectivo:hover { background: #388e3c; }
 
-/* ==============================
-   FOOTER
-   ============================== */
+/* FOOTER */
 footer { background: #080808; padding: 50px 20px; text-align: center; border-top: 2px solid var(--amarillo); }
 footer h3 { color: var(--amarillo); margin: 0 0 5px 0; font-size: 20px; letter-spacing: 2px; }
 footer a { color: #666; text-decoration: none; transition: 0.3s; }
 footer a:hover { color: #c8a800; }
 footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 
-/* ==============================
-   BOTONES FLOTANTES
-   ============================== */
+/* BOTONES FLOTANTES */
 .boton-flotante { position: fixed; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
 .boton-flotante:hover { transform: scale(1.12); }
 .boton-whatsapp { background: var(--verde); right: 25px; bottom: 25px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
@@ -273,9 +245,7 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 .boton-arriba.visible { display: flex; }
 .boton-arriba:hover { transform: translateX(-50%) scale(1.12); }
 
-/* ==============================
-   TOAST
-   ============================== */
+/* TOAST */
 .toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: var(--verde); color: white; padding: 10px 24px; border-radius: 25px; font-size: 14px; font-weight: bold; z-index: 9999; display: none; animation: fadeIn 0.3s ease; }
 .toast.visible { display: block; }
 </style>
@@ -293,9 +263,9 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
-    <p class="modal-titulo">Datos para el envio</p>
-    <p class="modal-subtitulo">&#128666; Envio por Paq.ar / Correo Argentino</p>
-    <div class="modal-aviso">
+    <p class="modal-titulo" id="modalTitulo">Datos para el envio</p>
+    <p class="modal-subtitulo" id="modalSubtitulo">&#128666; Envio por Paq.ar / Correo Argentino</p>
+    <div class="modal-aviso" id="modalAviso">
       <strong>&#9888;&#65039; IMPORTANTE</strong><br>
       Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.
     </div>
@@ -309,7 +279,8 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
     <input type="text" id="campo-cp" placeholder="Codigo postal *">
     <div class="modal-botones">
       <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn-confirmar" onclick="confirmarCompra()">Confirmar y pagar</button>
+      <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarCompra()">Confirmar y pagar</button>
+      <button class="btn-confirmar-efectivo" id="btnConfirmarEfectivo" style="display:none;" onclick="confirmarEfectivo()">Confirmar</button>
     </div>
   </div>
 </div>
@@ -317,11 +288,8 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 <!-- HEADER -->
 <header>
   <div class="logo-container">
-    <img src="logovac.jpg" alt="Logo VAC Multimarca">
-    <div class="logo-titulo">
-      <h1>VAC MULTIMARCA</h1>
-      <p class="tagline">&#9889; Somos fabricantes</p>
-    </div>
+    <img src="logovac.jpg" alt="Logo VAC Multimarca" class="logo-carita">
+    <img src="1000417470.png" alt="VAC Multimarca" class="logo-letras">
   </div>
   <p class="visitas">Visitas: <img src="https://visitor-badge.laobi.icu/badge?page_id=vacmultimarca.github.io" alt="visitas" style="vertical-align:middle;height:18px;"></p>
   <div class="botones-header">
@@ -354,7 +322,7 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
 
-<!-- RESEÑAS -->
+<!-- RESENAS -->
 <section class="resenas">
   <h2>&#11088; Lo que dicen nuestros clientes</h2>
   <div class="resenas-grid">
@@ -405,6 +373,8 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 <button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
+var linkPagoActual = "";
+
 var productos = [
   { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$25.216", link: "https://mpago.la/1NE9Y56", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
   { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$15.700", link: "https://mpago.la/2QXD5VB" },
@@ -443,7 +413,6 @@ var productos = [
 var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
-var linkPagoActual = "";
 
 function activarScroll() {
   var elementos = document.querySelectorAll(".animar-scroll");
@@ -453,7 +422,6 @@ function activarScroll() {
   }
 }
 window.addEventListener("scroll", activarScroll);
-
 window.addEventListener("scroll", function() {
   var btn = document.getElementById("botonArriba");
   if (window.scrollY > 400) { btn.classList.add("visible"); } else { btn.classList.remove("visible"); }
@@ -462,7 +430,7 @@ window.addEventListener("scroll", function() {
 function mostrarToast(msg) {
   var t = document.getElementById("toast");
   t.innerText = msg; t.classList.add("visible");
-  setTimeout(function(){ t.classList.remove("visible"); }, 2500);
+  setTimeout(function(){ t.classList.remove("visible"); }, 3000);
 }
 
 function buscarProducto() {
@@ -508,16 +476,41 @@ function compartirProducto(nombre, idx) {
 function abrirLightbox(src) { document.getElementById("lightbox-img").src = src; document.getElementById("lightbox").classList.add("activo"); }
 function cerrarLightbox() { document.getElementById("lightbox").classList.remove("activo"); }
 
-function abrirModal(nombre, link) {
-  linkPagoActual = link;
-  document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
+function limpiarCampos() {
   document.getElementById("campo-nombre").value = "";
   document.getElementById("campo-telefono").value = "";
   document.getElementById("campo-direccion").value = "";
   document.getElementById("campo-localidad").value = "";
   document.getElementById("campo-cp").value = "";
+}
+
+function abrirModal(nombre, link) {
+  linkPagoActual = link;
+  document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
+  document.getElementById("modalTitulo").innerText = "Datos para el envio";
+  document.getElementById("modalTitulo").className = "modal-titulo";
+  document.getElementById("modalSubtitulo").innerText = "📦 Envio por Paq.ar / Correo Argentino";
+  document.getElementById("modalAviso").className = "modal-aviso";
+  document.getElementById("modalAviso").innerHTML = "<strong>⚠️ IMPORTANTE</strong><br>Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.";
+  document.getElementById("btnConfirmar").style.display = "block";
+  document.getElementById("btnConfirmarEfectivo").style.display = "none";
+  limpiarCampos();
   document.getElementById("modalOverlay").classList.add("activo");
 }
+
+function abrirModalEfectivo(nombre) {
+  document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
+  document.getElementById("modalTitulo").innerText = "💵 Pago en efectivo";
+  document.getElementById("modalTitulo").className = "modal-titulo efectivo";
+  document.getElementById("modalSubtitulo").innerText = "20% de descuento pagando en efectivo";
+  document.getElementById("modalAviso").className = "modal-aviso efectivo-aviso";
+  document.getElementById("modalAviso").innerHTML = "<strong>✅ IMPORTANTE</strong><br>Completa tus datos y te contactamos por WhatsApp para coordinar el pago y el envio.";
+  document.getElementById("btnConfirmar").style.display = "none";
+  document.getElementById("btnConfirmarEfectivo").style.display = "block";
+  limpiarCampos();
+  document.getElementById("modalOverlay").classList.add("activo");
+}
+
 function cerrarModal() { document.getElementById("modalOverlay").classList.remove("activo"); }
 
 function confirmarCompra() {
@@ -529,11 +522,32 @@ function confirmarCompra() {
   var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
   if (!nombre || !telefono || !direccion || !localidad || !cp) { alert("Por favor completa todos los campos obligatorios (*)"); return; }
   var datos = new FormData();
-  datos.append("Producto", producto); datos.append("Nombre", nombre); datos.append("Telefono", telefono);
+  datos.append("Producto", producto);
+  datos.append("Nombre", nombre); datos.append("Telefono", telefono);
   datos.append("Direccion", direccion); datos.append("Localidad", localidad); datos.append("Codigo postal", cp);
-  datos.append("_subject", "Nuevo pedido: " + producto);
+  datos.append("_subject", "Nuevo pedido MP: " + producto);
   fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
-  cerrarModal(); window.location.href = linkPagoActual;
+  cerrarModal();
+  window.location.href = linkPagoActual;
+}
+
+function confirmarEfectivo() {
+  var nombre = document.getElementById("campo-nombre").value.trim();
+  var telefono = document.getElementById("campo-telefono").value.trim();
+  var direccion = document.getElementById("campo-direccion").value.trim();
+  var localidad = document.getElementById("campo-localidad").value.trim();
+  var cp = document.getElementById("campo-cp").value.trim();
+  var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
+  if (!nombre || !telefono || !direccion || !localidad || !cp) { alert("Por favor completa todos los campos obligatorios (*)"); return; }
+  var datos = new FormData();
+  datos.append("Producto", producto);
+  datos.append("FORMA DE PAGO", "* EFECTIVO - 20% DESCUENTO *");
+  datos.append("Nombre", nombre); datos.append("Telefono", telefono);
+  datos.append("Direccion", direccion); datos.append("Localidad", localidad); datos.append("Codigo postal", cp);
+  datos.append("_subject", "PAGO EN EFECTIVO: " + producto);
+  fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
+  cerrarModal();
+  mostrarToast("✓ Pedido recibido! Te contactamos pronto.");
 }
 
 function compartirPagina() {
@@ -557,19 +571,23 @@ function crearTarjeta(p, globalIdx) {
   } else {
     imgHTML = '<div class="producto-img-wrap"><img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)"></div>';
   }
+
   var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
-    + '<div class="badge-descuento">&#128181; 20% OFF pagando en efectivo</div>'
+    + '<div class="badge-descuento">💵 20% OFF pagando en efectivo</div>'
     + '<p class="stock">&#10003; Stock disponible</p>'
     + '<p class="envio-info">&#128666; Envio por Paq.ar / Correo Argentino</p>'
     + '<p class="envio-info">&#128337; Llega en 3 a 5 dias habiles</p>'
     + '<p class="envio-gratis">&#10003; ENVIO GRATIS</p>';
+
   var botones = '<div class="botones-producto">'
     + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">Consultar</button>'
     + (p.link ? '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">Comprar</button>' : '')
+    + '<button class="btn-efectivo" onclick="abrirModalEfectivo(\'' + p.nombre.replace(/'/g,"\\'") + '\')">💵 Efectivo</button>'
     + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">&#9654; Video</a>' : '')
     + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
     + '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
     + ' Compartir</button></div>';
+
   div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
   return div;
 }
