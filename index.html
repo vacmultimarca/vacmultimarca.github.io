@@ -67,28 +67,29 @@ header::before {
 
 .logo-container {
   display: flex; align-items: center; justify-content: center;
-  gap: 20px; padding-top: 30px; flex-wrap: wrap; position: relative;
+  gap: 24px; padding-top: 30px; flex-wrap: wrap; position: relative;
 }
 
 .logo-carita {
-  width: 90px; height: 90px; object-fit: contain;
+  width: 100px; height: 100px; object-fit: contain;
   border-radius: 12px; border: 2px solid var(--amarillo);
   box-shadow: 0 0 25px rgba(255,214,0,0.25);
   flex-shrink: 0;
 }
 
-/* LOGO DE LETRAS RÚSTICO CONFIGURADO */
-.logo-letras-img {
-    height: 55px;
-    width: auto;
-    display: block;
-    object-fit: contain;
-}
-
 .logo-titulo { text-align: left; }
-
+.logo-titulo h1 {
+  margin: 0;
+  color: var(--amarillo);
+  letter-spacing: 4px;
+  font-size: 38px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(255,214,0,0.4);
+  text-transform: uppercase;
+}
 .logo-titulo .tagline {
-  color: var(--amarillo); 
+  color: #c8a800;
   font-size: 13px;
   letter-spacing: 2px;
   margin: 5px 0 0 0;
@@ -98,10 +99,10 @@ header::before {
 }
 
 @media(max-width:520px) {
-  .logo-container { flex-direction: row; gap: 15px; justify-content: center; }
-  .logo-carita { width: 65px; height: 65px; }
-  .logo-letras-img { width: 190px; }
-  .logo-titulo { text-align: left; }
+  .logo-container { flex-direction: column; gap: 12px; }
+  .logo-carita { width: 80px; height: 80px; }
+  .logo-titulo h1 { font-size: 28px; letter-spacing: 2px; }
+  .logo-titulo { text-align: center; }
 }
 
 .visitas { text-align: center; color: #555; font-size: 12px; margin: 10px 0 0 0; position: relative; }
@@ -266,24 +267,26 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
 
 <div class="toast" id="toast"></div>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
-  <span class="lightbox-cerrar">×</span>
+  <span class="lightbox-cerrar">&times;</span>
   <img id="lightbox-img" src="" alt="Foto ampliada">
 </div>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <p class="modal-titulo" id="modalTitulo">Datos para el envio</p>
-    <p class="modal-subtitulo" id="modalSubtitulo">🚚 Envio por Paq.ar / Correo Argentino</p>
+    <p class="modal-subtitulo" id="modalSubtitulo">&#128666; Envio por Paq.ar / Correo Argentino</p>
     <div class="modal-aviso" id="modalAviso">
-      <strong>⚠️ IMPORTANTE</strong><br>
+      <strong>&#9888;&#65039; IMPORTANTE</strong><br>
       Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.
     </div>
     <p class="modal-producto" id="modalProductoNombre"></p>
-    <p class="modal-seccion">👤 Tus datos personales</p>
+    <p class="modal-seccion">&#128100; Tus datos personales</p>
     <input type="text" id="campo-nombre" placeholder="Nombre y apellido *">
     <input type="tel" id="campo-telefono" placeholder="Telefono *">
-    <p class="modal-seccion">📍 Tu direccion</p>
+    <p class="modal-seccion">&#128205; Tu direccion</p>
     <input type="text" id="campo-direccion" placeholder="Direccion (calle y numero) *">
     <input type="text" id="campo-localidad" placeholder="Localidad *">
     <input type="text" id="campo-cp" placeholder="Codigo postal *">
@@ -295,18 +298,16 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
   </div>
 </div>
 
+<!-- HEADER -->
 <header>
   <div class="logo-container">
     <img src="logovac.jpg" alt="Logo VAC Multimarca" class="logo-carita">
-    
     <div class="logo-titulo">
-      <img src="1000417467.png" alt="VAC MULTIMARCA" class="logo-letras-img">
-      <p class="tagline">⚡ Somos fabricantes</p>
+      <h1>VAC MULTIMARCA</h1>
+      <p class="tagline">&#9889; Somos fabricantes</p>
     </div>
   </div>
-  
   <p class="visitas">Visitas: <img src="https://visitor-badge.laobi.icu/badge?page_id=vacmultimarca.github.io" alt="visitas" style="vertical-align:middle;height:18px;"></p>
-  
   <div class="botones-header">
     <button class="btn-header btn-suscribir" id="btnSuscribir" onclick="suscribirse()">Suscribirme</button>
     <button class="btn-header btn-compartir-header" onclick="compartirPagina()">Compartir pagina</button>
@@ -318,44 +319,48 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
   </div>
   <div class="subtitulos">
     <h2>Soluciones en sujecion y amarre</h2>
-    <h3>Fabricacion propia • Envio a todo el pais • Envio gratis</h3>
+    <h3>Fabricacion propia &bull; Envio a todo el pais &bull; Envio gratis</h3>
   </div>
 </header>
 
+<!-- BUSCADOR -->
 <div class="buscador-container">
   <div class="buscador-wrap">
-    <input type="text" id="campoBusqueda" placeholder="🔍 Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
+    <input type="text" id="campoBusqueda" placeholder="&#128269; Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
   </div>
   <p class="buscador-resultado" id="resultadoBusqueda"></p>
   <div style="text-align:center;">
-    <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">✕ Limpiar busqueda</button>
+    <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">&#10005; Limpiar busqueda</button>
   </div>
 </div>
 
+<!-- PRODUCTOS -->
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
 
+<!-- RESENAS -->
 <section class="resenas">
-  <h2>⭐ Lo que dicen nuestros clientes</h2>
+  <h2>&#11088; Lo que dicen nuestros clientes</h2>
   <div class="resenas-grid">
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="resena-texto">"Excelente calidad, las cintas son muy resistentes. Las uso para sujetar carga en mi camioneta y no fallaron nunca."</p>
       <p class="resena-autor">- Marcelo R., Buenos Aires</p>
     </div>
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="resena-texto">"Muy buena atencion, llegaron rapido y el producto es de primera. Lo recomiendo a todos los que necesiten amarre."</p>
       <p class="resena-autor">- Diego M., Tigre</p>
     </div>
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#11088;&#11088;&#11088;&#11088;&#11088;</div>
       <p class="resena-texto">"Compre el zuncho y es increible. Se nota que es fabricacion propia, mucho mejor que lo que venden en ferias."</p>
       <p class="resena-autor">- Carlos V., San Fernando</p>
     </div>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <div style="max-width:600px;margin:0 auto;">
     <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px;border-radius:10px;border:2px solid var(--amarillo);margin-bottom:12px;box-shadow:0 0 20px rgba(255,214,0,0.2);">
@@ -369,18 +374,19 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
     <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#c8a800;">@vac_multimarca</a></p>
     <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#c8a800;">@vacmultimarca</a></p>
     <hr>
-    <p style="color:#444;font-size:13px;">Pagos seguros con Mercado Pago • Envios por Paq.ar - Correo Argentino</p>
+    <p style="color:#444;font-size:13px;">Pagos seguros con Mercado Pago &bull; Envios por Paq.ar - Correo Argentino</p>
     <p style="color:#333;font-size:12px;margin-top:16px;">2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
 
+<!-- BOTONES FLOTANTES -->
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
     <path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.1 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.9-11.9c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5.1 8.1 7.1 1.1.5 2 .8 2.7 1 1.1.4 2.2.3 3 .2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.2-.2-.5-.3-1-.5z"/>
   </svg>
 </a>
 <a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado">MP</a>
-<button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
+<button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 
 <script>
 var linkPagoActual = "";
@@ -584,16 +590,16 @@ function crearTarjeta(p, globalIdx) {
 
   var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
     + '<div class="badge-descuento">💵 20% OFF pagando en efectivo</div>'
-    + '<p class="stock">✓ Stock disponible</p>'
-    + '<p class="envio-info">🚚 Envio por Paq.ar / Correo Argentino</p>'
-    + '<p class="envio-info">🕑 Llega en 3 a 5 dias habiles</p>'
-    + '<p class="envio-gratis">✓ ENVIO GRATIS</p>';
+    + '<p class="stock">&#10003; Stock disponible</p>'
+    + '<p class="envio-info">&#128666; Envio por Paq.ar / Correo Argentino</p>'
+    + '<p class="envio-info">&#128337; Llega en 3 a 5 dias habiles</p>'
+    + '<p class="envio-gratis">&#10003; ENVIO GRATIS</p>';
 
   var botones = '<div class="botones-producto">'
     + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">Consultar</button>'
     + (p.link ? '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">Comprar</button>' : '')
     + '<button class="btn-efectivo" onclick="abrirModalEfectivo(\'' + p.nombre.replace(/'/g,"\\'") + '\')">💵 Efectivo</button>'
-    + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">▶ Video</a>' : '')
+    + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">&#9654; Video</a>' : '')
     + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
     + '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
     + ' Compartir</button></div>';
