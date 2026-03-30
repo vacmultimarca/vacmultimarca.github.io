@@ -137,79 +137,70 @@ header::before {
 .btn-limpiar { display: none; margin: 8px auto 0 auto; background: transparent; border: 1px solid #444; color: #888; padding: 5px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: 0.3s; }
 .btn-limpiar:hover { border-color: var(--amarillo); color: var(--amarillo); }
 
-/* PRODUCTOS - MODIFICADO PARA 2 COLUMNAS */
-.productos { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; 
-  padding: 30px 8%;
-}
-
+/* PRODUCTOS */
+.productos { display: flex; flex-direction: column; }
 .producto {
-  display: flex; 
-  flex-direction: column; /* Siempre en columna dentro de su celda */
-  align-items: center; 
-  justify-content: flex-start; 
-  gap: 15px;
-  padding: 24px; 
-  position: relative; 
-  transition: background 0.3s;
-  border: 1px solid rgba(255,214,0,0.1);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.01);
+  display: flex; align-items: center; justify-content: center; gap: 40px;
+  padding: 36px 8%; position: relative; transition: background 0.3s;
+  border-bottom: 1px solid rgba(255,214,0,0.07);
 }
-
 .producto::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: 0.3s; }
 .producto:hover::before { background: var(--amarillo); }
 .producto:hover { background: rgba(255,214,0,0.03); }
-
-/* Quitamos el alternado de filas (nth-child even) para que sea uniforme en la grilla */
-.producto:nth-child(even) { flex-direction: column; background: rgba(255,255,255,0.01); }
-
-.producto-img-wrap { width: 100%; max-width: 250px; flex-shrink: 0; }
+.producto:nth-child(even) { flex-direction: row-reverse; background: rgba(255,255,255,0.01); }
+.producto:nth-child(even):hover { background: rgba(255,214,0,0.04); }
+.producto-img-wrap { width: 38%; max-width: 300px; flex-shrink: 0; }
 .producto-img-wrap img { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: block; border: 1px solid #2a2a2a; }
 .producto-img-wrap img:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(255,214,0,0.12); }
-
-.info { flex: 1; text-align: center; padding: 0; width: 100%; }
-.info h3 { margin: 0 0 10px 0; font-size: 14px; color: #ddd; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; min-height: 40px; display: flex; align-items: center; justify-content: center; }
-.precio { font-size: 24px; font-weight: 900; color: var(--amarillo); margin: 6px 0; text-shadow: 0 0 15px rgba(255,214,0,0.3); }
+.info { flex: 1; text-align: center; padding: 0 10px; }
+.info h3 { margin: 0 0 12px 0; font-size: 16px; color: #ddd; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.5; }
+.precio { font-size: 30px; font-weight: 900; color: var(--amarillo); margin: 8px 0; text-shadow: 0 0 15px rgba(255,214,0,0.3); }
 
 .badge-descuento {
   display: inline-flex; align-items: center; gap: 5px;
   background: var(--rojo); color: white;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.5px; padding: 4px 10px; border-radius: 4px;
-  margin: 2px 0 8px 0; text-transform: uppercase;
+  font-size: 12px; font-weight: 700;
+  letter-spacing: 1px; padding: 5px 13px; border-radius: 4px;
+  margin: 4px 0 10px 0; text-transform: uppercase;
   border-left: 3px solid #b71c1c;
+  box-shadow: 0 2px 8px rgba(229,57,53,0.3);
 }
 
-.stock { font-size: 13px; color: var(--verde); font-weight: bold; margin: 4px 0; }
-.envio-info { font-size: 12px; color: #aaa; margin: 2px 0; line-height: 1.6; }
-.envio-gratis { font-size: 12px; font-weight: bold; color: var(--verde); margin: 8px 0 12px 0; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3); border-radius: 20px; padding: 4px 12px; display: inline-block; }
+.stock { font-size: 14px; color: var(--verde); font-weight: bold; margin: 6px 0; }
+.envio-info { font-size: 13px; color: #aaa; margin: 4px 0; line-height: 1.8; }
+.envio-gratis { font-size: 14px; font-weight: bold; color: var(--verde); margin: 10px 0 16px 0; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3); border-radius: 20px; padding: 5px 16px; display: inline-block; }
 
-.botones-producto { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 10px; width: 100%; }
-.btn-consultar, .btn-comprar, .btn-efectivo, .btn-video, .btn-compartir-producto { 
-  padding: 10px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 12px; text-transform: uppercase; flex: 1; min-width: 100px;
-}
-.btn-consultar { background: var(--amarillo); border: none; color: #0d0d0d; }
-.btn-comprar { background: var(--azul); border: none; color: white; }
-.btn-efectivo { background: transparent; border: 2px solid #4caf50; color: #4caf50; }
-.btn-video { border: 2px solid var(--rojo); color: var(--rojo); text-decoration: none; justify-content: center; }
-.btn-compartir-producto { border: 2px solid var(--verde); color: var(--verde); }
+.botones-producto { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 6px; }
+.btn-consultar { background: var(--amarillo); border: none; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 13px; color: #0d0d0d; text-transform: uppercase; }
+.btn-consultar:hover { background: var(--amarillo-oscuro); transform: translateY(-1px); }
+.btn-comprar { background: var(--azul); border: none; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: white; font-size: 13px; text-transform: uppercase; }
+.btn-comprar:hover { background: var(--azul-oscuro); transform: translateY(-1px); }
+.btn-efectivo { background: transparent; border: 2px solid #4caf50; padding: 11px 18px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: #4caf50; font-size: 13px; text-transform: uppercase; }
+.btn-efectivo:hover { background: #4caf50; color: #0d0d0d; transform: translateY(-1px); }
+.btn-video { background: transparent; border: 2px solid var(--rojo); padding: 11px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--rojo); font-size: 13px; display: flex; align-items: center; gap: 5px; text-decoration: none; }
+.btn-video:hover { background: var(--rojo); color: white; }
+.btn-compartir-producto { background: transparent; border: 2px solid var(--verde); padding: 11px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; color: var(--verde); font-size: 13px; display: flex; align-items: center; gap: 5px; }
+.btn-compartir-producto:hover { background: var(--verde); color: white; }
+.no-resultados { text-align: center; color: #444; font-size: 16px; padding: 60px 0; }
 
-@media(max-width:850px) {
-  .productos { grid-template-columns: repeat(2, 1fr); padding: 20px 4%; gap: 15px; }
-}
-
-@media(max-width:600px) {
-  .productos { grid-template-columns: 1fr; } /* En celulares vuelve a 1 columna */
-  .producto-img-wrap { max-width: 100%; }
+@media(max-width:768px) {
+  .producto { flex-direction: column !important; padding: 28px 6%; }
+  .producto-img-wrap { width: 100%; max-width: 100%; }
+  .info { width: 100%; padding: 0; }
 }
 
 /* PAGINACION */
 .paginacion { text-align: center; padding: 28px 0; background: #0d0d0d; border-top: 1px solid rgba(255,214,0,0.15); border-bottom: 1px solid rgba(255,214,0,0.15); }
 .paginacion button { background: transparent; border: 2px solid var(--amarillo); color: var(--amarillo); padding: 10px 18px; margin: 0 4px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
 .paginacion button:hover, .paginacion button.active { background: var(--amarillo); color: #0d0d0d; }
+
+/* CARRUSEL */
+.carrusel { width: 100%; touch-action: pan-y; }
+.carrusel img { width: 100%; border-radius: 10px; display: none; cursor: pointer; }
+.carrusel img.activa { display: block; }
+.carrusel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 8px; }
+.carrusel-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--amarillo); opacity: 0.3; cursor: pointer; display: inline-block; transition: 0.3s; }
+.carrusel-dots span.activo { opacity: 1; }
 
 /* RESENAS */
 .resenas { padding: 50px 8%; background: #0d0d0d; border-top: 2px solid var(--amarillo); }
@@ -408,28 +399,10 @@ var productos = [
   { nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: "$13.400", link: "https://mpago.la/2b6zyZu" },
   { nombre: "2 CINTA P40MM CON ELASTICO X 1 METRO", imagen: "cintap40mmconelastico.jpg", precio: "$24.080", link: "https://mpago.la/28ncLMk" },
   { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico-1.jpg","2zuncho2tramosp40mmelastico-2.jpg","2zuncho2tramosp40mmelastico-3.jpg"], precio: "$30.550", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$14.915", link: "https://mpago.la/2FtevVa" },
-  { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico.jpg"], precio: "$30.550", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$13.895", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$14.920", link: "https://mpago.la/31mRP7T" },
-  { nombre: "4 PROLONGADOR PASE 25 X 43 CM DE LARGO", imagen: "prolongadorp25.jpg", precio: "$15.056", link: "https://mpago.la/2r1YYCe" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$15.470", link: "https://mpago.la/2Rkd66D", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$13.895", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$15.762", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$27.472", link: "https://mpago.la/1zP1BRh" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$25.304", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$15.762", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$21.356", link: "https://mpago.la/2gZAp6n" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$25.304", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$16.400", link: "https://mpago.la/2hBmTJh" },
-  { nombre: "2 CINTAS DE AMARRE P25MM 2 TRAMOS HEBILLA DE ATRAQUE X 2 METROS", imagenes: ["2CINTASDEAMARREP25MMX2TRAMOSX2METROS.jpg"], precio: "$27.250", link: "https://mpago.la/1Y1cCBp" },
-  { nombre: "1 PARRILLA KTM 200 OK", imagenes: ["ktm200.jpg"], precio: "$85.400", link: "https://mpago.la/2MAjEMN" }
+  { nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$14.915", link: "https://mpago.la/2FtevVa" }
 ];
 
-/* MODIFICADO: AHORA SON 16 POR PAGINA */
-var productosPorPagina = 16;
+var productosPorPagina = 8;
 var paginaActual = 1;
 var totalPaginas = Math.ceil(productos.length / productosPorPagina);
 
@@ -592,9 +565,10 @@ function crearTarjeta(p, globalIdx) {
   }
 
   var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
-    + '<div class="badge-descuento">💵 20% OFF en Efectivo</div>'
+    + '<div class="badge-descuento">💵 20% OFF pagando en efectivo</div>'
     + '<p class="stock">✓ Stock disponible</p>'
-    + '<p class="envio-info">🚚 Envio a todo el pais</p>'
+    + '<p class="envio-info">🚚 Envio por Paq.ar / Correo Argentino</p>'
+    + '<p class="envio-info">🕑 Llega en 3 a 5 dias habiles</p>'
     + '<p class="envio-gratis">✓ ENVIO GRATIS</p>';
 
   var botones = '<div class="botones-producto">'
@@ -603,8 +577,8 @@ function crearTarjeta(p, globalIdx) {
     + '<button class="btn-efectivo" onclick="abrirModalEfectivo(\'' + p.nombre.replace(/'/g,"\\'") + '\')">💵 Efectivo</button>'
     + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">▶ Video</a>' : '')
     + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
-    + '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
-    + '</button></div>';
+    + '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
+    + ' Compartir</button></div>';
 
   div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
   return div;
@@ -641,7 +615,6 @@ function mostrarProductos(pagina) {
 function crearPaginacion() {
   var pagDiv = document.getElementById("paginacion");
   pagDiv.innerHTML = "";
-  totalPaginas = Math.ceil(productos.length / productosPorPagina);
   for (var i = 1; i <= totalPaginas; i++) {
     var btn = document.createElement("button");
     btn.innerText = i;
