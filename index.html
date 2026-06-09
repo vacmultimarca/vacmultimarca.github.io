@@ -15,9 +15,7 @@
   --verde: #25D366;
   --rojo: #e53935;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 body {
   font-family: Arial, sans-serif;
   color: #fff;
@@ -26,291 +24,118 @@ body {
     repeating-linear-gradient(45deg, transparent 0px, transparent 80px, rgba(255,214,0,0.03) 80px, rgba(255,214,0,0.03) 81px),
     repeating-linear-gradient(-45deg, transparent 0px, transparent 80px, rgba(255,214,0,0.025) 80px, rgba(255,214,0,0.025) 81px);
 }
-
-@keyframes entradaArriba {
-  from { opacity: 0; transform: translateY(40px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-@keyframes entradaLogo {
-  from { opacity: 0; transform: scale(0.7); }
-  to   { opacity: 1; transform: scale(1); }
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(-8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.logo-carita       { animation: entradaLogo 0.7s ease forwards; }
-.logo-titulo       { animation: entradaArriba 0.7s 0.2s ease both; }
-.botones-header    { animation: entradaArriba 0.7s 0.4s ease both; }
-.subtitulos        { animation: entradaArriba 0.7s 0.5s ease both; }
-.buscador-container{ animation: entradaArriba 0.7s 0.6s ease both; }
-
-.animar-scroll {
-  opacity: 0; transform: translateY(35px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-.animar-scroll.visible { opacity: 1; transform: translateY(0); }
-
-/* HEADER */
-header {
-  background: #0d0d0d;
-  border-bottom: 2px solid var(--amarillo);
-  padding-bottom: 24px;
-  position: relative; overflow: hidden;
-}
-header::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background: repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,214,0,0.025) 20px, rgba(255,214,0,0.025) 21px);
-  pointer-events: none;
-}
-
-.logo-container {
-  display: flex; align-items: center; justify-content: center;
-  gap: 24px; padding-top: 30px; flex-wrap: wrap; position: relative;
-}
-
-.logo-carita {
-  width: 100px; height: 100px; object-fit: contain;
-  border-radius: 12px; border: 2px solid var(--amarillo);
-  box-shadow: 0 0 25px rgba(255,214,0,0.25);
-  flex-shrink: 0;
-}
-
-.logo-titulo { text-align: left; }
-.logo-titulo h1 {
-  margin: 0;
-  color: var(--amarillo);
-  letter-spacing: 4px;
-  font-size: 38px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 700;
-  text-shadow: 0 0 20px rgba(255,214,0,0.4);
-  text-transform: uppercase;
-}
-.logo-titulo .tagline {
-  color: #c8a800;
-  font-size: 13px;
-  letter-spacing: 2px;
-  margin: 5px 0 0 0;
-  text-transform: uppercase;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-}
-
-@media(max-width:520px) {
-  .logo-container { flex-direction: column; gap: 12px; }
-  .logo-carita { width: 80px; height: 80px; }
-  .logo-titulo h1 { font-size: 28px; letter-spacing: 2px; }
-  .logo-titulo { text-align: center; }
-}
-
-.visitas { text-align: center; color: #555; font-size: 12px; margin: 10px 0 0 0; position: relative; }
-.botones-header { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 14px 20px 0 20px; position: relative; }
-.btn-header { padding: 10px 26px; border-radius: 6px; font-size: 14px; font-weight: bold; cursor: pointer; letter-spacing: 1px; transition: 0.3s; text-transform: uppercase; border: none; }
-.btn-suscribir { background: transparent; border: 2px solid var(--amarillo); color: var(--amarillo); }
-.btn-suscribir:hover { background: var(--amarillo); color: #0d0d0d; }
-.btn-compartir-header { background: transparent; border: 2px solid var(--verde); color: var(--verde); }
-.btn-compartir-header:hover { background: var(--verde); color: white; }
-.mensaje-suscripcion {
-  display: none; text-align: center; color: var(--amarillo); font-size: 14px;
-  margin: 10px 20px; padding: 16px 20px; border: 1px solid var(--amarillo);
-  border-radius: 8px; background: rgba(255,214,0,0.06); animation: fadeIn 0.5s ease; position: relative;
-}
-.btn-ws-confirmar { display: inline-block; margin-top: 12px; background: var(--verde); color: white; padding: 10px 24px; border-radius: 6px; font-size: 14px; font-weight: bold; text-decoration: none; transition: 0.3s; }
-.btn-ws-confirmar:hover { background: #1ebe5d; }
-.subtitulos { text-align: center; margin: 18px 0 0 0; position: relative; }
-.subtitulos h2 { color: #fff; font-size: 18px; margin: 4px 0; text-transform: uppercase; letter-spacing: 2px; font-weight: normal; }
-.subtitulos h3 { color: #777; font-size: 14px; margin: 4px 0; font-weight: normal; letter-spacing: 1px; }
-
-/* BUSCADOR */
-.buscador-container { padding: 20px 8%; background: #0d0d0d; border-bottom: 1px solid rgba(255,214,0,0.2); }
-.buscador-wrap { position: relative; max-width: 540px; margin: 0 auto; }
-.buscador-wrap input {
-  width: 100%; padding: 14px 20px; border-radius: 8px;
-  border: 2px solid var(--amarillo); background: rgba(255,255,255,0.04);
-  color: white; font-size: 15px; outline: none; transition: 0.3s;
-}
-.buscador-wrap input::placeholder { color: #666; }
-.buscador-wrap input:focus { box-shadow: 0 0 0 3px rgba(255,214,0,0.2); }
-.buscador-resultado { text-align: center; color: #888; font-size: 13px; margin-top: 8px; }
-.btn-limpiar { display: none; margin: 8px auto 0 auto; background: transparent; border: 1px solid #444; color: #888; padding: 5px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: 0.3s; }
-.btn-limpiar:hover { border-color: var(--amarillo); color: var(--amarillo); }
-
-/* PRODUCTOS - MODIFICADO PARA 2 COLUMNAS */
-.productos { 
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 20px; 
-  padding: 30px 8%;
-}
-
-.producto {
-  display: flex; 
-  flex-direction: column; /* Siempre en columna dentro de su celda */
-  align-items: center; 
-  justify-content: flex-start; 
-  gap: 15px;
-  padding: 24px; 
-  position: relative; 
-  transition: background 0.3s;
-  border: 1px solid rgba(255,214,0,0.1);
-  border-radius: 12px;
-  background: rgba(255,255,255,0.01);
-}
-
-.producto::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: transparent; transition: 0.3s; }
-.producto:hover::before { background: var(--amarillo); }
-.producto:hover { background: rgba(255,214,0,0.03); }
-
-/* Quitamos el alternado de filas (nth-child even) para que sea uniforme en la grilla */
-.producto:nth-child(even) { flex-direction: column; background: rgba(255,255,255,0.01); }
-
-.producto-img-wrap { width: 100%; max-width: 250px; flex-shrink: 0; }
-.producto-img-wrap img { width: 100%; border-radius: 10px; cursor: pointer; transition: transform 0.3s, box-shadow 0.3s; display: block; border: 1px solid #2a2a2a; }
-.producto-img-wrap img:hover { transform: scale(1.03); box-shadow: 0 8px 30px rgba(255,214,0,0.12); }
-
-.info { flex: 1; text-align: center; padding: 0; width: 100%; }
-.info h3 { margin: 0 0 10px 0; font-size: 14px; color: #ddd; text-transform: uppercase; letter-spacing: 0.5px; line-height: 1.4; min-height: 40px; display: flex; align-items: center; justify-content: center; }
-.precio { font-size: 24px; font-weight: 900; color: var(--amarillo); margin: 6px 0; text-shadow: 0 0 15px rgba(255,214,0,0.3); }
-
-.badge-descuento {
-  display: inline-flex; align-items: center; gap: 5px;
-  background: var(--rojo); color: white;
-  font-size: 11px; font-weight: 700;
-  letter-spacing: 0.5px; padding: 4px 10px; border-radius: 4px;
-  margin: 2px 0 8px 0; text-transform: uppercase;
-  border-left: 3px solid #b71c1c;
-}
-
-.stock { font-size: 13px; color: var(--verde); font-weight: bold; margin: 4px 0; }
-.envio-info { font-size: 12px; color: #aaa; margin: 2px 0; line-height: 1.6; }
-.envio-gratis { font-size: 12px; font-weight: bold; color: var(--verde); margin: 8px 0 12px 0; background: rgba(37,211,102,0.08); border: 1px solid rgba(37,211,102,0.3); border-radius: 20px; padding: 4px 12px; display: inline-block; }
-
-.botones-producto { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; margin-top: 10px; width: 100%; }
-.btn-consultar, .btn-comprar, .btn-efectivo, .btn-video, .btn-compartir-producto { 
-  padding: 10px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 12px; text-transform: uppercase; flex: 1; min-width: 100px;
-}
-.btn-consultar { background: var(--amarillo); border: none; color: #0d0d0d; }
-.btn-comprar { background: var(--azul); border: none; color: white; }
-.btn-efectivo { background: transparent; border: 2px solid #4caf50; color: #4caf50; }
-.btn-video { border: 2px solid var(--rojo); color: var(--rojo); text-decoration: none; justify-content: center; }
-.btn-compartir-producto { border: 2px solid var(--verde); color: var(--verde); }
-
-@media(max-width:850px) {
-  .productos { grid-template-columns: repeat(2, 1fr); padding: 20px 4%; gap: 15px; }
-}
-
-@media(max-width:600px) {
-  .productos { grid-template-columns: 1fr; } /* En celulares vuelve a 1 columna */
-  .producto-img-wrap { max-width: 100%; }
-}
-
-/* PAGINACION */
-.paginacion { text-align: center; padding: 28px 0; background: #0d0d0d; border-top: 1px solid rgba(255,214,0,0.15); border-bottom: 1px solid rgba(255,214,0,0.15); }
-.paginacion button { background: transparent; border: 2px solid var(--amarillo); color: var(--amarillo); padding: 10px 18px; margin: 0 4px; border-radius: 6px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
-.paginacion button:hover, .paginacion button.active { background: var(--amarillo); color: #0d0d0d; }
-
-/* RESENAS */
-.resenas { padding: 50px 8%; background: #0d0d0d; border-top: 2px solid var(--amarillo); }
-.resenas h2 { color: var(--amarillo); text-align: center; margin-bottom: 30px; font-size: 22px; text-transform: uppercase; letter-spacing: 2px; }
-.resenas-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
-.resena { background: rgba(255,255,255,0.02); border: 1px solid #2a2a2a; border-radius: 10px; padding: 24px; max-width: 300px; flex: 1; min-width: 220px; transition: 0.3s; }
-.resena:hover { border-color: var(--amarillo); box-shadow: 0 0 20px rgba(255,214,0,0.08); }
-.resena-estrellas { color: var(--amarillo); font-size: 18px; margin-bottom: 10px; }
-.resena-texto { color: #888; font-size: 14px; font-style: italic; margin-bottom: 12px; line-height: 1.6; }
-.resena-autor { color: #c8a800; font-size: 13px; font-weight: bold; }
-
-/* LIGHTBOX */
-.lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.96); z-index: 9999; align-items: center; justify-content: center; }
-.lightbox.activo { display: flex; }
-.lightbox img { max-width: 92%; max-height: 88vh; border-radius: 10px; border: 1px solid var(--amarillo); }
-.lightbox-cerrar { position: absolute; top: 18px; right: 24px; font-size: 38px; color: white; cursor: pointer; font-weight: bold; }
-
-/* MODAL */
-.modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 8888; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
-.modal-overlay.activo { display: flex; }
-.modal { background: #111; border-radius: 10px; padding: 30px; max-width: 440px; width: 100%; box-shadow: 0 20px 60px rgba(0,0,0,0.8); border: 1px solid var(--amarillo); margin: auto; }
-.modal-titulo { color: var(--amarillo); text-align: center; font-size: 20px; font-weight: bold; margin: 0 0 6px 0; text-transform: uppercase; }
-.modal-titulo.efectivo { color: #4caf50; }
-.modal-subtitulo { text-align: center; color: #c8a800; font-weight: bold; font-size: 13px; background: rgba(255,214,0,0.06); border: 1px solid rgba(255,214,0,0.2); border-radius: 6px; padding: 7px 12px; margin: 0 0 10px 0; }
-.modal-aviso { background: rgba(255,60,60,0.08); border: 1px solid rgba(255,60,60,0.3); border-radius: 6px; padding: 10px 14px; margin: 0 0 14px 0; color: #ccc; font-size: 13px; line-height: 1.6; }
-.modal-aviso strong { color: #ff6666; }
-.modal-aviso.efectivo-aviso { background: rgba(76,175,80,0.08); border-color: rgba(76,175,80,0.3); }
-.modal-aviso.efectivo-aviso strong { color: #4caf50; }
-.modal-producto { color: #888; text-align: center; font-size: 13px; margin: 0 0 14px 0; }
-.modal-seccion { color: #c8a800; font-size: 12px; font-weight: bold; margin: 14px 0 6px 0; text-align: left; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid #2a2a2a; padding-bottom: 4px; }
-.modal input { width: 100%; padding: 11px 14px; margin-bottom: 10px; border-radius: 6px; border: 1px solid #2a2a2a; background: rgba(255,255,255,0.04); color: white; font-size: 14px; transition: 0.3s; }
-.modal input:focus { outline: none; border-color: var(--amarillo); }
-.modal input::placeholder { color: #444; }
-.modal-botones { display: flex; gap: 10px; margin-top: 8px; }
-.btn-cancelar { flex: 1; padding: 12px; border-radius: 6px; border: 1px solid #333; background: transparent; color: #666; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.btn-cancelar:hover { border-color: #666; color: white; }
-.btn-confirmar { flex: 2; padding: 12px; border-radius: 6px; border: none; background: var(--azul); color: white; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
-.btn-confirmar:hover { background: var(--azul-oscuro); }
-.btn-confirmar-efectivo { flex: 2; padding: 12px; border-radius: 6px; border: none; background: #4caf50; color: white; font-size: 14px; font-weight: bold; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
-.btn-confirmar-efectivo:hover { background: #388e3c; }
-
-/* FOOTER */
-footer { background: #080808; padding: 50px 20px; text-align: center; border-top: 2px solid var(--amarillo); }
-footer h3 { color: var(--amarillo); margin: 0 0 5px 0; font-size: 20px; letter-spacing: 2px; }
-footer a { color: #666; text-decoration: none; transition: 0.3s; }
-footer a:hover { color: #c8a800; }
-footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
-
-/* BOTONES FLOTANTES */
-.boton-flotante { position: fixed; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 1000; text-decoration: none; transition: transform 0.3s, box-shadow 0.3s; }
-.boton-flotante:hover { transform: scale(1.12); }
-.boton-whatsapp { background: var(--verde); right: 25px; bottom: 25px; box-shadow: 0 4px 15px rgba(37,211,102,0.4); }
-.boton-mercado { background: var(--azul); left: 25px; bottom: 25px; font-size: 14px; font-weight: 900; color: white; letter-spacing: 1px; box-shadow: 0 4px 15px rgba(26,115,232,0.4); }
-.boton-arriba { background: var(--amarillo); left: 50%; bottom: 25px; transform: translateX(-50%); display: none; font-size: 22px; color: #0d0d0d; font-weight: bold; border: none; box-shadow: 0 4px 15px rgba(255,214,0,0.3); }
-.boton-arriba.visible { display: flex; }
-.boton-arriba:hover { transform: translateX(-50%) scale(1.12); }
-
-/* TOAST */
-.toast { position: fixed; bottom: 90px; left: 50%; transform: translateX(-50%); background: var(--verde); color: white; padding: 10px 24px; border-radius: 25px; font-size: 14px; font-weight: bold; z-index: 9999; display: none; animation: fadeIn 0.3s ease; }
-.toast.visible { display: block; }
+@keyframes entradaArriba { from { opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
+@keyframes entradaLogo { from { opacity:0; transform:scale(0.7);} to {opacity:1; transform:scale(1);} }
+@keyframes fadeIn { from { opacity:0; transform:translateY(-8px);} to {opacity:1; transform:translateY(0);} }
+.logo-carita { animation: entradaLogo 0.7s ease forwards; }
+.logo-titulo { animation: entradaArriba 0.7s 0.2s ease both; }
+.botones-header { animation: entradaArriba 0.7s 0.4s ease both; }
+.subtitulos { animation: entradaArriba 0.7s 0.5s ease both; }
+.buscador-container { animation: entradaArriba 0.7s 0.6s ease both; }
+.animar-scroll { opacity:0; transform:translateY(35px); transition: opacity 0.6s ease, transform 0.6s ease; }
+.animar-scroll.visible { opacity:1; transform:translateY(0); }
+header { background:#0d0d0d; border-bottom:2px solid var(--amarillo); padding-bottom:24px; position:relative; overflow:hidden; }
+header::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,214,0,0.025) 20px, rgba(255,214,0,0.025) 21px); pointer-events:none; }
+.logo-container { display:flex; align-items:center; justify-content:center; gap:24px; padding-top:30px; flex-wrap:wrap; position:relative; }
+.logo-carita { width:100px; height:100px; object-fit:contain; border-radius:12px; border:2px solid var(--amarillo); box-shadow:0 0 25px rgba(255,214,0,0.25); flex-shrink:0; }
+.logo-titulo { text-align:left; }
+.logo-titulo h1 { margin:0; color:var(--amarillo); letter-spacing:4px; font-size:38px; font-family:'Oswald',sans-serif; font-weight:700; text-shadow:0 0 20px rgba(255,214,0,0.4); text-transform:uppercase; }
+.logo-titulo .tagline { color:#c8a800; font-size:13px; letter-spacing:2px; margin:5px 0 0 0; text-transform:uppercase; font-family:'Oswald',sans-serif; font-weight:400; }
+@media(max-width:520px) { .logo-container { flex-direction:column; gap:12px; } .logo-carita { width:80px; height:80px; } .logo-titulo h1 { font-size:28px; letter-spacing:2px; } .logo-titulo { text-align:center; } }
+.visitas { text-align:center; color:#555; font-size:12px; margin:10px 0 0 0; position:relative; }
+.botones-header { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:14px 20px 0 20px; position:relative; }
+.btn-header { padding:10px 26px; border-radius:6px; font-size:14px; font-weight:bold; cursor:pointer; letter-spacing:1px; transition:0.3s; text-transform:uppercase; border:none; }
+.btn-suscribir { background:transparent; border:2px solid var(--amarillo); color:var(--amarillo); }
+.btn-suscribir:hover { background:var(--amarillo); color:#0d0d0d; }
+.btn-compartir-header { background:transparent; border:2px solid var(--verde); color:var(--verde); }
+.btn-compartir-header:hover { background:var(--verde); color:white; }
+.mensaje-suscripcion { display:none; text-align:center; color:var(--amarillo); font-size:14px; margin:10px 20px; padding:16px 20px; border:1px solid var(--amarillo); border-radius:8px; background:rgba(255,214,0,0.06); animation:fadeIn 0.5s ease; position:relative; }
+.btn-ws-confirmar { display:inline-block; margin-top:12px; background:var(--verde); color:white; padding:10px 24px; border-radius:6px; font-size:14px; font-weight:bold; text-decoration:none; transition:0.3s; }
+.btn-ws-confirmar:hover { background:#1ebe5d; }
+.subtitulos { text-align:center; margin:18px 0 0 0; position:relative; }
+.subtitulos h2 { color:#fff; font-size:18px; margin:4px 0; text-transform:uppercase; letter-spacing:2px; font-weight:normal; }
+.subtitulos h3 { color:#777; font-size:14px; margin:4px 0; font-weight:normal; letter-spacing:1px; }
+.buscador-container { padding:20px 8%; background:#0d0d0d; border-bottom:1px solid rgba(255,214,0,0.2); }
+.buscador-wrap { position:relative; max-width:540px; margin:0 auto; }
+.buscador-wrap input { width:100%; padding:14px 20px; border-radius:8px; border:2px solid var(--amarillo); background:rgba(255,255,255,0.04); color:white; font-size:15px; outline:none; transition:0.3s; }
+.buscador-wrap input::placeholder { color:#666; }
+.buscador-wrap input:focus { box-shadow:0 0 0 3px rgba(255,214,0,0.2); }
+.buscador-resultado { text-align:center; color:#888; font-size:13px; margin-top:8px; }
+.btn-limpiar { display:none; margin:8px auto 0 auto; background:transparent; border:1px solid #444; color:#888; padding:5px 16px; border-radius:20px; cursor:pointer; font-size:13px; transition:0.3s; }
+.btn-limpiar:hover { border-color:var(--amarillo); color:var(--amarillo); }
+.productos { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; padding:30px 8%; }
+.producto { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:15px; padding:24px; position:relative; transition:background 0.3s; border:1px solid rgba(255,214,0,0.1); border-radius:12px; background:rgba(255,255,255,0.01); }
+.producto::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; transition:0.3s; border-radius:12px 0 0 12px; }
+.producto:hover::before { background:var(--amarillo); }
+.producto:hover { background:rgba(255,214,0,0.03); }
+.producto-img-wrap { width:100%; max-width:250px; flex-shrink:0; }
+.producto-img-wrap img { width:100%; border-radius:10px; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s; display:block; border:1px solid #2a2a2a; }
+.producto-img-wrap img:hover { transform:scale(1.03); box-shadow:0 8px 30px rgba(255,214,0,0.12); }
+.info { flex:1; text-align:center; padding:0; width:100%; }
+.info h3 { margin:0 0 10px 0; font-size:14px; color:#ddd; text-transform:uppercase; letter-spacing:0.5px; line-height:1.4; min-height:40px; display:flex; align-items:center; justify-content:center; }
+.precio { font-size:24px; font-weight:900; color:var(--amarillo); margin:6px 0; text-shadow:0 0 15px rgba(255,214,0,0.3); }
+.stock { font-size:13px; color:var(--verde); font-weight:bold; margin:4px 0; }
+.envio-info { font-size:12px; color:#aaa; margin:6px 0 2px 0; }
+.envio-coordinar { font-size:12px; font-weight:bold; color:#c8a800; margin:4px 0 12px 0; background:rgba(255,214,0,0.06); border:1px solid rgba(255,214,0,0.2); border-radius:20px; padding:4px 12px; display:inline-block; }
+.botones-producto { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-top:10px; width:100%; }
+.btn-consultar, .btn-comprar, .btn-video { padding:10px 16px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:12px; text-transform:uppercase; flex:1; min-width:90px; text-align:center; }
+.btn-consultar { background:var(--amarillo); border:none; color:#0d0d0d; }
+.btn-consultar:hover { background:var(--amarillo-oscuro); }
+.btn-comprar { background:var(--azul); border:none; color:white; }
+.btn-comprar:hover { background:var(--azul-oscuro); }
+.btn-video { border:2px solid var(--rojo); color:var(--rojo); text-decoration:none; display:flex; align-items:center; justify-content:center; background:transparent; }
+.btn-video:hover { background:var(--rojo); color:white; }
+.carrusel img { display:none; }
+.carrusel img.activa { display:block; }
+.carrusel-dots { text-align:center; margin-top:8px; }
+.carrusel-dots span { display:inline-block; width:8px; height:8px; border-radius:50%; background:#444; margin:0 3px; cursor:pointer; transition:0.3s; }
+.carrusel-dots span.activo { background:var(--amarillo); }
+@media(max-width:850px) { .productos { grid-template-columns:repeat(2, 1fr); padding:20px 4%; gap:15px; } }
+@media(max-width:600px) { .productos { grid-template-columns:1fr; } .producto-img-wrap { max-width:100%; } }
+.no-resultados { text-align:center; color:#666; padding:40px; font-size:16px; grid-column:1/-1; }
+.paginacion { text-align:center; padding:28px 0; background:#0d0d0d; border-top:1px solid rgba(255,214,0,0.15); border-bottom:1px solid rgba(255,214,0,0.15); }
+.paginacion button { background:transparent; border:2px solid var(--amarillo); color:var(--amarillo); padding:10px 18px; margin:0 4px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:15px; }
+.paginacion button:hover, .paginacion button.active { background:var(--amarillo); color:#0d0d0d; }
+.resenas { padding:50px 8%; background:#0d0d0d; border-top:2px solid var(--amarillo); }
+.resenas h2 { color:var(--amarillo); text-align:center; margin-bottom:30px; font-size:22px; text-transform:uppercase; letter-spacing:2px; }
+.resenas-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
+.resena { background:rgba(255,255,255,0.02); border:1px solid #2a2a2a; border-radius:10px; padding:24px; max-width:300px; flex:1; min-width:220px; transition:0.3s; }
+.resena:hover { border-color:var(--amarillo); box-shadow:0 0 20px rgba(255,214,0,0.08); }
+.resena-estrellas { color:var(--amarillo); font-size:18px; margin-bottom:10px; }
+.resena-texto { color:#888; font-size:14px; font-style:italic; margin-bottom:12px; line-height:1.6; }
+.resena-autor { color:#c8a800; font-size:13px; font-weight:bold; }
+.lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); z-index:9999; align-items:center; justify-content:center; }
+.lightbox.activo { display:flex; }
+.lightbox img { max-width:92%; max-height:88vh; border-radius:10px; border:1px solid var(--amarillo); }
+.lightbox-cerrar { position:absolute; top:18px; right:24px; font-size:38px; color:white; cursor:pointer; font-weight:bold; }
+footer { background:#080808; padding:50px 20px; text-align:center; border-top:2px solid var(--amarillo); }
+footer h3 { color:var(--amarillo); margin:0 0 5px 0; font-size:20px; letter-spacing:2px; }
+footer a { color:#666; text-decoration:none; transition:0.3s; }
+footer a:hover { color:#c8a800; }
+footer hr { border:none; border-top:1px solid #1a1a1a; margin:20px 0; }
+.boton-flotante { position:fixed; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; text-decoration:none; transition:transform 0.3s, box-shadow 0.3s; }
+.boton-flotante:hover { transform:scale(1.12); }
+.boton-whatsapp { background:var(--verde); right:25px; bottom:25px; box-shadow:0 4px 15px rgba(37,211,102,0.4); }
+.boton-mercado { background:var(--azul); left:25px; bottom:25px; font-size:14px; font-weight:900; color:white; letter-spacing:1px; box-shadow:0 4px 15px rgba(26,115,232,0.4); }
+.boton-arriba { background:var(--amarillo); left:50%; bottom:25px; transform:translateX(-50%); display:none; font-size:22px; color:#0d0d0d; font-weight:bold; border:none; box-shadow:0 4px 15px rgba(255,214,0,0.3); }
+.boton-arriba.visible { display:flex; }
+.boton-arriba:hover { transform:translateX(-50%) scale(1.12); }
+.toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%); background:var(--verde); color:white; padding:10px 24px; border-radius:25px; font-size:14px; font-weight:bold; z-index:9999; display:none; animation:fadeIn 0.3s ease; }
+.toast.visible { display:block; }
 </style>
 </head>
 <body>
-
 <div class="toast" id="toast"></div>
-
 <div class="lightbox" id="lightbox" onclick="cerrarLightbox()">
-  <span class="lightbox-cerrar">×</span>
+  <span class="lightbox-cerrar">x</span>
   <img id="lightbox-img" src="" alt="Foto ampliada">
 </div>
-
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal">
-    <p class="modal-titulo" id="modalTitulo">Datos para el envio</p>
-    <p class="modal-subtitulo" id="modalSubtitulo">🚚 Envio por Paq.ar / Correo Argentino</p>
-    <div class="modal-aviso" id="modalAviso">
-      <strong>⚠️ IMPORTANTE</strong><br>
-      Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.
-    </div>
-    <p class="modal-producto" id="modalProductoNombre"></p>
-    <p class="modal-seccion">👤 Tus datos personales</p>
-    <input type="text" id="campo-nombre" placeholder="Nombre y apellido *">
-    <input type="tel" id="campo-telefono" placeholder="Telefono *">
-    <p class="modal-seccion">📍 Tu direccion</p>
-    <input type="text" id="campo-direccion" placeholder="Direccion (calle y numero) *">
-    <input type="text" id="campo-localidad" placeholder="Localidad *">
-    <input type="text" id="campo-cp" placeholder="Codigo postal *">
-    <div class="modal-botones">
-      <button class="btn-cancelar" onclick="cerrarModal()">Cancelar</button>
-      <button class="btn-confirmar" id="btnConfirmar" onclick="confirmarCompra()">Confirmar y pagar</button>
-      <button class="btn-confirmar-efectivo" id="btnConfirmarEfectivo" style="display:none;" onclick="confirmarEfectivo()">Confirmar</button>
-    </div>
-  </div>
-</div>
-
 <header>
   <div class="logo-container">
     <img src="logovac.jpg" alt="Logo VAC Multimarca" class="logo-carita">
     <div class="logo-titulo">
       <h1>VAC MULTIMARCA</h1>
-      <p class="tagline">⚡ Somos fabricantes</p>
+      <p class="tagline">Somos fabricantes</p>
     </div>
   </div>
   <p class="visitas">Visitas: <img src="https://visitor-badge.laobi.icu/badge?page_id=vacmultimarca.github.io" alt="visitas" style="vertical-align:middle;height:18px;"></p>
@@ -325,44 +150,40 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
   </div>
   <div class="subtitulos">
     <h2>Soluciones en sujecion y amarre</h2>
-    <h3>Fabricacion propia • Envio a todo el pais • Envio gratis</h3>
+    <h3>Fabricacion propia &bull; Envio a todo el pais &bull; Coordinamos el envio por WhatsApp</h3>
   </div>
 </header>
-
 <div class="buscador-container">
   <div class="buscador-wrap">
-    <input type="text" id="campoBusqueda" placeholder="🔍 Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
+    <input type="text" id="campoBusqueda" placeholder="Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
   </div>
   <p class="buscador-resultado" id="resultadoBusqueda"></p>
   <div style="text-align:center;">
-    <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">✕ Limpiar busqueda</button>
+    <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">Limpiar busqueda</button>
   </div>
 </div>
-
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
-
 <section class="resenas">
-  <h2>⭐ Lo que dicen nuestros clientes</h2>
+  <h2>Lo que dicen nuestros clientes</h2>
   <div class="resenas-grid">
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="resena-texto">"Excelente calidad, las cintas son muy resistentes. Las uso para sujetar carga en mi camioneta y no fallaron nunca."</p>
       <p class="resena-autor">- Marcelo R., Buenos Aires</p>
     </div>
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="resena-texto">"Muy buena atencion, llegaron rapido y el producto es de primera. Lo recomiendo a todos los que necesiten amarre."</p>
       <p class="resena-autor">- Diego M., Tigre</p>
     </div>
     <div class="resena animar-scroll">
-      <div class="resena-estrellas">⭐⭐⭐⭐⭐</div>
+      <div class="resena-estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
       <p class="resena-texto">"Compre el zuncho y es increible. Se nota que es fabricacion propia, mucho mejor que lo que venden en ferias."</p>
       <p class="resena-autor">- Carlos V., San Fernando</p>
     </div>
   </div>
 </section>
-
 <footer>
   <div style="max-width:600px;margin:0 auto;">
     <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px;border-radius:10px;border:2px solid var(--amarillo);margin-bottom:12px;box-shadow:0 0 20px rgba(255,214,0,0.2);">
@@ -376,22 +197,16 @@ footer hr { border: none; border-top: 1px solid #1a1a1a; margin: 20px 0; }
     <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#c8a800;">@vac_multimarca</a></p>
     <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#c8a800;">@vacmultimarca</a></p>
     <hr>
-    <p style="color:#444;font-size:13px;">Pagos seguros con Mercado Pago • Envios por Paq.ar - Correo Argentino</p>
+    <p style="color:#444;font-size:13px;">Pagos seguros con Mercado Pago &bull; Envios por Correo Argentino coordinados por WhatsApp</p>
     <p style="color:#333;font-size:12px;margin-top:16px;">2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
-
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32">
-    <path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.1 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.9-11.9c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5.1 8.1 7.1 1.1.5 2 .8 2.7 1 1.1.4 2.2.3 3 .2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.2-.2-.5-.3-1-.5z"/>
-  </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="32" height="32"><path fill="#fff" d="M24 4C13 4 4 13 4 24c0 3.6 1 7 2.7 9.9L4 44l10.4-2.7C17.1 43 20.5 44 24 44c11 0 20-9 20-20S35 4 24 4zm0 36c-3.1 0-6.1-.8-8.7-2.4l-.6-.4-6.2 1.6 1.6-6-.4-.6C8.8 30.1 8 27.1 8 24 8 15.2 15.2 8 24 8s16 7.2 16 16-7.2 16-16 16zm8.9-11.9c-.5-.2-2.9-1.4-3.3-1.6-.4-.2-.7-.2-1 .2-.3.5-1.2 1.6-1.5 1.9-.3.3-.5.4-1 .1-.5-.2-2-.7-3.8-2.3-1.4-1.2-2.3-2.8-2.6-3.2-.3-.5 0-.7.2-.9.2-.2.5-.5.7-.8.2-.3.3-.5.5-.8.2-.3.1-.6 0-.8-.1-.2-1-2.5-1.4-3.4-.4-.9-.8-.8-1-.8h-.9c-.3 0-.8.1-1.2.6-.4.5-1.6 1.6-1.6 3.8s1.7 4.4 1.9 4.7c.2.3 3.3 5.1 8.1 7.1 1.1.5 2 .8 2.7 1 1.1.4 2.2.3 3 .2.9-.1 2.9-1.2 3.3-2.3.4-1.1.4-2.1.3-2.3-.2-.2-.5-.3-1-.5z"/></svg>
 </a>
 <a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado">MP</a>
-<button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">⇧</button>
-
+<button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
-var linkPagoActual = "";
-
 var productos = [
   { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$27.200", link: "https://mpago.la/1nmY4Xu", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
   { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$16.000", link: "https://mpago.la/2i9XtiX" },
@@ -419,8 +234,8 @@ var productos = [
   { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$27.472", link: "https://mpago.la/1zP1BRh" },
   { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$25.304", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
   { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$15.762", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
+  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
+  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$37.540", link: "https://mpago.la/2yS8XAk" },
   { nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$21.356", link: "https://mpago.la/2gZAp6n" },
   { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$25.304", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
   { nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$16.400", link: "https://mpago.la/2hBmTJh" },
@@ -428,266 +243,147 @@ var productos = [
   { nombre: "1 PARRILLA KTM 200 OK", imagenes: ["ktm200.jpg"], precio: "$85.400", link: "https://mpago.la/2MAjEMN" },
   { nombre: "2 CINTA CINTAS DE AMARRE P25MM X 2 METROS", imagen: "cintap25mmx2metros.jpg", precio: "$14.915", link: "https://mpago.la/2aBDTEd" }
 ];
-
-/* MODIFICADO: AHORA SON 16 POR PAGINA */
 var productosPorPagina = 16;
 var paginaActual = 1;
-var totalPaginas = Math.ceil(productos.length / productosPorPagina);
-
 function activarScroll() {
-  var elementos = document.querySelectorAll(".animar-scroll");
-  for (var i = 0; i < elementos.length; i++) {
-    var rect = elementos[i].getBoundingClientRect();
-    if (rect.top < window.innerHeight - 60) elementos[i].classList.add("visible");
-  }
+  var el = document.querySelectorAll(".animar-scroll");
+  for (var i=0;i<el.length;i++) { var r=el[i].getBoundingClientRect(); if(r.top<window.innerHeight-60) el[i].classList.add("visible"); }
 }
 window.addEventListener("scroll", activarScroll);
 window.addEventListener("scroll", function() {
-  var btn = document.getElementById("botonArriba");
-  if (window.scrollY > 400) { btn.classList.add("visible"); } else { btn.classList.remove("visible"); }
+  var btn=document.getElementById("botonArriba");
+  if(window.scrollY>400){btn.classList.add("visible");}else{btn.classList.remove("visible");}
 });
-
 function mostrarToast(msg) {
-  var t = document.getElementById("toast");
-  t.innerText = msg; t.classList.add("visible");
-  setTimeout(function(){ t.classList.remove("visible"); }, 3000);
+  var t=document.getElementById("toast"); t.innerText=msg; t.classList.add("visible");
+  setTimeout(function(){t.classList.remove("visible");},3000);
 }
-
 function buscarProducto() {
-  var query = document.getElementById("campoBusqueda").value.trim().toLowerCase();
-  var btnLimpiar = document.getElementById("btnLimpiar");
-  var resultado = document.getElementById("resultadoBusqueda");
-  if (query.length === 0) { limpiarBusqueda(); return; }
-  btnLimpiar.style.display = "inline-block";
-  document.getElementById("paginacion").style.display = "none";
-  var filtrados = productos.filter(function(p) { return p.nombre.toLowerCase().indexOf(query) !== -1; });
-  var contenedor = document.getElementById("productos-contenedor");
-  contenedor.innerHTML = "";
-  if (filtrados.length === 0) {
-    contenedor.innerHTML = '<p class="no-resultados">No se encontraron productos para "' + query + '"</p>';
-    resultado.innerText = ""; return;
-  }
-  resultado.innerText = filtrados.length + " producto(s) encontrado(s)";
-  for (var i = 0; i < filtrados.length; i++) contenedor.appendChild(crearTarjeta(filtrados[i], productos.indexOf(filtrados[i])));
-  iniciarCarruseles(); activarScroll();
+  var query=document.getElementById("campoBusqueda").value.trim().toLowerCase();
+  if(query.length===0){limpiarBusqueda();return;}
+  document.getElementById("btnLimpiar").style.display="inline-block";
+  document.getElementById("paginacion").style.display="none";
+  var filtrados=productos.filter(function(p){return p.nombre.toLowerCase().indexOf(query)!==-1;});
+  var contenedor=document.getElementById("productos-contenedor");
+  contenedor.innerHTML="";
+  if(filtrados.length===0){contenedor.innerHTML='<p class="no-resultados">No se encontraron productos para "'+query+'"</p>';document.getElementById("resultadoBusqueda").innerText="";return;}
+  document.getElementById("resultadoBusqueda").innerText=filtrados.length+" producto(s) encontrado(s)";
+  for(var i=0;i<filtrados.length;i++) contenedor.appendChild(crearTarjeta(filtrados[i],productos.indexOf(filtrados[i])));
+  iniciarCarruseles();activarScroll();
 }
-
 function limpiarBusqueda() {
-  document.getElementById("campoBusqueda").value = "";
-  document.getElementById("resultadoBusqueda").innerText = "";
-  document.getElementById("btnLimpiar").style.display = "none";
-  document.getElementById("paginacion").style.display = "block";
+  document.getElementById("campoBusqueda").value="";
+  document.getElementById("resultadoBusqueda").innerText="";
+  document.getElementById("btnLimpiar").style.display="none";
+  document.getElementById("paginacion").style.display="block";
   mostrarProductos(paginaActual);
 }
-
-function compartirProducto(nombre, idx) {
-  var url = "https://vacmultimarca.github.io/?producto=" + idx;
-  var texto = "Mira este producto de VAC Multimarca: " + nombre + " ";
-  if (navigator.share) { navigator.share({ title: nombre, text: texto, url: url }); }
-  else {
-    navigator.clipboard.writeText(texto + url).then(function() { mostrarToast("✓ Link copiado!"); }).catch(function() {
-      var ta = document.createElement("textarea"); ta.value = texto + url;
-      document.body.appendChild(ta); ta.select(); document.execCommand("copy"); document.body.removeChild(ta);
-      mostrarToast("✓ Link copiado!");
-    });
-  }
-}
-
-function abrirLightbox(src) { document.getElementById("lightbox-img").src = src; document.getElementById("lightbox").classList.add("activo"); }
-function cerrarLightbox() { document.getElementById("lightbox").classList.remove("activo"); }
-
-function limpiarCampos() {
-  document.getElementById("campo-nombre").value = "";
-  document.getElementById("campo-telefono").value = "";
-  document.getElementById("campo-direccion").value = "";
-  document.getElementById("campo-localidad").value = "";
-  document.getElementById("campo-cp").value = "";
-}
-
-function abrirModal(nombre, link) {
-  linkPagoActual = link;
-  document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
-  document.getElementById("modalTitulo").innerText = "Datos para el envio";
-  document.getElementById("modalTitulo").className = "modal-titulo";
-  document.getElementById("modalSubtitulo").innerText = "📦 Envio por Paq.ar / Correo Argentino";
-  document.getElementById("modalAviso").className = "modal-aviso";
-  document.getElementById("modalAviso").innerHTML = "<strong>⚠️ IMPORTANTE</strong><br>Ingresa tu direccion y nosotros te confirmamos por WhatsApp la sucursal de Correo Argentino mas cercana que recibe tu pedido.";
-  document.getElementById("btnConfirmar").style.display = "block";
-  document.getElementById("btnConfirmarEfectivo").style.display = "none";
-  limpiarCampos();
-  document.getElementById("modalOverlay").classList.add("activo");
-}
-
-function abrirModalEfectivo(nombre) {
-  document.getElementById("modalProductoNombre").innerText = "Producto: " + nombre;
-  document.getElementById("modalTitulo").innerText = "💵 Pago en efectivo";
-  document.getElementById("modalTitulo").className = "modal-titulo efectivo";
-  document.getElementById("modalSubtitulo").innerText = "20% de descuento pagando en efectivo";
-  document.getElementById("modalAviso").className = "modal-aviso efectivo-aviso";
-  document.getElementById("modalAviso").innerHTML = "<strong>✅ IMPORTANTE</strong><br>Completa tus datos y te contactamos por WhatsApp para coordinar el pago.";
-  document.getElementById("btnConfirmar").style.display = "none";
-  document.getElementById("btnConfirmarEfectivo").style.display = "block";
-  limpiarCampos();
-  document.getElementById("modalOverlay").classList.add("activo");
-}
-
-function cerrarModal() { document.getElementById("modalOverlay").classList.remove("activo"); }
-
-function confirmarCompra() {
-  var nombre = document.getElementById("campo-nombre").value.trim();
-  var telefono = document.getElementById("campo-telefono").value.trim();
-  var direccion = document.getElementById("campo-direccion").value.trim();
-  var localidad = document.getElementById("campo-localidad").value.trim();
-  var cp = document.getElementById("campo-cp").value.trim();
-  var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
-  if (!nombre || !telefono || !direccion || !localidad || !cp) { alert("Por favor completa todos los campos obligatorios (*)"); return; }
-  var datos = new FormData();
-  datos.append("Producto", producto);
-  datos.append("Nombre", nombre); datos.append("Telefono", telefono);
-  datos.append("Direccion", direccion); datos.append("Localidad", localidad); datos.append("Codigo postal", cp);
-  datos.append("_subject", "Nuevo pedido MP: " + producto);
-  fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
-  cerrarModal();
-  window.location.href = linkPagoActual;
-}
-
-function confirmarEfectivo() {
-  var nombre = document.getElementById("campo-nombre").value.trim();
-  var telefono = document.getElementById("campo-telefono").value.trim();
-  var direccion = document.getElementById("campo-direccion").value.trim();
-  var localidad = document.getElementById("campo-localidad").value.trim();
-  var cp = document.getElementById("campo-cp").value.trim();
-  var producto = document.getElementById("modalProductoNombre").innerText.replace("Producto: ", "");
-  if (!nombre || !telefono || !direccion || !localidad || !cp) { alert("Por favor completa todos los campos obligatorios (*)"); return; }
-  var datos = new FormData();
-  datos.append("Producto", producto);
-  datos.append("FORMA DE PAGO", "* EFECTIVO - 20% DESCUENTO *");
-  datos.append("Nombre", nombre); datos.append("Telefono", telefono);
-  datos.append("Direccion", direccion); datos.append("Localidad", localidad); datos.append("Codigo postal", cp);
-  datos.append("_subject", "PAGO EN EFECTIVO: " + producto);
-  fetch("https://formspree.io/f/xjgagvwb", { method: "POST", body: datos, headers: { "Accept": "application/json" } });
-  cerrarModal();
-  mostrarToast("✓ Pedido recibido! Te contactamos pronto.");
-}
-
+function abrirLightbox(src){document.getElementById("lightbox-img").src=src;document.getElementById("lightbox").classList.add("activo");}
+function cerrarLightbox(){document.getElementById("lightbox").classList.remove("activo");}
 function compartirPagina() {
-  var url = "https://vacmultimarca.github.io";
-  var texto = "Mira los productos de VAC Multimarca! Cintas y zunchos de amarre directo de fabrica. Envios a todo el pais: ";
-  if (navigator.share) { navigator.share({ title: "VAC Multimarca", text: texto, url: url }); }
-  else { window.open("https://wa.me/?text=" + encodeURIComponent(texto + url), "_blank"); }
+  var url="https://vacmultimarca.github.io";
+  var texto="Mira los productos de VAC Multimarca! Cintas y zunchos de amarre directo de fabrica: ";
+  if(navigator.share){navigator.share({title:"VAC Multimarca",text:texto,url:url});}
+  else{window.open("https://wa.me/?text="+encodeURIComponent(texto+url),"_blank");}
 }
-
-function crearTarjeta(p, globalIdx) {
-  var div = document.createElement("div");
-  div.className = "producto animar-scroll";
-  var imgHTML = "";
-  if (p.imagenes) {
-    var imgs = ""; var dots = "";
-    for (var i = 0; i < p.imagenes.length; i++) {
-      imgs += '<img src="' + p.imagenes[i] + '" alt="' + p.nombre + '"' + (i===0?' class="activa"':'') + ' onclick="abrirLightbox(this.src)">';
-      dots += '<span' + (i===0?' class="activo"':'') + ' onclick="cambiarFoto(this,' + i + ')"></span>';
+function crearTarjeta(p,globalIdx) {
+  var div=document.createElement("div");
+  div.className="producto animar-scroll";
+  var imgHTML="";
+  if(p.imagenes){
+    var imgs="",dots="";
+    for(var i=0;i<p.imagenes.length;i++){
+      imgs+='<img src="'+p.imagenes[i]+'" alt="'+p.nombre+'"'+(i===0?' class="activa"':'')+' onclick="abrirLightbox(this.src)">';
+      dots+='<span'+(i===0?' class="activo"':'')+' onclick="cambiarFoto(this,'+i+')"></span>';
     }
-    imgHTML = '<div class="carrusel producto-img-wrap">' + imgs + '<div class="carrusel-dots">' + dots + '</div></div>';
+    imgHTML='<div class="carrusel producto-img-wrap">'+imgs+'<div class="carrusel-dots">'+dots+'</div></div>';
   } else {
-    imgHTML = '<div class="producto-img-wrap"><img src="' + p.imagen + '" alt="' + p.nombre + '" onclick="abrirLightbox(this.src)"></div>';
+    imgHTML='<div class="producto-img-wrap"><img src="'+p.imagen+'" alt="'+p.nombre+'" onclick="abrirLightbox(this.src)"></div>';
   }
-
-  var infoComun = (p.precio ? '<p class="precio">' + p.precio + '</p>' : '')
-    + '<div class="badge-descuento">💵 20% OFF en Efectivo</div>'
-    + '<p class="stock">✓ Stock disponible</p>'
-    + '<p class="envio-info">🚚 Envio a todo el pais</p>'
-    + '<p class="envio-gratis">✓ ENVIO GRATIS</p>';
-
-  var botones = '<div class="botones-producto">'
-    + '<button class="btn-consultar" onclick="consultarProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\')">Consultar</button>'
-    + (p.link ? '<button class="btn-comprar" onclick="abrirModal(\'' + p.nombre.replace(/'/g,"\\'") + '\',\'' + p.link + '\')">Comprar</button>' : '')
-    + '<button class="btn-efectivo" onclick="abrirModalEfectivo(\'' + p.nombre.replace(/'/g,"\\'") + '\')">💵 Efectivo</button>'
-    + (p.video ? '<a class="btn-video" href="' + p.video + '" target="_blank">▶ Video</a>' : '')
-    + '<button class="btn-compartir-producto" onclick="compartirProducto(\'' + p.nombre.replace(/'/g,"\\'") + '\',' + globalIdx + ')">'
-    + '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>'
-    + '</button></div>';
-
-  div.innerHTML = imgHTML + '<div class="info"><h3>' + p.nombre + '</h3>' + infoComun + botones + '</div>';
+  var infoComun=(p.precio?'<p class="precio">'+p.precio+'</p>':'')
+    +'<p class="stock">Stock disponible</p>'
+    +'<p class="envio-info">Envio a todo el pais</p>'
+    +'<p class="envio-coordinar">Envio por Correo Argentino &mdash; coordinamos por WhatsApp</p>';
+  var botones='<div class="botones-producto">'
+    +'<button class="btn-consultar" onclick="consultarProducto(\''+p.nombre.replace(/'/g,"\\'")+'\')">Consultar</button>'
+    +(p.link?'<button class="btn-comprar" onclick="window.open(\''+p.link+'\',\'_blank\')">Comprar</button>':'')
+    +(p.video?'<a class="btn-video" href="'+p.video+'" target="_blank">Video</a>':'')
+    +'</div>';
+  div.innerHTML=imgHTML+'<div class="info"><h3>'+p.nombre+'</h3>'+infoComun+botones+'</div>';
   return div;
 }
-
 function iniciarCarruseles() {
-  var carruseles = document.querySelectorAll(".carrusel");
-  for (var c = 0; c < carruseles.length; c++) {
-    (function(car) {
-      var startX = 0;
-      car.addEventListener("touchstart", function(e) { startX = e.touches[0].clientX; }, {passive:true});
-      car.addEventListener("touchend", function(e) {
-        var diff = startX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) < 30) return;
-        var imgs = car.querySelectorAll("img"); var dots = car.querySelectorAll("span");
-        var actual = 0;
-        for (var i = 0; i < imgs.length; i++) { if (imgs[i].className.indexOf("activa") !== -1) actual = i; }
-        var next = diff > 0 ? Math.min(actual+1, imgs.length-1) : Math.max(actual-1, 0);
-        for (var i = 0; i < imgs.length; i++) { imgs[i].className = i===next?"activa":""; dots[i].className = i===next?"activo":""; }
-      }, {passive:true});
+  var carruseles=document.querySelectorAll(".carrusel");
+  for(var c=0;c<carruseles.length;c++){
+    (function(car){
+      var startX=0;
+      car.addEventListener("touchstart",function(e){startX=e.touches[0].clientX;},{passive:true});
+      car.addEventListener("touchend",function(e){
+        var diff=startX-e.changedTouches[0].clientX;
+        if(Math.abs(diff)<30)return;
+        var imgs=car.querySelectorAll("img"),dots=car.querySelectorAll("span"),actual=0;
+        for(var i=0;i<imgs.length;i++){if(imgs[i].className.indexOf("activa")!==-1)actual=i;}
+        var next=diff>0?Math.min(actual+1,imgs.length-1):Math.max(actual-1,0);
+        for(var i=0;i<imgs.length;i++){imgs[i].className=i===next?"activa":"";dots[i].className=i===next?"activo":"";}
+      },{passive:true});
     })(carruseles[c]);
   }
 }
-
 function mostrarProductos(pagina) {
-  var contenedor = document.getElementById("productos-contenedor");
-  contenedor.innerHTML = "";
-  var lista = productos.slice((pagina-1)*productosPorPagina, pagina*productosPorPagina);
-  for (var idx = 0; idx < lista.length; idx++) contenedor.appendChild(crearTarjeta(lista[idx], (pagina-1)*productosPorPagina + idx));
+  var contenedor=document.getElementById("productos-contenedor");
+  contenedor.innerHTML="";
+  var lista=productos.slice((pagina-1)*productosPorPagina,pagina*productosPorPagina);
+  for(var idx=0;idx<lista.length;idx++) contenedor.appendChild(crearTarjeta(lista[idx],(pagina-1)*productosPorPagina+idx));
   iniciarCarruseles();
-  setTimeout(activarScroll, 100);
+  setTimeout(activarScroll,100);
 }
-
 function crearPaginacion() {
-  var pagDiv = document.getElementById("paginacion");
-  pagDiv.innerHTML = "";
-  totalPaginas = Math.ceil(productos.length / productosPorPagina);
-  for (var i = 1; i <= totalPaginas; i++) {
-    var btn = document.createElement("button");
-    btn.innerText = i;
-    if (i === paginaActual) btn.classList.add("active");
-    (function(num) {
-      btn.addEventListener("click", function() {
-        paginaActual = num; mostrarProductos(paginaActual); crearPaginacion();
-        window.scrollTo({ top: 0, behavior: "smooth" });
+  var pagDiv=document.getElementById("paginacion");
+  pagDiv.innerHTML="";
+  var total=Math.ceil(productos.length/productosPorPagina);
+  for(var i=1;i<=total;i++){
+    var btn=document.createElement("button");
+    btn.innerText=i;
+    if(i===paginaActual)btn.classList.add("active");
+    (function(num){
+      btn.addEventListener("click",function(){
+        paginaActual=num;mostrarProductos(paginaActual);crearPaginacion();
+        window.scrollTo({top:0,behavior:"smooth"});
       });
     })(i);
     pagDiv.appendChild(btn);
   }
 }
-
 function consultarProducto(producto) {
-  window.open("https://wa.me/5491163824585?text=Hola,%20quiero%20consultar%20por:%20" + encodeURIComponent(producto) + "%0AEnviado%20desde%20la%20web%20VAC%20Multimarca", "_blank");
+  window.open("https://wa.me/5491163824585?text=Hola,%20quiero%20consultar%20por:%20"+encodeURIComponent(producto)+"%0AEnviado%20desde%20la%20web%20VAC%20Multimarca","_blank");
 }
-function cambiarFoto(el, idx) {
-  var carrusel = el.parentElement.parentElement;
-  var imgs = carrusel.querySelectorAll("img"); var dots = carrusel.querySelectorAll("span");
-  for (var i = 0; i < imgs.length; i++) { imgs[i].className = i===idx?"activa":""; dots[i].className = i===idx?"activo":""; }
+function cambiarFoto(el,idx) {
+  var carrusel=el.parentElement.parentElement;
+  var imgs=carrusel.querySelectorAll("img"),dots=carrusel.querySelectorAll("span");
+  for(var i=0;i<imgs.length;i++){imgs[i].className=i===idx?"activa":"";dots[i].className=i===idx?"activo":"";}
 }
 function suscribirse() {
-  document.getElementById("btnSuscribir").style.display = "none";
-  document.getElementById("mensajeSuscripcion").style.display = "block";
+  document.getElementById("btnSuscribir").style.display="none";
+  document.getElementById("mensajeSuscripcion").style.display="block";
 }
 function irAProducto() {
-  var params = new URLSearchParams(window.location.search);
-  var idx = params.get("producto");
-  if (idx !== null) {
-    idx = parseInt(idx);
-    paginaActual = Math.floor(idx / productosPorPagina) + 1;
-    mostrarProductos(paginaActual); crearPaginacion();
-    setTimeout(function() {
-      var cards = document.querySelectorAll(".producto");
-      var pos = idx % productosPorPagina;
-      if (cards[pos]) cards[pos].scrollIntoView({ behavior: "smooth", block: "center" });
-    }, 300);
+  var params=new URLSearchParams(window.location.search);
+  var idx=params.get("producto");
+  if(idx!==null){
+    idx=parseInt(idx);
+    paginaActual=Math.floor(idx/productosPorPagina)+1;
+    mostrarProductos(paginaActual);crearPaginacion();
+    setTimeout(function(){
+      var cards=document.querySelectorAll(".producto");
+      var pos=idx%productosPorPagina;
+      if(cards[pos])cards[pos].scrollIntoView({behavior:"smooth",block:"center"});
+    },300);
   }
 }
-
 mostrarProductos(paginaActual);
 crearPaginacion();
 irAProducto();
-setTimeout(activarScroll, 200);
+setTimeout(activarScroll,200);
 </script>
 </body>
 </html>
