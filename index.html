@@ -302,8 +302,8 @@ function crearTarjeta(p,globalIdx) {
   }
   var infoComun=(p.precio?'<p class="precio">'+p.precio+'</p>':'')
     +'<p class="stock">Stock disponible</p>'
-    +'<p class="envio-info">Envio a todo el pais</p>'
-    +'<p class="envio-coordinar">Envio por Correo Argentino &mdash; coordinamos por WhatsApp</p>';
+    +'<p class="envio-info">Precio sin envio incluido</p>'
+    +'<p class="envio-coordinar">Envio a coordinar por WhatsApp &mdash; se abona aparte</p>';
   var botones='<div class="botones-producto">'
     +'<button class="btn-consultar" onclick="consultarProducto(\''+p.nombre.replace(/'/g,"\\'")+'\')">Consultar</button>'
     +(p.link?'<button class="btn-comprar" onclick="window.open(\''+p.link+'\',\'_blank\')">Comprar</button>':'')
