@@ -7,23 +7,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --azul: #1a73e8;
-  --azul-oscuro: #1557b0;
-  --amarillo: #FFD600;
-  --amarillo-oscuro: #e6c000;
-  --negro: #0d0d0d;
+  --azul: #3483FA;
+  --azul-oscuro: #2968c8;
+  --amarillo: #FFE600;
+  --amarillo-oscuro: #e6cf00;
+  --fondo: #f5f5f5;
+  --fondo-card: #ffffff;
+  --texto: #333333;
+  --texto-claro: #666666;
   --verde: #25D366;
   --rojo: #e53935;
+  --borde: #e0e0e0;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body {
-  font-family: Arial, sans-serif;
-  color: #fff;
-  background-color: #0d0d0d;
-  background-image:
-    repeating-linear-gradient(45deg, transparent 0px, transparent 80px, rgba(255,214,0,0.03) 80px, rgba(255,214,0,0.03) 81px),
-    repeating-linear-gradient(-45deg, transparent 0px, transparent 80px, rgba(255,214,0,0.025) 80px, rgba(255,214,0,0.025) 81px);
-}
+body { font-family: Arial, sans-serif; color: var(--texto); background-color: var(--fondo); }
 @keyframes entradaArriba { from { opacity:0; transform:translateY(40px);} to {opacity:1; transform:translateY(0);} }
 @keyframes entradaLogo { from { opacity:0; transform:scale(0.7);} to {opacity:1; transform:scale(1);} }
 @keyframes fadeIn { from { opacity:0; transform:translateY(-8px);} to {opacity:1; transform:translateY(0);} }
@@ -34,90 +31,113 @@ body {
 .buscador-container { animation: entradaArriba 0.7s 0.6s ease both; }
 .animar-scroll { opacity:0; transform:translateY(35px); transition: opacity 0.6s ease, transform 0.6s ease; }
 .animar-scroll.visible { opacity:1; transform:translateY(0); }
-header { background:#0d0d0d; border-bottom:2px solid var(--amarillo); padding-bottom:24px; position:relative; overflow:hidden; }
-header::before { content:''; position:absolute; top:0; left:0; right:0; bottom:0; background: repeating-linear-gradient(45deg, transparent 0px, transparent 20px, rgba(255,214,0,0.025) 20px, rgba(255,214,0,0.025) 21px); pointer-events:none; }
-.logo-container { display:flex; align-items:center; justify-content:center; gap:24px; padding-top:30px; flex-wrap:wrap; position:relative; }
-.logo-carita { width:100px; height:100px; object-fit:contain; border-radius:12px; border:2px solid var(--amarillo); box-shadow:0 0 25px rgba(255,214,0,0.25); flex-shrink:0; }
+
+/* HEADER */
+header {
+  background: var(--azul);
+  border-bottom: 4px solid var(--amarillo);
+  padding-bottom: 20px;
+  position: relative;
+}
+.logo-container { display:flex; align-items:center; justify-content:center; gap:24px; padding-top:24px; flex-wrap:wrap; }
+.logo-carita { width:90px; height:90px; object-fit:contain; border-radius:12px; border:3px solid var(--amarillo); box-shadow:0 0 20px rgba(0,0,0,0.2); flex-shrink:0; }
 .logo-titulo { text-align:left; }
-.logo-titulo h1 { margin:0; color:var(--amarillo); letter-spacing:4px; font-size:38px; font-family:'Oswald',sans-serif; font-weight:700; text-shadow:0 0 20px rgba(255,214,0,0.4); text-transform:uppercase; }
-.logo-titulo .tagline { color:#c8a800; font-size:13px; letter-spacing:2px; margin:5px 0 0 0; text-transform:uppercase; font-family:'Oswald',sans-serif; font-weight:400; }
-@media(max-width:520px) { .logo-container { flex-direction:column; gap:12px; } .logo-carita { width:80px; height:80px; } .logo-titulo h1 { font-size:28px; letter-spacing:2px; } .logo-titulo { text-align:center; } }
-.visitas { text-align:center; color:#555; font-size:12px; margin:10px 0 0 0; position:relative; }
-.botones-header { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:14px 20px 0 20px; position:relative; }
+.logo-titulo h1 { margin:0; color:#ffffff; letter-spacing:4px; font-size:36px; font-family:'Oswald',sans-serif; font-weight:700; text-shadow:0 2px 8px rgba(0,0,0,0.2); text-transform:uppercase; }
+.logo-titulo .tagline { color:var(--amarillo); font-size:13px; letter-spacing:2px; margin:5px 0 0 0; text-transform:uppercase; font-family:'Oswald',sans-serif; font-weight:600; }
+@media(max-width:520px) { .logo-container { flex-direction:column; gap:10px; } .logo-carita { width:75px; height:75px; } .logo-titulo h1 { font-size:26px; letter-spacing:2px; } .logo-titulo { text-align:center; } }
+.visitas { text-align:center; color:rgba(255,255,255,0.6); font-size:12px; margin:8px 0 0 0; }
+.botones-header { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin:14px 20px 0 20px; }
 .btn-header { padding:10px 26px; border-radius:6px; font-size:14px; font-weight:bold; cursor:pointer; letter-spacing:1px; transition:0.3s; text-transform:uppercase; border:none; }
-.btn-suscribir { background:transparent; border:2px solid var(--amarillo); color:var(--amarillo); }
-.btn-suscribir:hover { background:var(--amarillo); color:#0d0d0d; }
-.btn-compartir-header { background:transparent; border:2px solid var(--verde); color:var(--verde); }
-.btn-compartir-header:hover { background:var(--verde); color:white; }
-.mensaje-suscripcion { display:none; text-align:center; color:var(--amarillo); font-size:14px; margin:10px 20px; padding:16px 20px; border:1px solid var(--amarillo); border-radius:8px; background:rgba(255,214,0,0.06); animation:fadeIn 0.5s ease; position:relative; }
+.btn-suscribir { background:var(--amarillo); color:#333; border:none; }
+.btn-suscribir:hover { background:var(--amarillo-oscuro); }
+.btn-compartir-header { background:transparent; border:2px solid white; color:white; }
+.btn-compartir-header:hover { background:white; color:var(--azul); }
+.mensaje-suscripcion { display:none; text-align:center; color:white; font-size:14px; margin:10px 20px; padding:16px 20px; border:1px solid var(--amarillo); border-radius:8px; background:rgba(255,255,255,0.1); animation:fadeIn 0.5s ease; }
 .btn-ws-confirmar { display:inline-block; margin-top:12px; background:var(--verde); color:white; padding:10px 24px; border-radius:6px; font-size:14px; font-weight:bold; text-decoration:none; transition:0.3s; }
 .btn-ws-confirmar:hover { background:#1ebe5d; }
-.subtitulos { text-align:center; margin:18px 0 0 0; position:relative; }
-.subtitulos h2 { color:#fff; font-size:18px; margin:4px 0; text-transform:uppercase; letter-spacing:2px; font-weight:normal; }
-.subtitulos h3 { color:#777; font-size:14px; margin:4px 0; font-weight:normal; letter-spacing:1px; }
-.buscador-container { padding:20px 8%; background:#0d0d0d; border-bottom:1px solid rgba(255,214,0,0.2); }
+.subtitulos { text-align:center; margin:16px 0 0 0; }
+.subtitulos h2 { color:#fff; font-size:17px; margin:4px 0; text-transform:uppercase; letter-spacing:2px; font-weight:normal; }
+.subtitulos h3 { color:rgba(255,255,255,0.75); font-size:13px; margin:4px 0; font-weight:normal; letter-spacing:1px; }
+
+/* BUSCADOR */
+.buscador-container { padding:20px 8%; background:#fff; border-bottom:2px solid var(--borde); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .buscador-wrap { position:relative; max-width:540px; margin:0 auto; }
-.buscador-wrap input { width:100%; padding:14px 20px; border-radius:8px; border:2px solid var(--amarillo); background:rgba(255,255,255,0.04); color:white; font-size:15px; outline:none; transition:0.3s; }
-.buscador-wrap input::placeholder { color:#666; }
-.buscador-wrap input:focus { box-shadow:0 0 0 3px rgba(255,214,0,0.2); }
+.buscador-wrap input { width:100%; padding:14px 20px; border-radius:8px; border:2px solid var(--azul); background:#fff; color:var(--texto); font-size:15px; outline:none; transition:0.3s; }
+.buscador-wrap input::placeholder { color:#aaa; }
+.buscador-wrap input:focus { box-shadow:0 0 0 3px rgba(52,131,250,0.15); }
 .buscador-resultado { text-align:center; color:#888; font-size:13px; margin-top:8px; }
-.btn-limpiar { display:none; margin:8px auto 0 auto; background:transparent; border:1px solid #444; color:#888; padding:5px 16px; border-radius:20px; cursor:pointer; font-size:13px; transition:0.3s; }
-.btn-limpiar:hover { border-color:var(--amarillo); color:var(--amarillo); }
-.productos { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; padding:30px 8%; }
-.producto { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:15px; padding:24px; position:relative; transition:background 0.3s; border:1px solid rgba(255,214,0,0.1); border-radius:12px; background:rgba(255,255,255,0.01); }
-.producto::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3px; background:transparent; transition:0.3s; border-radius:12px 0 0 12px; }
-.producto:hover::before { background:var(--amarillo); }
-.producto:hover { background:rgba(255,214,0,0.03); }
-.producto-img-wrap { width:100%; max-width:250px; flex-shrink:0; }
-.producto-img-wrap img { width:100%; border-radius:10px; cursor:pointer; transition:transform 0.3s, box-shadow 0.3s; display:block; border:1px solid #2a2a2a; }
-.producto-img-wrap img:hover { transform:scale(1.03); box-shadow:0 8px 30px rgba(255,214,0,0.12); }
-.info { flex:1; text-align:center; padding:0; width:100%; }
-.info h3 { margin:0 0 10px 0; font-size:14px; color:#ddd; text-transform:uppercase; letter-spacing:0.5px; line-height:1.4; min-height:40px; display:flex; align-items:center; justify-content:center; }
-.precio { font-size:24px; font-weight:900; color:var(--amarillo); margin:6px 0; text-shadow:0 0 15px rgba(255,214,0,0.3); }
-.stock { font-size:13px; color:var(--verde); font-weight:bold; margin:4px 0; }
-.envio-info { font-size:12px; color:#aaa; margin:6px 0 2px 0; }
-.envio-coordinar { font-size:12px; font-weight:bold; color:#c8a800; margin:4px 0 12px 0; background:rgba(255,214,0,0.06); border:1px solid rgba(255,214,0,0.2); border-radius:20px; padding:4px 12px; display:inline-block; }
-.botones-producto { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-top:10px; width:100%; }
-.btn-consultar, .btn-comprar, .btn-video { padding:10px 16px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:12px; text-transform:uppercase; flex:1; min-width:90px; text-align:center; }
-.btn-consultar { background:var(--amarillo); border:none; color:#0d0d0d; }
+.btn-limpiar { display:none; margin:8px auto 0 auto; background:transparent; border:1px solid #ccc; color:#888; padding:5px 16px; border-radius:20px; cursor:pointer; font-size:13px; transition:0.3s; }
+.btn-limpiar:hover { border-color:var(--azul); color:var(--azul); }
+
+/* PRODUCTOS */
+.productos { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; padding:30px 8%; background:var(--fondo); }
+.producto { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:12px; padding:20px; position:relative; transition:all 0.3s; border:1px solid var(--borde); border-radius:12px; background:var(--fondo-card); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.producto:hover { box-shadow:0 6px 24px rgba(52,131,250,0.15); border-color:var(--azul); transform:translateY(-2px); }
+.producto-img-wrap { width:100%; max-width:240px; flex-shrink:0; }
+.producto-img-wrap img { width:100%; border-radius:10px; cursor:pointer; transition:transform 0.3s; display:block; border:1px solid var(--borde); }
+.producto-img-wrap img:hover { transform:scale(1.03); }
+.info { flex:1; text-align:center; width:100%; }
+.info h3 { margin:0 0 8px 0; font-size:13px; color:var(--texto); text-transform:uppercase; letter-spacing:0.5px; line-height:1.4; min-height:38px; display:flex; align-items:center; justify-content:center; }
+.precio { font-size:26px; font-weight:900; color:var(--azul); margin:6px 0; }
+.stock { font-size:12px; color:#2e7d32; font-weight:bold; margin:3px 0; background:#e8f5e9; border-radius:20px; padding:3px 10px; display:inline-block; }
+.envio-info { font-size:12px; color:var(--texto-claro); margin:6px 0 2px 0; }
+.envio-coordinar { font-size:12px; font-weight:bold; color:var(--azul); margin:4px 0 10px 0; background:rgba(52,131,250,0.07); border:1px solid rgba(52,131,250,0.2); border-radius:20px; padding:4px 12px; display:inline-block; }
+
+/* BOTONES */
+.botones-producto { display:flex; gap:6px; justify-content:center; flex-wrap:wrap; margin-top:8px; width:100%; }
+.btn-consultar, .btn-comprar, .btn-video { padding:10px 14px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:12px; text-transform:uppercase; flex:1; min-width:85px; text-align:center; }
+.btn-consultar { background:var(--amarillo); border:none; color:#333; }
 .btn-consultar:hover { background:var(--amarillo-oscuro); }
 .btn-comprar { background:var(--azul); border:none; color:white; }
 .btn-comprar:hover { background:var(--azul-oscuro); }
 .btn-video { border:2px solid var(--rojo); color:var(--rojo); text-decoration:none; display:flex; align-items:center; justify-content:center; background:transparent; }
 .btn-video:hover { background:var(--rojo); color:white; }
+
+/* CARRUSEL */
 .carrusel img { display:none; }
 .carrusel img.activa { display:block; }
-.carrusel-dots { text-align:center; margin-top:8px; }
-.carrusel-dots span { display:inline-block; width:8px; height:8px; border-radius:50%; background:#444; margin:0 3px; cursor:pointer; transition:0.3s; }
-.carrusel-dots span.activo { background:var(--amarillo); }
-@media(max-width:850px) { .productos { grid-template-columns:repeat(2, 1fr); padding:20px 4%; gap:15px; } }
+.carrusel-dots { text-align:center; margin-top:6px; }
+.carrusel-dots span { display:inline-block; width:8px; height:8px; border-radius:50%; background:#ccc; margin:0 3px; cursor:pointer; transition:0.3s; }
+.carrusel-dots span.activo { background:var(--azul); }
+
+@media(max-width:850px) { .productos { padding:20px 4%; gap:15px; } }
 @media(max-width:600px) { .productos { grid-template-columns:1fr; } .producto-img-wrap { max-width:100%; } }
-.no-resultados { text-align:center; color:#666; padding:40px; font-size:16px; grid-column:1/-1; }
-.paginacion { text-align:center; padding:28px 0; background:#0d0d0d; border-top:1px solid rgba(255,214,0,0.15); border-bottom:1px solid rgba(255,214,0,0.15); }
-.paginacion button { background:transparent; border:2px solid var(--amarillo); color:var(--amarillo); padding:10px 18px; margin:0 4px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:15px; }
-.paginacion button:hover, .paginacion button.active { background:var(--amarillo); color:#0d0d0d; }
-.resenas { padding:50px 8%; background:#0d0d0d; border-top:2px solid var(--amarillo); }
-.resenas h2 { color:var(--amarillo); text-align:center; margin-bottom:30px; font-size:22px; text-transform:uppercase; letter-spacing:2px; }
+.no-resultados { text-align:center; color:#aaa; padding:40px; font-size:16px; grid-column:1/-1; }
+
+/* PAGINACION */
+.paginacion { text-align:center; padding:28px 0; background:#fff; border-top:1px solid var(--borde); border-bottom:1px solid var(--borde); }
+.paginacion button { background:transparent; border:2px solid var(--azul); color:var(--azul); padding:10px 18px; margin:0 4px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:15px; }
+.paginacion button:hover, .paginacion button.active { background:var(--azul); color:white; }
+
+/* RESENAS */
+.resenas { padding:50px 8%; background:#fff; border-top:4px solid var(--amarillo); }
+.resenas h2 { color:var(--azul); text-align:center; margin-bottom:30px; font-size:22px; text-transform:uppercase; letter-spacing:2px; }
 .resenas-grid { display:flex; flex-wrap:wrap; gap:20px; justify-content:center; }
-.resena { background:rgba(255,255,255,0.02); border:1px solid #2a2a2a; border-radius:10px; padding:24px; max-width:300px; flex:1; min-width:220px; transition:0.3s; }
-.resena:hover { border-color:var(--amarillo); box-shadow:0 0 20px rgba(255,214,0,0.08); }
-.resena-estrellas { color:var(--amarillo); font-size:18px; margin-bottom:10px; }
-.resena-texto { color:#888; font-size:14px; font-style:italic; margin-bottom:12px; line-height:1.6; }
-.resena-autor { color:#c8a800; font-size:13px; font-weight:bold; }
-.lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.96); z-index:9999; align-items:center; justify-content:center; }
+.resena { background:var(--fondo); border:1px solid var(--borde); border-radius:10px; padding:24px; max-width:300px; flex:1; min-width:220px; transition:0.3s; }
+.resena:hover { border-color:var(--azul); box-shadow:0 4px 16px rgba(52,131,250,0.1); }
+.resena-estrellas { color:var(--amarillo-oscuro); font-size:18px; margin-bottom:10px; }
+.resena-texto { color:#555; font-size:14px; font-style:italic; margin-bottom:12px; line-height:1.6; }
+.resena-autor { color:var(--azul); font-size:13px; font-weight:bold; }
+
+/* LIGHTBOX */
+.lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:9999; align-items:center; justify-content:center; }
 .lightbox.activo { display:flex; }
-.lightbox img { max-width:92%; max-height:88vh; border-radius:10px; border:1px solid var(--amarillo); }
+.lightbox img { max-width:92%; max-height:88vh; border-radius:10px; border:2px solid var(--amarillo); }
 .lightbox-cerrar { position:absolute; top:18px; right:24px; font-size:38px; color:white; cursor:pointer; font-weight:bold; }
-footer { background:#080808; padding:50px 20px; text-align:center; border-top:2px solid var(--amarillo); }
-footer h3 { color:var(--amarillo); margin:0 0 5px 0; font-size:20px; letter-spacing:2px; }
-footer a { color:#666; text-decoration:none; transition:0.3s; }
-footer a:hover { color:#c8a800; }
-footer hr { border:none; border-top:1px solid #1a1a1a; margin:20px 0; }
+
+/* FOOTER */
+footer { background:var(--azul); padding:50px 20px; text-align:center; border-top:4px solid var(--amarillo); }
+footer h3 { color:#fff; margin:0 0 5px 0; font-size:20px; letter-spacing:2px; }
+footer a { color:rgba(255,255,255,0.7); text-decoration:none; transition:0.3s; }
+footer a:hover { color:var(--amarillo); }
+footer hr { border:none; border-top:1px solid rgba(255,255,255,0.15); margin:20px 0; }
+
+/* BOTONES FLOTANTES */
 .boton-flotante { position:fixed; width:58px; height:58px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; z-index:1000; text-decoration:none; transition:transform 0.3s, box-shadow 0.3s; }
 .boton-flotante:hover { transform:scale(1.12); }
 .boton-whatsapp { background:var(--verde); right:25px; bottom:25px; box-shadow:0 4px 15px rgba(37,211,102,0.4); }
-.boton-mercado { background:var(--azul); left:25px; bottom:25px; font-size:14px; font-weight:900; color:white; letter-spacing:1px; box-shadow:0 4px 15px rgba(26,115,232,0.4); }
-.boton-arriba { background:var(--amarillo); left:50%; bottom:25px; transform:translateX(-50%); display:none; font-size:22px; color:#0d0d0d; font-weight:bold; border:none; box-shadow:0 4px 15px rgba(255,214,0,0.3); }
+.boton-mercado { background:var(--amarillo); left:25px; bottom:25px; font-size:13px; font-weight:900; color:#333; letter-spacing:1px; box-shadow:0 4px 15px rgba(255,230,0,0.4); }
+.boton-arriba { background:var(--azul); left:50%; bottom:25px; transform:translateX(-50%); display:none; font-size:22px; color:white; font-weight:bold; border:none; box-shadow:0 4px 15px rgba(52,131,250,0.4); }
 .boton-arriba.visible { display:flex; }
 .boton-arriba:hover { transform:translateX(-50%) scale(1.12); }
 .toast { position:fixed; bottom:90px; left:50%; transform:translateX(-50%); background:var(--verde); color:white; padding:10px 24px; border-radius:25px; font-size:14px; font-weight:bold; z-index:9999; display:none; animation:fadeIn 0.3s ease; }
@@ -135,7 +155,7 @@ footer hr { border:none; border-top:1px solid #1a1a1a; margin:20px 0; }
     <img src="logovac.jpg" alt="Logo VAC Multimarca" class="logo-carita">
     <div class="logo-titulo">
       <h1>VAC MULTIMARCA</h1>
-      <p class="tagline">Somos fabricantes</p>
+      <p class="tagline">&#9889; Somos fabricantes</p>
     </div>
   </div>
   <p class="visitas">Visitas: <img src="https://visitor-badge.laobi.icu/badge?page_id=vacmultimarca.github.io" alt="visitas" style="vertical-align:middle;height:18px;"></p>
@@ -186,19 +206,19 @@ footer hr { border:none; border-top:1px solid #1a1a1a; margin:20px 0; }
 </section>
 <footer>
   <div style="max-width:600px;margin:0 auto;">
-    <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px;border-radius:10px;border:2px solid var(--amarillo);margin-bottom:12px;box-shadow:0 0 20px rgba(255,214,0,0.2);">
+    <img src="logovac.jpg" alt="VAC Multimarca" style="width:70px;border-radius:10px;border:2px solid var(--amarillo);margin-bottom:12px;">
     <h3>VAC MULTIMARCA</h3>
-    <p style="color:#555;font-size:14px;margin:0 0 20px 0;">Somos fabricantes con mas de 10 anos en el rubro</p>
+    <p style="color:rgba(255,255,255,0.6);font-size:14px;margin:0 0 20px 0;">Somos fabricantes con mas de 10 anos en el rubro</p>
     <hr>
     <p><a href="tel:+5491163824585">11 6382-4585</a></p>
     <p><a href="mailto:vacmultimarca@gmail.com">vacmultimarca@gmail.com</a></p>
     <p><a href="https://maps.app.goo.gl/BmWYy82DK7brLi5t5" target="_blank">Necochea 1129 4, San Fernando</a></p>
     <hr>
-    <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:#c8a800;">@vac_multimarca</a></p>
-    <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:#c8a800;">@vacmultimarca</a></p>
+    <p>Instagram: <a href="https://instagram.com/vac_multimarca" target="_blank" style="color:var(--amarillo);">@vac_multimarca</a></p>
+    <p>TikTok: <a href="https://www.tiktok.com/@vacmultimarca" target="_blank" style="color:var(--amarillo);">@vacmultimarca</a></p>
     <hr>
-    <p style="color:#444;font-size:13px;">Pagos seguros con Mercado Pago &bull; Envios por Correo Argentino coordinados por WhatsApp</p>
-    <p style="color:#333;font-size:12px;margin-top:16px;">2026 VAC Multimarca - Todos los derechos reservados</p>
+    <p style="color:rgba(255,255,255,0.5);font-size:13px;">Pagos seguros con Mercado Pago &bull; Envios por Correo Argentino coordinados por WhatsApp</p>
+    <p style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:16px;">2026 VAC Multimarca - Todos los derechos reservados</p>
   </div>
 </footer>
 <a href="https://wa.me/5491163824585?text=Hola,%20te%20consulto%20desde%20la%20web%20VAC%20Multimarca" target="_blank" class="boton-flotante boton-whatsapp">
@@ -209,39 +229,39 @@ footer hr { border:none; border-top:1px solid #1a1a1a; margin:20px 0; }
 <script>
 var productos = [
   { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$20.200", link: "https://mpago.la/1nmY4Xu", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
-  { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$9,900,90", link: "https://mpago.la/2i9XtiX" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$9,040", link: "https://mpago.la/1j7sZf3", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: "$15,040", link: "https://mpago.la/2F4VZ6o" },
+  { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$9.900", link: "https://mpago.la/2i9XtiX" },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$9.040", link: "https://mpago.la/1j7sZf3", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: "$15.040", link: "https://mpago.la/2F4VZ6o" },
   { nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: "$36.006", link: "https://mpago.la/2hkDToN" },
-  { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: "$11,945", link: "https://mpago.la/1Rc6X2o" },
-  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: "$9,420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
-  { nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: "$9,420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
-  { nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: "$15,761", link: "https://mpago.la/2gZAp6n" },
+  { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: "$11.945", link: "https://mpago.la/1Rc6X2o" },
+  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
+  { nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
+  { nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
   { nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$13.800", link: "https://mpago.la/15rc2Aq", video: "https://www.youtube.com/shorts/7At5FSW7Ryo" },
-  { nombre: "2 CINTA DE AMARRE DE ATRAQUE P25MM X 2 METROS", imagen: "cintaamarreatraque.jpg", precio: "$18,625", link: "https://mpago.la/1KBh6hA" },
+  { nombre: "2 CINTA DE AMARRE DE ATRAQUE P25MM X 2 METROS", imagen: "cintaamarreatraque.jpg", precio: "$18.625", link: "https://mpago.la/1KBh6hA" },
   { nombre: "2 CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: "$14.500", link: "https://mpago.la/1AApbRW" },
-  { nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: "$6,574", link: "https://mpago.la/2b6zyZu" },
+  { nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: "$6.574", link: "https://mpago.la/2b6zyZu" },
   { nombre: "2 CINTA P40MM CON ELASTICO X 1 METRO", imagen: "cintap40mmconelastico.jpg", precio: "$17.500", link: "https://mpago.la/28ncLMk" },
   { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico-1.jpg","2zuncho2tramosp40mmelastico-2.jpg","2zuncho2tramosp40mmelastico-3.jpg"], precio: "$24.650", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$8,800", link: "https://mpago.la/2FtevVa" },
+  { nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$8.800", link: "https://mpago.la/2FtevVa" },
   { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico.jpg"], precio: "$24.650", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$9,151", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$8,600", link: "https://mpago.la/31mRP7T" },
+  { nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
+  { nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$8.600", link: "https://mpago.la/31mRP7T" },
   { nombre: "4 PROLONGADOR PASE 25 X 43 CM DE LARGO", imagen: "prolongadorp25.jpg", precio: "$8.056", link: "https://mpago.la/2r1YYCe" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$9,040", link: "https://mpago.la/2Rkd66D", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$9,151", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$9,420", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$20,223", link: "https://mpago.la/1zP1BRh" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$19,800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$9,420", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$29,643", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$29,643", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$15,761", link: "https://mpago.la/2gZAp6n" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$19,800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$11,158", link: "https://mpago.la/2hBmTJh" },
-  { nombre: "2 CINTAS DE AMARRE P25MM 2 TRAMOS HEBILLA DE ATRAQUE X 2 METROS", imagenes: ["2CINTASDEAMARREP25MMX2TRAMOSX2METROS.jpg"], precio: "$21,500", link: "https://mpago.la/1Y1cCBp" },
+  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$9.040", link: "https://mpago.la/2Rkd66D", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
+  { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
+  { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$20.223", link: "https://mpago.la/1zP1BRh" },
+  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
+  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
+  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
+  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
+  { nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
+  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
+  { nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$11.158", link: "https://mpago.la/2hBmTJh" },
+  { nombre: "2 CINTAS DE AMARRE P25MM 2 TRAMOS HEBILLA DE ATRAQUE X 2 METROS", imagenes: ["2CINTASDEAMARREP25MMX2TRAMOSX2METROS.jpg"], precio: "$21.500", link: "https://mpago.la/1Y1cCBp" },
   { nombre: "1 PARRILLA KTM 200 OK", imagenes: ["ktm200.jpg"], precio: "$85.400", link: "https://mpago.la/2MAjEMN" },
-  { nombre: "2 CINTA CINTAS DE AMARRE P25MM X 2 METROS", imagen: "cintap25mmx2metros.jpg", precio: "$8,800", link: "https://mpago.la/2aBDTEd" }
+  { nombre: "2 CINTA CINTAS DE AMARRE P25MM X 2 METROS", imagen: "cintap25mmx2metros.jpg", precio: "$8.800", link: "https://mpago.la/2aBDTEd" }
 ];
 var productosPorPagina = 16;
 var paginaActual = 1;
