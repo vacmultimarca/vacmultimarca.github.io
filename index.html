@@ -64,8 +64,14 @@ header { background: var(--amarillo); border-bottom: 4px solid var(--azul); padd
 .btn-limpiar { display:none; margin:8px auto 0 auto; background:transparent; border:1px solid #ccc; color:#888; padding:5px 16px; border-radius:20px; cursor:pointer; font-size:13px; transition:0.3s; }
 .btn-limpiar:hover { border-color:var(--azul); color:var(--azul); }
 
+/* BANNER ARTICULO INDIVIDUAL */
+.banner-unico { display:none; text-align:center; padding:18px 8% 0 8%; background:var(--fondo); }
+.banner-unico a { display:inline-block; background:var(--azul); color:white; text-decoration:none; padding:12px 24px; border-radius:6px; font-weight:bold; font-size:14px; text-transform:uppercase; transition:0.3s; }
+.banner-unico a:hover { background:var(--azul-oscuro); }
+
 /* PRODUCTOS */
 .productos { display:grid; grid-template-columns:repeat(2, 1fr); gap:20px; padding:30px 8%; background:var(--fondo); }
+.productos.unico { grid-template-columns:minmax(0,420px); justify-content:center; }
 .producto { display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:12px; padding:20px; position:relative; transition:all 0.3s; border:1px solid var(--borde); border-radius:12px; background:var(--fondo-card); box-shadow:0 2px 8px rgba(0,0,0,0.06); }
 .producto:hover { box-shadow:0 6px 24px rgba(52,131,250,0.15); border-color:var(--azul); transform:translateY(-2px); }
 .producto-img-wrap { width:100%; max-width:240px; flex-shrink:0; }
@@ -91,7 +97,7 @@ header { background: var(--amarillo); border-bottom: 4px solid var(--azul); padd
 .carrusel-dots span { display:inline-block; width:8px; height:8px; border-radius:50%; background:#ccc; margin:0 3px; cursor:pointer; transition:0.3s; }
 .carrusel-dots span.activo { background:var(--azul); }
 @media(max-width:850px) { .productos { padding:20px 4%; gap:15px; } }
-@media(max-width:600px) { .productos { grid-template-columns:1fr; } .producto-img-wrap { max-width:100%; } }
+@media(max-width:600px) { .productos { grid-template-columns:1fr; } .productos.unico { grid-template-columns:1fr; } .producto-img-wrap { max-width:100%; } }
 .no-resultados { text-align:center; color:#aaa; padding:40px; font-size:16px; grid-column:1/-1; }
 .paginacion { text-align:center; padding:28px 0; background:#fff; border-top:1px solid var(--borde); border-bottom:1px solid var(--borde); }
 .paginacion button { background:transparent; border:2px solid var(--azul); color:var(--azul); padding:10px 18px; margin:0 4px; border-radius:6px; font-weight:bold; cursor:pointer; transition:0.3s; font-size:15px; }
@@ -153,7 +159,7 @@ footer hr { border:none; border-top:1px solid rgba(255,255,255,0.15); margin:20p
     <h3>Fabricacion propia &bull; Envio a todo el pais &bull; Coordinamos el envio por WhatsApp</h3>
   </div>
 </header>
-<div class="buscador-container">
+<div class="buscador-container" id="buscadorContainer">
   <div class="buscador-wrap">
     <input type="text" id="campoBusqueda" placeholder="Buscar producto... (ej: red pulpo, eslinga, cinta...)" oninput="buscarProducto()">
   </div>
@@ -161,6 +167,9 @@ footer hr { border:none; border-top:1px solid rgba(255,255,255,0.15); margin:20p
   <div style="text-align:center;">
     <button class="btn-limpiar" id="btnLimpiar" onclick="limpiarBusqueda()">Limpiar busqueda</button>
   </div>
+</div>
+<div class="banner-unico" id="bannerUnico">
+  <a href="https://vacmultimarca.github.io/">&larr; Ver todos los productos</a>
 </div>
 <div id="productos-contenedor" class="productos"></div>
 <div class="paginacion" id="paginacion"></div>
@@ -207,41 +216,50 @@ footer hr { border:none; border-top:1px solid rgba(255,255,255,0.15); margin:20p
 <a href="https://link.mercadopago.com.ar/vac" target="_blank" class="boton-flotante boton-mercado">MP</a>
 <button class="boton-flotante boton-arriba" id="botonArriba" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8679;</button>
 <script>
+/*
+  IMPORTANTE: cada producto tiene un "id" numerico propio.
+  Ese id arma el link individual: https://vacmultimarca.github.io/?producto=ID
+  Para agregar un producto nuevo, usar el siguiente numero libre (el ultimo es el 34).
+  No repetir ni cambiar los ids de los productos que ya existen.
+*/
+var BASE_URL = "https://vacmultimarca.github.io/";
+var WHATSAPP = "5491163824585";
+
 var productos = [
-  { nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$20.200", link: "https://mpago.la/1nmY4Xu", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
-  { nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$9.900", link: "https://mpago.la/2i9XtiX" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$9.040", link: "https://mpago.la/1j7sZf3", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: "$15.040", link: "https://mpago.la/2F4VZ6o" },
-  { nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: "$36.006", link: "https://mpago.la/2hkDToN" },
-  { nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: "$11.945", link: "https://mpago.la/1Rc6X2o" },
-  { nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
-  { nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
-  { nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
-  { nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$13.800", link: "https://mpago.la/15rc2Aq", video: "https://www.youtube.com/shorts/7At5FSW7Ryo" },
-  { nombre: "2 CINTA DE AMARRE DE ATRAQUE P25MM X 2 METROS", imagen: "cintaamarreatraque.jpg", precio: "$18.625", link: "https://mpago.la/1KBh6hA" },
-  { nombre: "2 CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: "$13,240", link: "https://mpago.la/1AApbRW" },
-  { nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: "$6.574", link: "https://mpago.la/2b6zyZu" },
-  { nombre: "2 CINTA P40MM CON ELASTICO X 1 METRO", imagen: "cintap40mmconelastico.jpg", precio: "$17.500", link: "https://mpago.la/28ncLMk" },
-  { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico-1.jpg","2zuncho2tramosp40mmelastico-2.jpg","2zuncho2tramosp40mmelastico-3.jpg"], precio: "$30.150", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$8.800", link: "https://mpago.la/2FtevVa" },
-  { nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico.jpg"], precio: "$30.150", link: "https://mpago.la/2AaiWHu" },
-  { nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$8.600", link: "https://mpago.la/31mRP7T" },
-  { nombre: "4 PROLONGADOR PASE 25 X 43 CM DE LARGO", imagen: "prolongadorp25.jpg", precio: "$8.056", link: "https://mpago.la/2r1YYCe" },
-  { nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$9.040", link: "https://mpago.la/2Rkd66D", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
-  { nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
-  { nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$20.223", link: "https://mpago.la/1zP1BRh" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
-  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
-  { nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
-  { nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
-  { nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$11.158", link: "https://mpago.la/2hBmTJh" },
-  { nombre: "2 CINTAS DE AMARRE P25MM 2 TRAMOS HEBILLA DE ATRAQUE X 2 METROS", imagenes: ["2CINTASDEAMARREP25MMX2TRAMOSX2METROS.jpg"], precio: "$21.500", link: "https://mpago.la/1Y1cCBp" },
-  { nombre: "1 PARRILLA KTM 200 OK", imagenes: ["ktm200.jpg"], precio: "$85.400", link: "https://mpago.la/2MAjEMN" },
-  { nombre: "2 CINTA CINTAS DE AMARRE P25MM X 2 METROS", imagen: "cintap25mmx2metros.jpg", precio: "$8.800", link: "https://mpago.la/2aBDTEd" }
+  { id: 1, nombre: "1 ESLINGA 50MM DE ANCHO PARA 5 TONELADAS X 3 METROS", imagen: "eslinga.jpg", precio: "$20.200", link: "https://mpago.la/1nmY4Xu", video: "https://www.youtube.com/shorts/rkz9mcE0Hy8" },
+  { id: 2, nombre: "2 TENSOR 8MM X 1 METRO", imagen: "tensor.jpg", precio: "$9.900", link: "https://mpago.la/2i9XtiX" },
+  { id: 3, nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe.jpg", precio: "$9.040", link: "https://mpago.la/1j7sZf3", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { id: 4, nombre: "2 CINTA STRAVAC C/ ELASTICO HEBILLA ENCHUFE 2 TRAMOS X 1,5 METROS P25MM", imagen: "cintap25mm2tramoselastico.jpg", precio: "$15.040", link: "https://mpago.la/2F4VZ6o" },
+  { id: 5, nombre: "2 CINTA CON GANCHOS P25MM X 3 METROS", imagen: "cintaconganchos.jpg", precio: "$36.006", link: "https://mpago.la/2hkDToN" },
+  { id: 6, nombre: "1 RED PULPO 40X40", imagen: "redpulpo.jpg", precio: "$11.945", link: "https://mpago.la/1Rc6X2o" },
+  { id: 7, nombre: "1 RED PULPO 25x25", imagen: "redpulpo25x25.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
+  { id: 8, nombre: "1 RED PULPO 25x25R", imagen: "redpulpo25x25R.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ", video: "https://www.youtube.com/shorts/jblTZOFIMoo" },
+  { id: 9, nombre: "1 RED PULPO 50x50", imagen: "redpulpo50x50.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
+  { id: 10, nombre: "1 ESLINGA PROLONGADOR P50MM PARA 5 TONELADAS X 1 METRO", imagen: "eslingaprolongadorp50mm.jpg", precio: "$13.800", link: "https://mpago.la/15rc2Aq", video: "https://www.youtube.com/shorts/7At5FSW7Ryo" },
+  { id: 11, nombre: "2 CINTA DE AMARRE DE ATRAQUE P25MM X 2 METROS", imagen: "cintaamarreatraque.jpg", precio: "$18.625", link: "https://mpago.la/1KBh6hA" },
+  { id: 12, nombre: "2 CINTA P25MM ELASTICO X 1 METRO", imagen: "cintap25mmelasticox1metro.jpg", precio: "$13.240", link: "https://mpago.la/1AApbRW" },
+  { id: 13, nombre: "1 CINTA ESTERNON P25MM", imagen: "cintaesternon.jpg", precio: "$6.574", link: "https://mpago.la/2b6zyZu" },
+  { id: 14, nombre: "2 CINTA P40MM CON ELASTICO X 1 METRO", imagen: "cintap40mmconelastico.jpg", precio: "$17.500", link: "https://mpago.la/28ncLMk" },
+  { id: 15, nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico-1.jpg","2zuncho2tramosp40mmelastico-2.jpg","2zuncho2tramosp40mmelastico-3.jpg"], precio: "$30.150", link: "https://mpago.la/2AaiWHu" },
+  { id: 16, nombre: "2 CINTA DE AMARRE P25MM X 2 METROS NEGRA", imagen: "cintaamarre.jpg", precio: "$8.800", link: "https://mpago.la/2FtevVa" },
+  { id: 17, nombre: "2 ZUNCHO 2 TRAMOS P40MM ELASTICO X 1,5 METROS", imagenes: ["2zuncho2tramosp40mmelastico.jpg"], precio: "$30.150", link: "https://mpago.la/2AaiWHu" },
+  { id: 18, nombre: "2 CINTA DE AMARRE P25MM HEBILLA ENCHUFE X 1,5 METROS", imagen: "cintaamarre.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
+  { id: 19, nombre: "1 ZUNCHO TENSOR HEBILLA DE RESINA X 1 METRO", imagen: "zunchotensor.jpg", precio: "$8.600", link: "https://mpago.la/31mRP7T" },
+  { id: 20, nombre: "4 PROLONGADOR PASE 25 X 43 CM DE LARGO", imagen: "prolongadorp25.jpg", precio: "$8.056", link: "https://mpago.la/2r1YYCe" },
+  { id: 21, nombre: "2 CINTA P40MM ENCHUFE X 1,5 METROS", imagen: "cintap40mmenchufe-1.jpg", precio: "$9.040", link: "https://mpago.la/2Rkd66D", video: "https://www.youtube.com/shorts/6QlfBBTabbE" },
+  { id: 22, nombre: "2 CINTA AMARRE P25MM X 1,5 METROS VERDE", imagen: "cintaamarre-1.jpg", precio: "$9.151", link: "https://mpago.la/2Vf7Hq8" },
+  { id: 23, nombre: "1 RED PULPO 20x40", imagen: "1redpulpo20x40.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
+  { id: 24, nombre: "2 CINTAS DE AMARRE P25MM X 3 METROS", imagenes: ["2CINTASDEAMARREP25MMX3METROS-1.jpg","2CINTASDEAMARREP25MMX3METROS-2.jpg","2CINTASDEAMARREP25MMX3METROS-3.jpg"], precio: "$20.223", link: "https://mpago.la/1zP1BRh" },
+  { id: 25, nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["KIT1REDPULPO40X402TENSORESX1METRO-3.jpg","KIT1REDPULPO40X402TENSORESX1METRO-2.jpg","KIT1REDPULPO40X402TENSORESX1METRO-1.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
+  { id: 26, nombre: "1 RED PULPO 20x40 DE SOGA ELASTICA DE 6MM", imagen: "1REDPULPO20X40DESOGAELASTICADE6MM.jpg", precio: "$9.420", link: "https://mpago.la/1XJJnQJ" },
+  { id: 27, nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo20x40desogaelasticade6mm2cintasdeamarre.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
+  { id: 28, nombre: "1 RED PULPO 20x40 + 2 CINTAS DE AMARRE P25MM X 3 METROS DE LARGO", imagen: "1redpulpo2040+2cintasdeamarrep25mm.jpg", precio: "$29.643", link: "https://mpago.la/2yS8XAk" },
+  { id: 29, nombre: "1 RED PULPO 50x50 4 GANCHOS PLASTICOS", imagen: "redpulpo50x50de6mm.jpg", precio: "$15.761", link: "https://mpago.la/2gZAp6n" },
+  { id: 30, nombre: "KIT 1 RED PULPO 40X40 2 TENSORES DE 6MM X 1 METRO", imagenes: ["kitred40x40+2tensoresx1metro1.jpg","kitred40x40+2tensoresx1metro2.jpg","kitred40x40+2tensoresx1metro3.jpg"], precio: "$19.800", link: "https://mpago.la/1yFVFmE", video: "https://www.youtube.com/shorts/-cNPiRtgeIY" },
+  { id: 31, nombre: "2 CINTAS DE AMARRE P40MM 2 TRAMOS X 1,5 METROS", imagenes: ["2cintasdeamarrep40mm2tramosx1,5metros.jpg"], precio: "$11.158", link: "https://mpago.la/2hBmTJh" },
+  { id: 32, nombre: "2 CINTAS DE AMARRE P25MM 2 TRAMOS HEBILLA DE ATRAQUE X 2 METROS", imagenes: ["2CINTASDEAMARREP25MMX2TRAMOSX2METROS.jpg"], precio: "$21.500", link: "https://mpago.la/1Y1cCBp" },
+  { id: 33, nombre: "1 PARRILLA KTM 200 OK", imagenes: ["ktm200.jpg"], precio: "$85.400", link: "https://mpago.la/2MAjEMN" },
+  { id: 34, nombre: "2 CINTA CINTAS DE AMARRE P25MM X 2 METROS", imagen: "cintap25mmx2metros.jpg", precio: "$8.800", link: "https://mpago.la/2aBDTEd" }
 ];
 var productosPorPagina = 16;
 var paginaActual = 1;
@@ -268,7 +286,7 @@ function buscarProducto() {
   contenedor.innerHTML="";
   if(filtrados.length===0){contenedor.innerHTML='<p class="no-resultados">No se encontraron productos para "'+query+'"</p>';document.getElementById("resultadoBusqueda").innerText="";return;}
   document.getElementById("resultadoBusqueda").innerText=filtrados.length+" producto(s) encontrado(s)";
-  for(var i=0;i<filtrados.length;i++) contenedor.appendChild(crearTarjeta(filtrados[i],productos.indexOf(filtrados[i])));
+  for(var i=0;i<filtrados.length;i++) contenedor.appendChild(crearTarjeta(filtrados[i]));
   iniciarCarruseles();activarScroll();
 }
 function limpiarBusqueda() {
@@ -286,7 +304,14 @@ function compartirPagina() {
   if(navigator.share){navigator.share({title:"VAC Multimarca",text:texto,url:url});}
   else{window.open("https://wa.me/?text="+encodeURIComponent(texto+url),"_blank");}
 }
-function crearTarjeta(p,globalIdx) {
+function buscarPorId(id) {
+  for(var i=0;i<productos.length;i++){ if(productos[i].id===id) return productos[i]; }
+  return null;
+}
+function linkProducto(p) {
+  return BASE_URL+"?producto="+p.id;
+}
+function crearTarjeta(p) {
   var div=document.createElement("div");
   div.className="producto animar-scroll";
   var imgHTML="";
@@ -305,7 +330,7 @@ function crearTarjeta(p,globalIdx) {
     +'<p class="envio-info">Precio sin envio incluido</p>'
     +'<p class="envio-coordinar">Envio a coordinar por WhatsApp &mdash; se abona aparte</p>';
   var botones='<div class="botones-producto">'
-    +'<button class="btn-consultar" onclick="consultarProducto(\''+p.nombre.replace(/'/g,"\\'")+'\')">Consultar</button>'
+    +'<button class="btn-consultar" onclick="consultarProducto('+p.id+')">Consultar</button>'
     +(p.link?'<button class="btn-comprar" onclick="window.open(\''+p.link+'\',\'_blank\')">Comprar</button>':'')
     +(p.video?'<a class="btn-video" href="'+p.video+'" target="_blank">Video</a>':'')
     +'</div>';
@@ -333,7 +358,7 @@ function mostrarProductos(pagina) {
   var contenedor=document.getElementById("productos-contenedor");
   contenedor.innerHTML="";
   var lista=productos.slice((pagina-1)*productosPorPagina,pagina*productosPorPagina);
-  for(var idx=0;idx<lista.length;idx++) contenedor.appendChild(crearTarjeta(lista[idx],(pagina-1)*productosPorPagina+idx));
+  for(var idx=0;idx<lista.length;idx++) contenedor.appendChild(crearTarjeta(lista[idx]));
   iniciarCarruseles();
   setTimeout(activarScroll,100);
 }
@@ -354,8 +379,14 @@ function crearPaginacion() {
     pagDiv.appendChild(btn);
   }
 }
-function consultarProducto(producto) {
-  window.open("https://wa.me/5491163824585?text=Hola,%20quiero%20consultar%20por:%20"+encodeURIComponent(producto)+"%0AEnviado%20desde%20la%20web%20VAC%20Multimarca","_blank");
+function consultarProducto(id) {
+  var p=buscarPorId(id);
+  if(!p) return;
+  var msg="Hola, quiero consultar por este articulo:\n"
+    +p.nombre+(p.precio?" ("+p.precio+")":"")+"\n"
+    +"Ver articulo: "+linkProducto(p)+"\n"
+    +"Enviado desde la web VAC Multimarca";
+  window.open("https://wa.me/"+WHATSAPP+"?text="+encodeURIComponent(msg),"_blank");
 }
 function cambiarFoto(el,idx) {
   var carrusel=el.parentElement.parentElement;
@@ -366,23 +397,28 @@ function suscribirse() {
   document.getElementById("btnSuscribir").style.display="none";
   document.getElementById("mensajeSuscripcion").style.display="block";
 }
-function irAProducto() {
+/* Si el link trae ?producto=ID, muestra solo ese articulo. Devuelve true si lo mostro. */
+function mostrarProductoUnico() {
   var params=new URLSearchParams(window.location.search);
-  var idx=params.get("producto");
-  if(idx!==null){
-    idx=parseInt(idx);
-    paginaActual=Math.floor(idx/productosPorPagina)+1;
-    mostrarProductos(paginaActual);crearPaginacion();
-    setTimeout(function(){
-      var cards=document.querySelectorAll(".producto");
-      var pos=idx%productosPorPagina;
-      if(cards[pos])cards[pos].scrollIntoView({behavior:"smooth",block:"center"});
-    },300);
-  }
+  var valor=params.get("producto");
+  if(valor===null) return false;
+  var p=buscarPorId(parseInt(valor,10));
+  if(!p) return false;
+  var contenedor=document.getElementById("productos-contenedor");
+  contenedor.className="productos unico";
+  contenedor.innerHTML="";
+  contenedor.appendChild(crearTarjeta(p));
+  document.getElementById("bannerUnico").style.display="block";
+  document.getElementById("buscadorContainer").style.display="none";
+  document.getElementById("paginacion").style.display="none";
+  document.title=p.nombre+" - VAC Multimarca";
+  iniciarCarruseles();
+  return true;
 }
-mostrarProductos(paginaActual);
-crearPaginacion();
-irAProducto();
+if(!mostrarProductoUnico()){
+  mostrarProductos(paginaActual);
+  crearPaginacion();
+}
 setTimeout(activarScroll,200);
 </script>
 </body>
